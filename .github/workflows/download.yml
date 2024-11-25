@@ -9,35 +9,25 @@ on:
         type: boolean
 
 jobs:
-  DownloadFile:
+  Download:
     runs-on: ubuntu-latest
 
-  steps:
-  - name: Check Out
-    uses: actions/checkout@v4
-  
-  - name: Download
-    shell: bash
-    run: |
-      cd Download
-      export LINK=$(cat link) && rm link
-      wget $LINK
-      ls -lah
-      unzip $(ls)
-      echo "TARGET=$(cat target)" >> $GITHUB_ENV
+    steps:
+      - name: Check Out
+        uses: actions/checkout@v4
       
-  - name: Upload
-    uses: actions/upload-artifact@v4
-    with:
-      name: ${{ env.TARGET }}
-      path: Download/${{ env.TARGET }}
-
-
-      
-
-
-
-
-    
-        
-      
+      - name: Download
+        shell: bash
+        run: |
+          cd Download
+          export LINK=$(cat link) && rm link
+          wget $LINK
+          ls -lah
+          unzip $(ls)
+          echo "TARGET=$(cat target)" >> $GITHUB_ENV
+          
+      - name: Upload
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ env.TARGET }}
+          path: Download/${{ env.TARGET }}
