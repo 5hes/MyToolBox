@@ -23,13 +23,14 @@ jobs:
       export LINK=$(cat link) && rm link
       wget $LINK
       ls -lah
-      echo "OUTPUT=$(ls)" >> $GITHUB_ENV
+      unzip $(ls)
+      echo "TARGET=$(cat target)" >> $GITHUB_ENV
       
   - name: Upload
     uses: actions/upload-artifact@v4
     with:
-      name: ${{ env.OUTPUT }}
-      path: Download/*
+      name: ${{ env.TARGET }}
+      path: Download/${{ env.TARGET }}
 
 
       
