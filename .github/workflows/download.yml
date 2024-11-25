@@ -24,7 +24,7 @@ jobs:
           wget $LINK
           ls -lah
           unzip $(ls)
-          echo "TARGET=$(cat target)" >> $GITHUB_ENV
+          echo "TARGET=$(cat Download/target)" >> $GITHUB_ENV
           
       - name: Upload
         uses: actions/upload-artifact@v4
