@@ -21,12 +21,12 @@ jobs:
         run: |
           cd Download
           export LINK=$(cat link) && rm link
+          export TARGET=$(cat target)
+          echo "TARGET=$TARGET" >> $GITHUB_ENV
           wget $LINK
           ls -lah
           unzip $(ls)
-          export TARGET=$(cat target)
-          echo "TARGET=$TARGET" >> $GITHUB_ENV
-          
+                    
       - name: Upload
         uses: actions/upload-artifact@v4
         with:
