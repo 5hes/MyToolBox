@@ -21,14 +21,15 @@ jobs:
         run: |
           cd Download
           export LINK=$(cat link) && rm link
-          export TARGET=$(cat target)
-          echo "TARGET=$TARGET" >> $GITHUB_ENV
+          # export TARGET=$(cat target)
+          # echo "TARGET=$TARGET" >> $GITHUB_ENV
           wget $LINK
           ls -lah
           unzip $(ls)
+          ls -lah
                     
-      - name: Upload
-        uses: actions/upload-artifact@v4
-        with:
-          name: ${{ env.TARGET }}
-          path: Download/${{ env.TARGET }}
+      #- name: Upload
+      #  uses: actions/upload-artifact@v4
+      #  with:
+      #    name: ${{ env.TARGET }}
+      #    path: Download/${{ env.TARGET }}
