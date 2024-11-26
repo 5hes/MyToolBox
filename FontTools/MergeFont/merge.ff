@@ -1,0 +1,21 @@
+# 打开中文字体
+Open("SourceHanSansCN-Regular-nohint.ttf");
+# 打开英文字体
+Open("eng.ttf");
+
+# 将英文字体中的字符复制到中文字体中
+SelectAll();
+Copy();
+Close();
+
+# 切换到中文字体
+i = 1; # 因为中文字体是第一个打开的，所以索引为 1
+SetFont(i);
+
+# 粘贴覆盖字符
+SelectAll();
+Paste();
+
+# 保存合并后的字体
+Generate("MergedFont.ttf");
+Quit();
