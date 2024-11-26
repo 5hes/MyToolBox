@@ -84,7 +84,7 @@ jobs:
           echo $HOME
           cd FontTools/MergeFont
           python merge.py
-          python merge-forge.py
+          fontforge -script merge_fonts.ff
           python merge2.py
           ls -ltrah
 
@@ -105,7 +105,7 @@ jobs:
       - name: Upload merged font
         uses: actions/upload-artifact@v4
         with:
-          name: merged-forge
+          name: MergedFont.ttf
           path: FontTools/MergeFont/merged_forge.ttf
           compression-level: 0
 
