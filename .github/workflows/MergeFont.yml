@@ -59,3 +59,4 @@ jobs:
         with:
           name: merged-font
           path: FontTools/MergeFont/merged-font.ttf
+          compression-level: 0
