@@ -41,13 +41,26 @@ jobs:
         run: |
           # fc-query -b eng.ttf
           # fc-query -b SourceHanSansCN-Regular.otf
-      
+
+      - name: otf2ttf-1
+        shell: bash
+        id: otf2ttf
+        run: |
+          cd FontTools/MergeFont
+          otf2ttf --help
+          otf2ttf SourceHanSansCN-Regular.otf
+
+      - name: otf2ttf-2
+        if: steps.otf2ttf.outcome == 'failure'
+        shell: bash
+        run: |
+          cd FontTools/MergeFont
+          fontforge -lang=ff -c 'Open(\$1); Generate(\$2);' SourceHanSansCN-Regular.otf SourceHanSansCN-Regular.ttf
+
       - name: Convert OTF to TTF and remove hinting
         run: |
           cd FontTools/MergeFont
           ls -larth
-          otf2ttf --help
-          otf2ttf SourceHanSansCN-Regular.otf -o SourceHanSansCN-Regular.ttf
           # for font in *.otf; do
           #   ttx -o "${font%.otf}.ttf" "$font"
           #   ttfautohint -d "${font%.otf}.ttf" "${font%.otf}-nohint.ttf"
