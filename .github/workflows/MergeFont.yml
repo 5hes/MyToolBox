@@ -23,7 +23,8 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install fonttools ttfautohint
+          sudo apt-get install ttfautohint
+          pip install fonttools
 
       - name: Convert OTF to TTF and remove hinting
         run: |
@@ -32,7 +33,7 @@ jobs:
           cd FontTools/MergeFont
           for font in *.otf; do
             ttx -o "${font%.otf}.ttf" "$font"
-            ttfautohint --no-info --no-hinting "${font%.otf}.ttf" "${font%.otf}-nohint.ttf"
+            ttfautohint -d "${font%.otf}.ttf" "${font%.otf}-nohint.ttf"
           done
 
       - name: Merge fonts
