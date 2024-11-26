@@ -30,6 +30,7 @@ jobs:
       - name: Download font
         shell: bash
         run: |
+          cd FontTools/MergeFont
           wget $(cat link_sc) && rm link_sc
           wget -O eng.ttf $(cat link_en) && rm link_en
 
@@ -41,7 +42,6 @@ jobs:
       
       - name: Convert OTF to TTF and remove hinting
         run: |
-          ls -larth
           cd FontTools/MergeFont
           ls -larth
           for font in *.otf; do
