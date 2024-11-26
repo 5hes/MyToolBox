@@ -37,7 +37,7 @@ jobs:
       - name: Check font info
         shell: bash
         run: |
-          fc-query eng.ttf
+          fc-query -b eng.ttf
           fc-query -b SourceHanSansCN-Regular.otf
       
       - name: Convert OTF to TTF and remove hinting
