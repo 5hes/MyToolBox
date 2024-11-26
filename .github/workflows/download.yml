@@ -15,17 +15,27 @@ jobs:
     steps:
       - name: Check Out
         uses: actions/checkout@v4
+
+      - name: Install Depends
+        shell: bash
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y unzip p7zip-full tar gzip bzip2 xz-utils tree
+
+      - name: Set Env
+        shell: bash
+        run: |
+          chmod +x unzipper.sh env.sh
+          source env.sh
       
       - name: Download
         shell: bash
         run: |
           cd Download
-          export LINK=$(cat link) && rm link
-          export TARGET=$(cat target) && rm target
-          echo "TARGET=$TARGET" >> $GITHUB_ENV
           wget $LINK
           ls -lah
-          unzip $(ls)
+          ./unzipper.sh
+          tree
           ls -lah
                     
       - name: Upload
