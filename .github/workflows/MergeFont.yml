@@ -83,7 +83,7 @@ jobs:
           pwd
           echo $HOME
           cd FontTools/MergeFont
-          pyftmerge SourceHanSansCN-Regular.ttf eng.ttf
+          python merge.py
           ls -ltrah
 
       - name: Upload merged font
