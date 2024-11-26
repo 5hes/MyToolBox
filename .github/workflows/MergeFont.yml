@@ -84,7 +84,7 @@ jobs:
           echo $HOME
           cd FontTools/MergeFont
           python merge.py
-          fontforge -script merge_fonts.ff
+          fontforge -script merge.ff
           python merge2.py
           ls -ltrah
 
