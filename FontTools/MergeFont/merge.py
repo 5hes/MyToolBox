@@ -1,9 +1,9 @@
 from fontTools.ttLib import TTFont
 
-def merge_fonts(SourceHanSansCN-Regular-nohint.ttf, eng.ttf, merged-font.ttf):
+def merge_fonts(source_font_path, eng_font_path, merged_font_path):
     # 加载字体文件
-    font1 = TTFont(SourceHanSansCN-Regular-nohint.ttf)
-    font2 = TTFont(eng.ttf)
+    font1 = TTFont(source_font_path)
+    font2 = TTFont(eng_font_path)
 
     # 合并字体
     for table in font2.keys():
@@ -22,7 +22,7 @@ def merge_fonts(SourceHanSansCN-Regular-nohint.ttf, eng.ttf, merged-font.ttf):
                         font1["glyf"][glyph] = font2["glyf"][glyph]
 
     # 保存合并后的字体
-    font1.save(merged-font.ttf)
+    font1.save(merged_font_path)
 
 # 使用示例
 merge_fonts("SourceHanSansCN-Regular-nohint.ttf", "eng.ttf", "merged_font.ttf")
