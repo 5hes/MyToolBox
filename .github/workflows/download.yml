@@ -43,3 +43,4 @@ jobs:
         with:
           name: ${{ env.TARGET }}
           path: Download/${{ env.TARGET }}
+          compression-level: 0
