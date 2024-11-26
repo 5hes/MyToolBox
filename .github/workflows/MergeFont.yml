@@ -36,12 +36,16 @@ jobs:
       - name: Download font
         shell: bash
         run: |
+          pwd
+          cd FontTools/MergeFont
           wget $(cat link_sc) && rm link_sc
           wget -O eng.ttf $(cat link_en) && rm link_en
 
       - name: Check font info
         shell: bash
         run: |
+          pwd
+          cd FontTools/MergeFont
           # fc-query -b eng.ttf
           # fc-query -b SourceHanSansCN-Regular.otf
 
@@ -49,6 +53,8 @@ jobs:
         shell: bash
         id: otf2ttf
         run: |
+          pwd
+          cd FontTools/MergeFont
           otf2ttf --help
           otf2ttf SourceHanSansCN-Regular.otf
 
@@ -56,10 +62,14 @@ jobs:
         if: steps.otf2ttf.outcome == 'failure'
         shell: bash
         run: |
+          pwd
+          cd FontTools/MergeFont
           fontforge -lang=ff -c 'Open(\$1); Generate(\$2);' SourceHanSansCN-Regular.otf SourceHanSansCN-Regular.ttf
 
       - name: Convert OTF to TTF and remove hinting
         run: |
+          pwd
+          cd FontTools/MergeFont
           ls -larth
           # for font in *.otf; do
           #   ttx -o "${font%.otf}.ttf" "$font"
@@ -72,6 +82,7 @@ jobs:
         run: |
           pwd
           echo $HOME
+          cd FontTools/MergeFont
           pyftmerge SourceHanSansCN-Regular.ttf eng.ttf
           ls -ltrah
 
