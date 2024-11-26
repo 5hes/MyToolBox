@@ -50,6 +50,7 @@ jobs:
           #   ttx -o "${font%.otf}.ttf" "$font"
           #   ttfautohint -d "${font%.otf}.ttf" "${font%.otf}-nohint.ttf"
           # done
+          ttfautohint -d SourceHanSansCN-Regular.ttf SourceHanSansCN-Regular-nohint.ttf
           ls -larth
           
       - name: Merge fonts
