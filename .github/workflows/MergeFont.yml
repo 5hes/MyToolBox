@@ -70,6 +70,9 @@ jobs:
           
       - name: Merge fonts
         run: |
+          pwd
+          echo $HOME
+          cd FontTools/MergeFont
           pyftmerge SourceHanSansCN-Regular.ttf eng.ttf -o merged-font.ttf
           ls -ltrah
 
