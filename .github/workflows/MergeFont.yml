@@ -70,7 +70,7 @@ jobs:
           
       - name: Merge fonts
         run: |
-          fonttools merge SourceHanSansCN-Regular-nohint.ttf eng.ttf
+          pyftmerge eng.ttf SourceHanSansCN-Regular.ttf -o merged-font.ttf --ignore-glyphs=EnglishGlyphs
           ls -ltrah
 
       - name: Upload merged font
