@@ -47,7 +47,7 @@ jobs:
           cd FontTools/MergeFont
           ls -larth
           otf2ttf --help
-          otf2ttf SourceHanSansCN-Regular.otf SourceHanSansCN-Regular.ttf
+          otf2ttf SourceHanSansCN-Regular.otf -o SourceHanSansCN-Regular.ttf
           # for font in *.otf; do
           #   ttx -o "${font%.otf}.ttf" "$font"
           #   ttfautohint -d "${font%.otf}.ttf" "${font%.otf}-nohint.ttf"
