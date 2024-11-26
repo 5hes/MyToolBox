@@ -24,7 +24,7 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install ttfautohint fontforge
+          sudo apt-get install ttfautohint fontforge fontconfig
           pip install fonttools
           
       - name: Download font
@@ -37,8 +37,8 @@ jobs:
       - name: Check font info
         shell: bash
         run: |
-          otfinfo -i SourceHanSansCN-Regular.otf
-          ttfinfo -i eng.ttf
+          fc-query -i SourceHanSansCN-Regular.otf
+          fc-query -i eng.ttf
       
       - name: Convert OTF to TTF and remove hinting
         run: |
