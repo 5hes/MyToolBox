@@ -28,14 +28,16 @@ jobs:
 
       - name: Convert OTF to TTF and remove hinting
         run: |
+          ls -larth
+          cd FontTools/MergeFont
           wget $(cat link_sc) && rm link_sc
           wget -O eng.ttf $(cat link_en) && rm link_en
-          cd FontTools/MergeFont
+          ls -larth
           for font in *.otf; do
             ttx -o "${font%.otf}.ttf" "$font"
             ttfautohint -d "${font%.otf}.ttf" "${font%.otf}-nohint.ttf"
           done
-
+          ls -larth
       - name: Merge fonts
         run: |
           fonttools merge -o merged-font.ttf *-nohint.ttf eng.ttf
