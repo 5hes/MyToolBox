@@ -70,7 +70,8 @@ jobs:
           
       - name: Merge fonts
         run: |
-          fonttools merge -o merged-font.ttf *-nohint.ttf eng.ttf
+          fonttools merge *-nohint.ttf eng.ttf
+          ls -ltrah
 
       - name: Upload merged font
         uses: actions/upload-artifact@v4
