@@ -19,11 +19,15 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.13' 
+          python-version: '3.13'
+
+      - name: Set Env
+        shell: bash
+        run: |
+          export HOME=/home/runner/work/MyToolBox/MyToolBox/FontTools/MergeFont
 
       - name: Install dependencies
         run: |
-          cd FontTools/MergeFont
           sudo apt-get update
           sudo apt-get install ttfautohint fontforge fontconfig
           pip install fonttools
@@ -32,7 +36,6 @@ jobs:
       - name: Download font
         shell: bash
         run: |
-          cd FontTools/MergeFont
           wget $(cat link_sc) && rm link_sc
           wget -O eng.ttf $(cat link_en) && rm link_en
 
@@ -46,7 +49,6 @@ jobs:
         shell: bash
         id: otf2ttf
         run: |
-          cd FontTools/MergeFont
           otf2ttf --help
           otf2ttf SourceHanSansCN-Regular.otf
 
@@ -54,12 +56,10 @@ jobs:
         if: steps.otf2ttf.outcome == 'failure'
         shell: bash
         run: |
-          cd FontTools/MergeFont
           fontforge -lang=ff -c 'Open(\$1); Generate(\$2);' SourceHanSansCN-Regular.otf SourceHanSansCN-Regular.ttf
 
       - name: Convert OTF to TTF and remove hinting
         run: |
-          cd FontTools/MergeFont
           ls -larth
           # for font in *.otf; do
           #   ttx -o "${font%.otf}.ttf" "$font"
@@ -72,8 +72,7 @@ jobs:
         run: |
           pwd
           echo $HOME
-          cd FontTools/MergeFont
-          pyftmerge SourceHanSansCN-Regular.ttf eng.ttf -o merged-font.ttf
+          pyftmerge SourceHanSansCN-Regular.ttf eng.ttf
           ls -ltrah
 
       - name: Upload merged font
