@@ -90,5 +90,5 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: merged-font
-          path: FontTools/MergeFont/merged-font.ttf
+          path: FontTools/MergeFont/merged_font.ttf
           compression-level: 0
