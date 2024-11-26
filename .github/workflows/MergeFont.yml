@@ -24,7 +24,7 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install ttfautohint fontforge fontconfig
+          sudo apt-get install ttfautohint fontforge fontconfig otf2ttf
           pip install fonttools
           
       - name: Download font
@@ -44,10 +44,12 @@ jobs:
         run: |
           cd FontTools/MergeFont
           ls -larth
-          for font in *.otf; do
-            ttx -o "${font%.otf}.ttf" "$font"
-            ttfautohint -d "${font%.otf}.ttf" "${font%.otf}-nohint.ttf"
-          done
+          otf2ttf --help
+          otf2ttf SourceHanSansCN-Regular.otf SourceHanSansCN-Regular.ttf
+          # for font in *.otf; do
+          #   ttx -o "${font%.otf}.ttf" "$font"
+          #   ttfautohint -d "${font%.otf}.ttf" "${font%.otf}-nohint.ttf"
+          # done
           ls -larth
           
       - name: Merge fonts
