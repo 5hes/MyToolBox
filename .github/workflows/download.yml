@@ -25,6 +25,7 @@ jobs:
       - name: Set Env
         shell: bash
         run: |
+          cd Download
           chmod +x unzipper.sh env.sh
           source env.sh
       
