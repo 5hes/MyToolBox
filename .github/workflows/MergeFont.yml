@@ -37,9 +37,13 @@ jobs:
       - name: Get Help
         shell: bash
         run: |
+          echo -e "\n\n\n\n\notf2ttf --help"
           otf2ttf --help
+          echo -e "\n\n\n\n\ntthautohint --help"
           ttfautohint --help
+          echo -e "\n\n\n\n\nfontforge --help"
           fontforge --help
+          echo -e "\n\n\n\n\ndehinter --help"
           dehinter --help
           
       - name: Download font
@@ -79,7 +83,7 @@ jobs:
           ls -ltrah
           ls -ltra
           
-      - name: Convert OTF to TTF and remove hinting
+      - name: Convert OTF to TTF
         run: |
           pwd
           cd FontTools/MergeFont
@@ -94,16 +98,10 @@ jobs:
         shell: bash
         run: |
           cd FontTools/MergeFont
-          dehinter -o SourceHanSansCN-Regular-nohint.ttf SourceHanSansCN-Regular.ttf
+          ttfautohint SourceHanSansCN-Regular.ttf
           ls -ltrah
           ls -ltra
-          
-      - name: Merge fonts
-        run: |
-          pwd
-          echo $HOME
-          cd FontTools/MergeFont
-          
+                    
       - name: merge-r
         run: |
           cd FontTools/MergeFont
