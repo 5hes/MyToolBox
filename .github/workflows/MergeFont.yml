@@ -55,17 +55,19 @@ jobs:
         run: |
           pwd
           cd FontTools/MergeFont
-          fontforge -lang=ff -c 'Open(\$1); Generate(\$2);' SourceHanSansCN-Regular.otf SourceHanSansCN-Regular.ttf
+          otf2ttf --help
+          otf2ttf SourceHanSansCN-Regular.otf
+          ls -ltrah
           ls -ltra
-          
+
       - name: otf2ttf-2
         if: steps.otf2ttf.outcome == 'failure'
         shell: bash
         run: |
           pwd
           cd FontTools/MergeFont
-          otf2ttf --help
-          otf2ttf SourceHanSansCN-Regular.otf
+          fontforge -lang=ff -c 'Open(\$1); Generate(\$2);' SourceHanSansCN-Regular.otf SourceHanSansCN-Regular.ttf
+          ls -ltrah
           ls -ltra
           
       - name: Convert OTF to TTF and remove hinting
