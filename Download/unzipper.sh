@@ -28,6 +28,10 @@ if [ "$EXTRA" = true ]; then
                     echo "解压缩 $file ..."
                     bunzip2 -f "$file" && any_extracted=true
                     ;;
+                *.tar.xz)  # {{ edit_1 }}
+                    echo "解压缩 $file ..."  # {{ edit_1 }}
+                    tar -xJf "$file" -C . && any_extracted=true  # {{ edit_1 }}
+                    ;;  # {{ edit_1 }}
                 *)
                     echo "$file 不是一个支持的压缩文件格式，跳过。"
                     ;;
