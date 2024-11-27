@@ -33,10 +33,10 @@ jobs:
         run: |
           cd Download
           wget $LINK
-          ls -lah
+          ls -ltrah
           ./unzipper.sh
           tree
-          ls -lah
+          ls -ltrah
                     
       - name: Upload
         uses: actions/upload-artifact@v4
