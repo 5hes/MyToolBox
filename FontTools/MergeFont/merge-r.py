@@ -25,4 +25,4 @@ def merge_fonts(source_font_path, eng_font_path, merged_font_path):
     font1.save(merged_font_path)
 
 # 使用示例
-merge_fonts("eng.ttf", "SourceHanSansCN-Regular-nohint.ttf", "merged_font.ttf")
+merge_fonts("eng.ttf", "SourceHanSansCN-Regular-nohint.ttf", "merged-font-r.ttf")
