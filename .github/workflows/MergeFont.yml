@@ -89,19 +89,46 @@ jobs:
           pwd
           echo $HOME
           cd FontTools/MergeFont
+          
+      - name: merge-r
+        run: |
+          cd FontTools/MergeFont
           python merge-r.py
           ls -larth
           ls -ltra
+          
+      - name: merge-fontforge
+        run: |
+          cd FontTools/MergeFont
           fontforge -script merge-forge.ff
-          # python merge2.py
           ls -ltrah
           ls -ltra
+          
+      - name: merge-fontforge-r
+        run: |
+          cd FontTools/MergeFont
+          fontforge -script merge-forge-r.ff
+          ls -ltrah
+          ls -ltra
+
+      - name: merge
+        run: |
+          cd FontTools/MergeFont
           python merge.py
           ls -ltrah
           ls -ltra
+          
+      - name: fix
+        run: |
+          cd FontTools/MergeFont
           python fix.py
           ls -ltrah
           ls -ltra
+
+      - name: Check Hash
+        shell: bash
+        run: |
+          md5sum *
 
       - name: Upload merged font
         uses: actions/upload-artifact@v4
