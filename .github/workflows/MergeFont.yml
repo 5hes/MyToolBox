@@ -87,27 +87,33 @@ jobs:
           pwd
           echo $HOME
           cd FontTools/MergeFont
-          python merge.py
+          python merge-r.py
           ls -larth
           ls -ltra
           fontforge -script merge-forge.ff
           # python merge2.py
           ls -ltrah
           ls -ltra
+          python merge.py
+          ls -ltrah
+          ls -ltra
+          python fix.py
+          ls -ltrah
+          ls -ltra
+
+      - name: Upload merged font
+        uses: actions/upload-artifact@v4
+        with:
+          name: merged-r-font
+          path: FontTools/MergeFont/merged-font-r.ttf
+          compression-level: 0
 
       - name: Upload merged font
         uses: actions/upload-artifact@v4
         with:
           name: merged-font
-          path: FontTools/MergeFont/merged_font.ttf
+          path: FontTools/MergeFont/merged-font.ttf
           compression-level: 0
-
-#      - name: Upload merged font
-#        uses: actions/upload-artifact@v4
-#        with:
-#          name: merged-font2
-#          path: FontTools/MergeFont/merged_font2.ttf
-#          compression-level: 0
 
       - name: Upload merged font
         uses: actions/upload-artifact@v4
@@ -119,8 +125,40 @@ jobs:
       - name: Upload merged font
         uses: actions/upload-artifact@v4
         with:
-          name: Hybrid.ttf
+          name: Hybrid-r.ttf
           path: FontTools/MergeFont/Hybrid-r.ttf
+          compression-level: 0
+
+          
+# 分割
+
+
+      - name: Upload merged font
+        uses: actions/upload-artifact@v4
+        with:
+          name: merged-r-fixed-font
+          path: FontTools/MergeFont/merged-font-r-fixed.ttf
+          compression-level: 0
+
+      - name: Upload merged font
+        uses: actions/upload-artifact@v4
+        with:
+          name: merged-font-fixed
+          path: FontTools/MergeFont/merged-font-fixed.ttf
+          compression-level: 0
+
+      - name: Upload merged font
+        uses: actions/upload-artifact@v4
+        with:
+          name: Hybrid-fixed.ttf
+          path: FontTools/MergeFont/Hybrid-fixed.ttf
+          compression-level: 0
+
+      - name: Upload merged font
+        uses: actions/upload-artifact@v4
+        with:
+          name: Hybrid-r-fixed.ttf
+          path: FontTools/MergeFont/Hybrid-r-fixed.ttf
           compression-level: 0
 
 
