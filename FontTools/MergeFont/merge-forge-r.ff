@@ -1,14 +1,14 @@
 Open("eng.ttf")
 SelectAll()
-ScaleToEm(1024)
-Generate("temp.ttf", "", -1)
+ScaleToEm(1000)
+Generate("temp.ttf", "", 1)
 Close()
 
 Open("SourceHanSansCN-Regular-nohint.ttf")
 SelectAll()
-ScaleToEm(1024)
+ScaleToEm(1000)
 
 MergeFonts("temp.ttf")
 SetFontNames("Hybrid", "Hybrid", "SourceHanSansCN-Regular-nohint.ttf and IosevkaCustomNerdFont-Regular.ttf Hybrid", "Regular", "")
-Generate("Hybrid-r.ttf", "", -1)
+Generate("Hybrid-r.ttf", "", 1)
 Close()
