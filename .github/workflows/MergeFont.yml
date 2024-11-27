@@ -32,7 +32,16 @@ jobs:
           sudo apt-get install ttfautohint fontforge fontconfig
           pip install fonttools
           pip install otf2ttf
-      
+          pip install dehinter
+
+      - name: Get Help
+        shell: bash
+        run: |
+          otf2ttf --help
+          ttfautohint --help
+          fontforge --help
+          dehinter --help
+          
       - name: Download font
         shell: bash
         run: |
@@ -80,8 +89,13 @@ jobs:
           #   ttx -o "${font%.otf}.ttf" "$font"
           #   ttfautohint -d "${font%.otf}.ttf" "${font%.otf}-nohint.ttf"
           # done
-          ttfautohint -d SourceHanSansCN-Regular.ttf SourceHanSansCN-Regular-nohint.ttf
-          ls -larth
+
+      - name: Dehint Font
+        shell: bash
+        run: |
+          cd FontTools/MergeFont
+          dehinter -o SourceHanSansCN-Regular-nohint.ttf SourceHanSansCN-Regular.ttf
+          ls -ltrah
           ls -ltra
           
       - name: Merge fonts
