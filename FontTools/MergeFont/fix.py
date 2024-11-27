@@ -20,7 +20,7 @@ for font_file in font_files:
     font['OS/2'].panose.bProportion = 0  # 设置为 0，表示无特定比例
 
     # 保存修改后的字体，添加 "fixed" 后缀
-    new_font_file = font_file.replace('.ttf', '_fixed.ttf')
+    new_font_file = font_file.replace('.ttf', '-fixed.ttf')
     font.save(new_font_file)
 
     # 关闭字体文件
