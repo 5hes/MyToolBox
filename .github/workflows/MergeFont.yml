@@ -55,28 +55,32 @@ jobs:
         run: |
           pwd
           cd FontTools/MergeFont
-          otf2ttf --help
-          otf2ttf SourceHanSansCN-Regular.otf
-
+          fontforge -lang=ff -c 'Open(\$1); Generate(\$2);' SourceHanSansCN-Regular.otf SourceHanSansCN-Regular.ttf
+          ls -ltra
+          
       - name: otf2ttf-2
         if: steps.otf2ttf.outcome == 'failure'
         shell: bash
         run: |
           pwd
           cd FontTools/MergeFont
-          fontforge -lang=ff -c 'Open(\$1); Generate(\$2);' SourceHanSansCN-Regular.otf SourceHanSansCN-Regular.ttf
-
+          otf2ttf --help
+          otf2ttf SourceHanSansCN-Regular.otf
+          ls -ltra
+          
       - name: Convert OTF to TTF and remove hinting
         run: |
           pwd
           cd FontTools/MergeFont
           ls -larth
+          ls -ltra
           # for font in *.otf; do
           #   ttx -o "${font%.otf}.ttf" "$font"
           #   ttfautohint -d "${font%.otf}.ttf" "${font%.otf}-nohint.ttf"
           # done
           ttfautohint -d SourceHanSansCN-Regular.ttf SourceHanSansCN-Regular-nohint.ttf
           ls -larth
+          ls -ltra
           
       - name: Merge fonts
         run: |
@@ -85,9 +89,11 @@ jobs:
           cd FontTools/MergeFont
           python merge.py
           ls -larth
+          ls -ltra
           fontforge -script merge-forge.ff
           # python merge2.py
           ls -ltrah
+          ls -ltra
 
       - name: Upload merged font
         uses: actions/upload-artifact@v4
@@ -106,7 +112,15 @@ jobs:
       - name: Upload merged font
         uses: actions/upload-artifact@v4
         with:
-          name: MergedFont.ttf
-          path: FontTools/MergeFont/Hybri*
+          name: Hybrid.ttf
+          path: FontTools/MergeFont/Hybrid.ttf
           compression-level: 0
+
+      - name: Upload merged font
+        uses: actions/upload-artifact@v4
+        with:
+          name: Hybrid.ttf
+          path: FontTools/MergeFont/Hybrid-r.ttf
+          compression-level: 0
+
 
