@@ -22,17 +22,12 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y unzip p7zip-full tar gzip bzip2 xz-utils tree
 
-      - name: Set Env
+      - name: Set Env And Download
         shell: bash
         run: |
           cd Download
           chmod +x unzipper.sh env.sh
           source env.sh
-      
-      - name: Download
-        shell: bash
-        run: |
-          cd Download
           wget $LINK
           ls -ltrah
           ./unzipper.sh
