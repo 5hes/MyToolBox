@@ -1,4 +1,4 @@
-uname: Merge Font Cpp
+name: Merge Font Cpp
 
 on:
   workflow_dispatch:
