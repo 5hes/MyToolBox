@@ -55,8 +55,8 @@ jobs:
           ls -ltrah && ls -ltra
           ./otfccdump --ignore-hints -o Eng.otd "English.ttf"
           ./otfccdump --ignore-hints -o Cjk.otd "Chinese.ttf"
-          ./merge-otd Cjk.otd Eng.otd
-          ./otfccbuild -q -O3 -o merged.ttf Cjk.otd
+          ./merge-otd Eng.otd Cjk.otd
+          ./otfccbuild -q -O3 -o merged.ttf Eng.otd
           ls -ltrah && ls -ltra
 
       - name: Fix
