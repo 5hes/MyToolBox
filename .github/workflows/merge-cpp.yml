@@ -21,7 +21,9 @@ jobs:
         run: |
           cd FontTools/MergeFont
           sudo apt-get update
-          sudo apt-get install xz-utils python3 otf2ttf fontfools
+          sudo apt-get install xz-utils python3 ttfautohint
+          pip install fonttools
+          pip install otf2ttf
 
       - name: Download Tools
         shell: bash
@@ -68,6 +70,12 @@ jobs:
         with:
           name: merged
           path: ./FontTools/MergeFont/字体合并补全工具-简体中文-1.1.0-linux-amd64/merged.ttf
+
+      - name: Upload artifact fixed
+        uses: actions/upload-artifact@v4
+        with:
+          name: merged-fixed
+          path: ./FontTools/MergeFont/字体合并补全工具-简体中文-1.1.0-linux-amd64/merged-fixed.ttf
 
       - name: Get Help
         shell: bash
