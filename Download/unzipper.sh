@@ -1,4 +1,7 @@
 ctn=1
+if [ "$EXTRA" = "false" ]; then
+  exit 0
+fi
 while [ $ctn -eq 1 ]; do
   ctn=0
   for file in *; do
