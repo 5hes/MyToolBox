@@ -1,0 +1,74 @@
+name: Merge Font Cpp
+
+on:
+  workflow_dispatch:
+    inputs:
+      Merge:
+        description: Merge Font Use Cpp
+        required: true
+        type: boolean
+
+jobs:
+  Merge:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        shell: bash
+        run: |
+          cd FontTools/MergeFont
+          sudo apt-get update
+          sudo apt-get install xz-utils python3 otf2ttf fontfools
+
+      - name: Download Tools
+        shell: bash
+        run: |
+          cd FontTools/MergeFont
+          wget -O zip.zip "https://github.com/nowar-fonts/Warcraft-Font-Merger/releases/download/v1.1.0/WarFontMerger-SC-1.1.0-linux-amd64.tar.xz"
+          tar -xf zip.zip
+        
+      - name: Download Fonts
+        shell: bash
+        run: |
+          cd FontTools/MergeFont/字体合并补全工具-简体中文-1.1.0-linux-amd64
+          rm cjk.ttf latin.ttf
+          wget -O Chinese.otf $(cat link_sc)
+          wget -O English.ttf $(cat link_en)
+
+      - name: otf2ttf
+        shell: bash
+        run: |
+          cd FontTools/MergeFont/字体合并补全工具-简体中文-1.1.0-linux-amd64
+          ls -ltrah && ls -ltra
+          otf2ttf Chinese.otf
+          
+      - name: Build Merge Font
+        shell: bash
+        run: |
+          cd FontTools/MergeFont/字体合并补全工具-简体中文-1.1.0-linux-amd64
+          ls -ltrah && ls -ltra
+          ./otfccdump --ignore-hints -o Eng.otd "English.ttf"
+          ./otfccdump --ignore-hints -o Cjk.otd "Chinese.ttf"
+          ./merge-otd Cjk.otd Eng.otd
+          ./otfccbuild -q -O3 -o merged.ttf Cjk.otd
+          ls -ltrah && ls -ltra
+
+      - name: Fix
+        shell: bash
+        run: python fix.py
+          
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: merged
+          path: ./FontTools/MergeFont/字体合并补全工具-简体中文-1.1.0-linux-amd64/merged.ttf
+
+      - name: Get Help
+        shell: bash
+        run: |
+          cd FontTools/MergeFont/字体合并补全工具-简体中文-1.1.0-linux-amd64
+          ./otfccdump --help
+          ./otfccbuild --help
