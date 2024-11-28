@@ -38,17 +38,19 @@ jobs:
           ls -ltrah
           ls -ltra
 
-      - name: Help
-        shell: bash
-        run: |
-          cd Download/字体合并补全工具-简体中文-1.1.0-linux-amd64
-          merge-otd --help
-          otfccbuild  --help
-          otfccdump  --help
-                    
       - name: Upload
         uses: actions/upload-artifact@v4
         with:
           name: ${{ env.TARGET }}
           path: Download/${{ env.TARGET }}
           compression-level: 0
+
+      - name: Help
+        shell: bash
+        run: |
+          cd Download/字体合并补全工具-简体中文-1.1.0-linux-amd64
+          ./merge-otd --help
+          ./otfccbuild  --help
+          ./otfccdump  --help
+                    
+
