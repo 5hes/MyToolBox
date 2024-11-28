@@ -35,10 +35,9 @@ jobs:
       - name: Download Fonts
         shell: bash
         run: |
-          cd FontTools/MergeFont/字体合并补全工具-简体中文-1.1.0-linux-amd64
-          rm cjk.ttf latin.ttf
-          wget -O Chinese.otf $(cat link_sc)
-          wget -O English.ttf $(cat link_en)
+          cd FontTools/MergeFont
+          wget -O Chinese.otf $(cat link_sc) -d 字体合并补全工具-简体中文-1.1.0-linux-amd64
+          wget -O English.ttf $(cat link_en) -d 字体合并补全工具-简体中文-1.1.0-linux-amd64
 
       - name: otf2ttf
         shell: bash
