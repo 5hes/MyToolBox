@@ -4,7 +4,7 @@ if [ "$EXTRA" = "false" ]; then
 fi
 while [ $ctn -eq 1 ]; do
   i=0
-  let i +=1
+  $i=$(($i+1))
   if [ $i -eq 10 ]; then
     exit 0
   fi
