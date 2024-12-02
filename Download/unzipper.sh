@@ -3,11 +3,6 @@ if [ "$EXTRA" = "false" ]; then
   exit 0
 fi
 while [ $ctn -eq 1 ]; do
-  i=0
-  $i=$(($i+1))
-  if [ $i -eq 10 ]; then
-    exit 0
-  fi
   ctn=0
   for file in *; do
     if [ -f "$file" ]; then  # 检查文件是否存在
