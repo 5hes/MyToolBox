@@ -32,13 +32,20 @@ jobs:
           export EXTRA=true
           export password=sy66
           export crypt=true
-          wget "https://ykj-eos-dg5-01.eos-dongguan-6.cmecloud.cn/67d76432232444c091cd37037920b982086?response-content-disposition=attachment%3B%20filename%2A%3DUTF-8%27%27084.7z.001&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20241202T094615Z&X-Amz-SignedHeaders=host&X-Amz-Expires=900&X-Amz-Credential=9T1UKBIX6OJSR5XN2F2T%2F20241202%2Fdefault%2Fs3%2Faws4_request&X-Amz-Signature=fa4758dccae95fc3922b0711d3e1f2ac543ff5a5459cf9bcd7e35177a1946117"
-          wget "https://ykj-eos-dg5-01.eos-dongguan-6.cmecloud.cn/85f1effe4cbd40f58bccabb3b0220002086?response-content-disposition=attachment%3B%20filename%2A%3DUTF-8%27%27084.7z.002&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20241202T094734Z&X-Amz-SignedHeaders=host&X-Amz-Expires=900&X-Amz-Credential=9T1UKBIX6OJSR5XN2F2T%2F20241202%2Fdefault%2Fs3%2Faws4_request&X-Amz-Signature=468039900f219630f152276217b00520dfdd0b658cb1f8d4b56cfa274f49a432"
+          wget -O 084.7z.001 "https://ykj-eos-dg5-01.eos-dongguan-6.cmecloud.cn/67d76432232444c091cd37037920b982086?response-content-disposition=attachment%3B%20filename%2A%3DUTF-8%27%27084.7z.001&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20241202T094615Z&X-Amz-SignedHeaders=host&X-Amz-Expires=900&X-Amz-Credential=9T1UKBIX6OJSR5XN2F2T%2F20241202%2Fdefault%2Fs3%2Faws4_request&X-Amz-Signature=fa4758dccae95fc3922b0711d3e1f2ac543ff5a5459cf9bcd7e35177a1946117"
+          wget -O 084.7z.002 "https://ykj-eos-dg5-01.eos-dongguan-6.cmecloud.cn/85f1effe4cbd40f58bccabb3b0220002086?response-content-disposition=attachment%3B%20filename%2A%3DUTF-8%27%27084.7z.002&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20241202T094734Z&X-Amz-SignedHeaders=host&X-Amz-Expires=900&X-Amz-Credential=9T1UKBIX6OJSR5XN2F2T%2F20241202%2Fdefault%2Fs3%2Faws4_request&X-Amz-Signature=468039900f219630f152276217b00520dfdd0b658cb1f8d4b56cfa274f49a432"
           ls -ltrah
           ./unzipper.sh
           tree
           ls -ltrah
-          
+
+      - name: Check
+        shell: bash
+        run: |
+          cd Download
+          ls -ltrah
+          ls -ltra
+          tree
 
       - name: Upload
         uses: actions/upload-artifact@v4
