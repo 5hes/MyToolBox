@@ -32,8 +32,8 @@ jobs:
           export EXTRA=true
           export password=sy66
           export crypt=true
-          wget -O 084.7z.001 "https://ykj-eos-dg5-01.eos-dongguan-6.cmecloud.cn/67d76432232444c091cd37037920b982086?response-content-disposition=attachment%3B%20filename%2A%3DUTF-8%27%27084.7z.001&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20241202T100345Z&X-Amz-SignedHeaders=host&X-Amz-Expires=900&X-Amz-Credential=9T1UKBIX6OJSR5XN2F2T%2F20241202%2Fdefault%2Fs3%2Faws4_request&X-Amz-Signature=9b0609d50ab832a4c103edc7fa017c88ba580a1010d3b751cc0e50a59e368e31"
-          wget -O 084.7z.002 "https://ykj-eos-dg5-01.eos-dongguan-6.cmecloud.cn/85f1effe4cbd40f58bccabb3b0220002086?response-content-disposition=attachment%3B%20filename%2A%3DUTF-8%27%27084.7z.002&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20241202T100310Z&X-Amz-SignedHeaders=host&X-Amz-Expires=900&X-Amz-Credential=9T1UKBIX6OJSR5XN2F2T%2F20241202%2Fdefault%2Fs3%2Faws4_request&X-Amz-Signature=db56a1386815c7b11cd39d737d357fdab3cc39c12df6475f14a376cd989e3d61"
+          wget -O -q 084.7z.001 "https://ykj-eos-dg5-01.eos-dongguan-6.cmecloud.cn/67d76432232444c091cd37037920b982086?response-content-disposition=attachment%3B%20filename%2A%3DUTF-8%27%27084.7z.001&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20241202T100345Z&X-Amz-SignedHeaders=host&X-Amz-Expires=900&X-Amz-Credential=9T1UKBIX6OJSR5XN2F2T%2F20241202%2Fdefault%2Fs3%2Faws4_request&X-Amz-Signature=9b0609d50ab832a4c103edc7fa017c88ba580a1010d3b751cc0e50a59e368e31"
+          wget -O -q 084.7z.002 "https://ykj-eos-dg5-01.eos-dongguan-6.cmecloud.cn/85f1effe4cbd40f58bccabb3b0220002086?response-content-disposition=attachment%3B%20filename%2A%3DUTF-8%27%27084.7z.002&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20241202T100310Z&X-Amz-SignedHeaders=host&X-Amz-Expires=900&X-Amz-Credential=9T1UKBIX6OJSR5XN2F2T%2F20241202%2Fdefault%2Fs3%2Faws4_request&X-Amz-Signature=db56a1386815c7b11cd39d737d357fdab3cc39c12df6475f14a376cd989e3d61"
           ls -ltrah
           ./unzipper.sh
           tree
