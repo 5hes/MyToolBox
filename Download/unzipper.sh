@@ -98,11 +98,11 @@ while [ $ctn -eq 1 ]; do
         # 支持分卷文件
         *.001 | *.7z.001 | *.zip.001 | *.tar.001)
           # 处理分卷文件
-          base_name="${file%.*}"  # 去掉后缀
+          # base_name="${file%.*}"  # 去掉后缀
           if [ "$crypt" = "true" ]; then
-            7z e -p"$password" "$base_name.*" && rm "$base_name.*"  # 使用 7z 解压分卷文件
+            7z e -p "$password" "$file" && rm "$file"  # 使用 7z 解压分卷文件
           else
-            7z e "$base_name.*" && rm "$base_name.*"  # 使用 7z 解压分卷文件
+            7z e "$file" && rm "$file"  # 使用 7z 解压分卷文件
           fi
           ctn=1
           ;;
