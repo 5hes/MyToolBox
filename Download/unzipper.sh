@@ -104,7 +104,7 @@ while [ $ctn -eq 1 ] && [ $count -lt $max_attempts ]; do  # 添加计数限制
         *.001 | *.7z.001 | *.zip.001 | *.tar.001)
           # 处理分卷文件
           if [ "$crypt" = "true" ]; then
-            7z x -p "$password" "$file" && rm "$file"  # 使用 7z 解压分卷文件
+            7z x -p"$password" "$file" && rm "$file"  # 使用 7z 解压分卷文件
           else
             7z x "$file" && rm "$file"  # 使用 7z 解压分卷文件
           fi
