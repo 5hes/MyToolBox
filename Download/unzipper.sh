@@ -1,9 +1,14 @@
 ctn=1
+count=0  # 添加计数器
+max_attempts=20  # 最大尝试次数
+
 if [ "$EXTRA" = "false" ]; then
   exit 0
 fi
-while [ $ctn -eq 1 ]; do
+
+while [ $ctn -eq 1 ] && [ $count -lt $max_attempts ]; do  # 添加计数限制
   ctn=0
+  count=$((count + 1))  # 增加计数器
   for file in *; do
     if [ -f "$file" ]; then  # 检查文件是否存在
       case "$file" in
@@ -98,7 +103,6 @@ while [ $ctn -eq 1 ]; do
         # 支持分卷文件
         *.001 | *.7z.001 | *.zip.001 | *.tar.001)
           # 处理分卷文件
-          # base_name="${file%.*}"  # 去掉后缀
           if [ "$crypt" = "true" ]; then
             7z e -p "$password" "$file" && rm "$file"  # 使用 7z 解压分卷文件
           else
@@ -109,4 +113,14 @@ while [ $ctn -eq 1 ]; do
       esac
     fi
   done
+# 获取当前目录下的所有文件夹
+folders=($(find . -maxdepth 1 -type d ! -name '.' ! -name '..'))
+# 检查文件夹数量
+if [ ${#folders[@]} -eq 1 ]; then
+    # 只有一个文件夹
+    cd "${folders[0]}"
+    echo "已进入文件夹: ${folders[0]}"
+else
+    echo "当前目录下没有唯一文件夹，或有多个文件夹。"
+fi
 done
