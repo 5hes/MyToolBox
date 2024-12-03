@@ -46,19 +46,19 @@ jobs:
           ls -ltrah
           ls -ltra
           tree
-
+          
       - name: Upload
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ env.TARGET }}
-          path: Download/${{ env.TARGET }}
-          compression-level: 0
+          name: mp4
+          path: Download/084.mp4（删）
+          compression-level: 6
 
       - name: Upload to release
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: target/release/my*
+          file: Download/084.mp4（删）
           tag: ${{ github.ref }}
           overwrite: true
           file_glob: true
