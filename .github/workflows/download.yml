@@ -32,12 +32,14 @@ jobs:
           export EXTRA=true
           export password=sy66
           export crypt=true
-          wget -q -O 084.7z.001 "https://ykj-eos-dg5-01.eos-dongguan-6.cmecloud.cn/67d76432232444c091cd37037920b982086?response-content-disposition=attachment%3B%20filename%2A%3DUTF-8%27%27084.7z.001&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20241203T100617Z&X-Amz-SignedHeaders=host&X-Amz-Expires=900&X-Amz-Credential=9T1UKBIX6OJSR5XN2F2T%2F20241203%2Fdefault%2Fs3%2Faws4_request&X-Amz-Signature=d1b8428c226caada69463486062a0962e937102b86bda6391e06167c759e9849"
-          wget -q -O 084.7z.002 "https://ykj-eos-dg5-01.eos-dongguan-6.cmecloud.cn/85f1effe4cbd40f58bccabb3b0220002086?response-content-disposition=attachment%3B%20filename%2A%3DUTF-8%27%27084.7z.002&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20241203T100712Z&X-Amz-SignedHeaders=host&X-Amz-Expires=900&X-Amz-Credential=9T1UKBIX6OJSR5XN2F2T%2F20241203%2Fdefault%2Fs3%2Faws4_request&X-Amz-Signature=8dff70e293b39290c6e41f681d0c461088c1786adf07595083b327aeb11421b2"
+          wget -q -O 084.7z.001 "https://ykj-eos-dg5-01.eos-dongguan-6.cmecloud.cn/67d76432232444c091cd37037920b982086?response-content-disposition=attachment%3B%20filename%2A%3DUTF-8%27%27084.7z.001&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20241205T041802Z&X-Amz-SignedHeaders=host&X-Amz-Expires=900&X-Amz-Credential=9T1UKBIX6OJSR5XN2F2T%2F20241205%2Fdefault%2Fs3%2Faws4_request&X-Amz-Signature=6e0af329be909e572684ad250aae9ae23290eba1407a9bb2e680d18c1d95a6d1"
+          wget -q -O 084.7z.002 "https://ykj-eos-dg5-01.eos-dongguan-6.cmecloud.cn/85f1effe4cbd40f58bccabb3b0220002086?response-content-disposition=attachment%3B%20filename%2A%3DUTF-8%27%27084.7z.002&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20241205T041724Z&X-Amz-SignedHeaders=host&X-Amz-Expires=900&X-Amz-Credential=9T1UKBIX6OJSR5XN2F2T%2F20241205%2Fdefault%2Fs3%2Faws4_request&X-Amz-Signature=dbcb5aa8f79143842040830e1c41c429b88f159632fcdfb55d185b514061831c"
           ls -ltrah
           ./unzipper.sh
           tree
           ls -ltrah
+          mv 084.mp4（删） 084.mp4
+          lz4 084.mp4 zip.zip
 
       - name: Check
         shell: bash
@@ -51,14 +53,18 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: mp4
-          path: Download/084.mp4（删）
-          compression-level: 6
+          path: |
+            Download/084.mp4
+            Download/zip.zip
+          compression-level: 0
 
       - name: Upload to release
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: Download/084.mp4（删）
+          file: |
+            Download/084.mp4
+            Download/zip.zip
           tag: ${{ github.ref }}
           overwrite: true
           file_glob: true
