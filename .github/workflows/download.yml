@@ -21,12 +21,12 @@ jobs:
       - name: Check Out
         uses: actions/checkout@v4
 
-      - name: Create a new tag
-        id: create_tag
-        run: |
-          TAG_NAME="v0.0.2"  # 这里设置你想要的标签名
-          git tag $TAG_NAME
-          git push origin $TAG_NAME
+#      - name: Create a new tag
+#        id: create_tag
+#        run: |
+#          TAG_NAME="v0.0.2"  # 这里设置你想要的标签名
+#          git tag $TAG_NAME
+#          git push origin $TAG_NAME
 
       - name: Install Depends
         shell: bash
@@ -43,9 +43,7 @@ jobs:
           export EXTRA=true
           export password=sy66
           export crypt=false
-          wget -q -O zip.zip "https://b22-obs-ykj-01.obs.cidc-rp-2006.joint.cmecloud.cn/package_task%2F20241205175759907%2F%E8%90%9D%E8%8E%89%E5%B0%8F%E5%A7%90%E5%A7%90.7z.005+and+5+More.zip?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AH4RWOMWLEL7ROYSF2S5%2F20241205%2Fregion%2Fs3%2Faws4_request&X-Amz-Date=20241205T095815Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&oi=1039816495805071512&ot=personal&response-content-disposition=attachment%3Bfilename%3D%25E8%2590%259D%25E8%258E%2589%25E5%25B0%258F%25E5%25A7%2590%25E5%25A7%2590.7z.005%2520and%25205%2520More.zip&t=5&u=1039816495805071512&X-Amz-Signature=6035fac13f7fab4bdb0e8fd284b18b0d6a4db337f4ece47f786fd05a7992415c"
-          # wget -q -O 084.7z.001 "https://ykj-eos-dg5-01.eos-dongguan-6.cmecloud.cn/67d76432232444c091cd37037920b982086?response-content-disposition=attachment%3B%20filename%2A%3DUTF-8%27%27084.7z.001&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20241205T051140Z&X-Amz-SignedHeaders=host&X-Amz-Expires=900&X-Amz-Credential=9T1UKBIX6OJSR5XN2F2T%2F20241205%2Fdefault%2Fs3%2Faws4_request&X-Amz-Signature=5f9f9a55103b1672e57c996b46704c58a298e5092ec188f93075a4bdbc2dca55"
-          # wget -q -O 084.7z.002 "https://ykj-eos-dg5-01.eos-dongguan-6.cmecloud.cn/85f1effe4cbd40f58bccabb3b0220002086?response-content-disposition=attachment%3B%20filename%2A%3DUTF-8%27%27084.7z.002&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20241205T051150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=900&X-Amz-Credential=9T1UKBIX6OJSR5XN2F2T%2F20241205%2Fdefault%2Fs3%2Faws4_request&X-Amz-Signature=d2dec2b9328a5f657c6980fa2763920cd7003cc4f06ae3295c54398b376f86d5"
+          wget -q "https://devimages-cdn.apple.com/design/resources/download/SF-Pro.dmg"
           ls -ltrah
           ./unzipper.sh
           tree
@@ -59,27 +57,27 @@ jobs:
           ls -ltra
           tree
           
-      - name: Upload
-        uses: actions/upload-artifact@v4
-        with:
-          name: mp4
-          path: Download/*mp*
-          compression-level: 0
+#      - name: Upload
+#        uses: actions/upload-artifact@v4
+#        with:
+#          name: mp4
+#          path: Download/*mp*
+#          compression-level: 0
 
 
-      - name: Create Release and Upload Release Asset
-        uses: softprops/action-gh-release@v2
-        with:
-          tag_name: v0.0.1  # 使用创建的标签
-          name: 0.0.1
-          #tag_name: ${{ github.ref }}
-          #name: ${{ github.ref }}
-          #body: TODO New Release.
-          #body_path: CHANGELOG.txt
-          draft: false
-          prerelease: false
-          files: |
-            Download/*mp*
+#      - name: Create Release and Upload Release Asset
+#        uses: softprops/action-gh-release@v2
+#        with:
+#          tag_name: v0.0.1  # 使用创建的标签
+#          name: 0.0.1
+#          #tag_name: ${{ github.ref }}
+#          #name: ${{ github.ref }}
+#          #body: TODO New Release.
+#          #body_path: CHANGELOG.txt
+#          draft: false
+#          prerelease: false
+#          files: |
+#            Download/*mp*
             
 #      - name: Upload to release
 #        uses: svenstaro/upload-release-action@v2
