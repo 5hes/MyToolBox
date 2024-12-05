@@ -65,19 +65,26 @@ jobs:
 #          compression-level: 0
 
 
-#      - name: Create Release and Upload Release Asset
-#        uses: softprops/action-gh-release@v2
-#        with:
-#          tag_name: v0.0.1  # 使用创建的标签
-#          name: 0.0.1
-#          #tag_name: ${{ github.ref }}
-#          #name: ${{ github.ref }}
-#          #body: TODO New Release.
-#          #body_path: CHANGELOG.txt
-#          draft: false
-#          prerelease: false
-#          files: |
-#            Download/*mp*
+      - name: Create Release and Upload Release Asset
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v0.0.2  # 使用创建的标签
+          name: font
+          #tag_name: ${{ github.ref }}
+          #name: ${{ github.ref }}
+          #body: TODO New Release.
+          #body_path: CHANGELOG.txt
+          draft: false
+          prerelease: false
+          files: |
+            Download/SFProFonts/Library/Fonts/SF-Pro-Display-Regular.otf
+            Download/SFProFonts/Library/Fonts/SF-Pro-Display-Medium.otf
+            Download/SFProFonts/Library/Fonts/SF-Pro-Rounded-Regular.otf
+            Download/SFProFonts/Library/Fonts/SF-Pro-Rounded-Medium.otf
+            Download/SFProFonts/Library/Fonts/SF-Pro-Text-Medium.otf
+            Download/SFProFonts/Library/Fonts/SF-Pro-Text-Regular.otf
+
+
             
 #      - name: Upload to release
 #        uses: svenstaro/upload-release-action@v2
