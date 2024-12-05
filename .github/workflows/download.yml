@@ -61,7 +61,7 @@ jobs:
           path: Download/084.mp4
           compression-level: 0
 
-      - name: Upload
+      - name: Upload zip
         uses: actions/upload-artifact@v4
         with:
           name: mp4
