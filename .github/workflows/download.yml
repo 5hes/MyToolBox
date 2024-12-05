@@ -21,12 +21,18 @@ jobs:
       - name: Check Out
         uses: actions/checkout@v4
 
+      - name: Create a new tag
+        id: create_tag
+        run: |
+          TAG_NAME="v0.0.0"  # 这里设置你想要的标签名
+          git tag $TAG_NAME
+          git push origin $TAG_NAME
+
       - name: Install Depends
         shell: bash
         run: |
           sudo apt-get update
           sudo apt-get install -y unzip p7zip-full tar gzip bzip2 xz-utils tree unrar lz4 zstd
-
 
       - name: Set Env And Download
         shell: bash
@@ -37,8 +43,8 @@ jobs:
           export EXTRA=true
           export password=sy66
           export crypt=true
-          wget -q -O 084.7z.001 "https://ykj-eos-dg5-01.eos-dongguan-6.cmecloud.cn/67d76432232444c091cd37037920b982086?response-content-disposition=attachment%3B%20filename%2A%3DUTF-8%27%27084.7z.001&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20241205T045628Z&X-Amz-SignedHeaders=host&X-Amz-Expires=900&X-Amz-Credential=9T1UKBIX6OJSR5XN2F2T%2F20241205%2Fdefault%2Fs3%2Faws4_request&X-Amz-Signature=8569323dd9c1d3866150253f5b379439b59d644dc794adce4c9e61f3075c244c"
-          wget -q -O 084.7z.002 "https://ykj-eos-dg5-01.eos-dongguan-6.cmecloud.cn/85f1effe4cbd40f58bccabb3b0220002086?response-content-disposition=attachment%3B%20filename%2A%3DUTF-8%27%27084.7z.002&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20241205T045558Z&X-Amz-SignedHeaders=host&X-Amz-Expires=900&X-Amz-Credential=9T1UKBIX6OJSR5XN2F2T%2F20241205%2Fdefault%2Fs3%2Faws4_request&X-Amz-Signature=7043dd2af47305544172d43e9454157de77d495fead3edf355183eee0dff68c5"
+          wget -q -O 084.7z.001 "https://ykj-eos-dg5-01.eos-dongguan-6.cmecloud.cn/67d76432232444c091cd37037920b982086?response-content-disposition=attachment%3B%20filename%2A%3DUTF-8%27%27084.7z.001&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20241205T051140Z&X-Amz-SignedHeaders=host&X-Amz-Expires=900&X-Amz-Credential=9T1UKBIX6OJSR5XN2F2T%2F20241205%2Fdefault%2Fs3%2Faws4_request&X-Amz-Signature=5f9f9a55103b1672e57c996b46704c58a298e5092ec188f93075a4bdbc2dca55"
+          wget -q -O 084.7z.002 "https://ykj-eos-dg5-01.eos-dongguan-6.cmecloud.cn/85f1effe4cbd40f58bccabb3b0220002086?response-content-disposition=attachment%3B%20filename%2A%3DUTF-8%27%27084.7z.002&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20241205T051150Z&X-Amz-SignedHeaders=host&X-Amz-Expires=900&X-Amz-Credential=9T1UKBIX6OJSR5XN2F2T%2F20241205%2Fdefault%2Fs3%2Faws4_request&X-Amz-Signature=d2dec2b9328a5f657c6980fa2763920cd7003cc4f06ae3295c54398b376f86d5"
           ls -ltrah
           ./unzipper.sh
           tree
@@ -71,8 +77,10 @@ jobs:
       - name: Create Release and Upload Release Asset
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: ${{ github.ref }}
-          name: ${{ github.ref }}
+          tag_name: ${{ steps.create_tag.outputs.TAG_NAME }}  # 使用创建的标签
+          name: ${{ steps.create_tag.outputs.TAG_NAME }}
+          #tag_name: ${{ github.ref }}
+          #name: ${{ github.ref }}
           #body: TODO New Release.
           #body_path: CHANGELOG.txt
           draft: false
