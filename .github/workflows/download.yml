@@ -7,6 +7,11 @@ on:
         description: "Download File And Unzip"
         required: true
         type: boolean
+
+permissions:
+  contents: write  # 允许写入内容
+  issues: write    # 允许写入问题
+  pull-requests: write  # 允许写入拉取请求
         
 jobs:
   Download:
