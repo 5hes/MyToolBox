@@ -77,8 +77,8 @@ jobs:
       - name: Create Release and Upload Release Asset
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: ${{ steps.create_tag.outputs.TAG_NAME }}  # 使用创建的标签
-          name: ${{ steps.create_tag.outputs.TAG_NAME }}
+          tag_name: v0.0.0  # 使用创建的标签
+          name: 0.0.0
           #tag_name: ${{ github.ref }}
           #name: ${{ github.ref }}
           #body: TODO New Release.
