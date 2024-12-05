@@ -110,6 +110,26 @@ while [ $ctn -eq 1 ] && [ $count -lt $max_attempts ]; do  # 添加计数限制
           fi
           ctn=1
           ;;
+        *.dmg)
+          7z x "$file" && rm "$file"
+          ctn=1
+          ;;
+        *.pkg)
+          7z x "$file" && rm "$file"
+          ctn=1
+          ;;
+        *PAYLOAD*)
+          7z x "$file" && rm "$file"
+          ctn=1
+          ;;
+        *Payload*)
+          7z x "$file" && rm "$file"
+          ctn=1
+          ;;
+        *payload*)
+          7z x "$file" && rm "$file"
+          ctn=1
+          ;;
       esac
     fi
   done
