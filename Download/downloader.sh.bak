@@ -1,0 +1,10 @@
+#!/bin/bash
+
+wget -q -p good -O 1.7z.001 "$link"&
+wget -q -p good -O 1.7z.002 "$link"&
+wget -q -p good -O 1.7z.003 "$link"&
+wget -q -p good -O 1.7z.004 "$link"&
+wget -q -p good -O 1.7z.005 "$link"&
+wait
+
+echo "所有文件下载完成，执行下一步操作。"
