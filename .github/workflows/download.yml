@@ -38,7 +38,7 @@ jobs:
         shell: bash
         run: |
           cd Download
-          chmod +x unzipper.sh env.sh
+          chmod +x unzipper.sh env.sh downloader.sh
           source env.sh
           export EXTRA=true
           export password=jntm
