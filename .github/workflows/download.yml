@@ -24,7 +24,7 @@ jobs:
       - name: Create a new tag
         id: create_tag
         run: |
-           TAG_NAME="v0.0.2"  # 这里设置你想要的标签名
+           TAG_NAME="v0.0.3"  # 这里设置你想要的标签名
            git tag $TAG_NAME
            git push origin $TAG_NAME
 
@@ -69,7 +69,7 @@ jobs:
       - name: Create Release and Upload Release Asset
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: v0.0.2  # 使用创建的标签
+          tag_name: v0.0.3  # 使用创建的标签
           name: font
           #tag_name: ${{ github.ref }}
           #name: ${{ github.ref }}
