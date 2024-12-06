@@ -1,0 +1,30 @@
+name: Push File
+
+on:
+  workflow_dispatch:
+    inputs:
+      PushFile:
+        description: "Download and Push file"
+        required: true
+        type: boolean
+  
+jobs:
+  push-file:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Pushed file
+        run: |
+          cd Download/good/1
+          wget -q -O 1.7z.001 ""
+          
+      - name: Commit and push changes
+        run: |
+          git config --local user.name "github-actions"
+          git config --local user.email "github-actions@github.com"
+          git add Download/good/1.7z.001  # 添加要推送的文件
+          git commit -m "Add 1.7z.001" || echo "No changes to commit"
+          git push origin main  # 将更改推送到主分支
