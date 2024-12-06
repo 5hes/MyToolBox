@@ -21,12 +21,12 @@ jobs:
       - name: Check Out
         uses: actions/checkout@v4
 
-#      - name: Create a new tag
-#        id: create_tag
-#        run: |
-#          TAG_NAME="v0.0.2"  # 这里设置你想要的标签名
-#          git tag $TAG_NAME
-#          git push origin $TAG_NAME
+      - name: Create a new tag
+        id: create_tag
+        run: |
+           TAG_NAME="v0.0.2"  # 这里设置你想要的标签名
+           git tag $TAG_NAME
+           git push origin $TAG_NAME
 
       - name: Install Depends
         shell: bash
@@ -43,7 +43,8 @@ jobs:
           export EXTRA=true
           export password=sy66
           export crypt=false
-          wget -q "https://devimages-cdn.apple.com/design/resources/download/SF-Pro.dmg"
+          # wget -q "https://devimages-cdn.apple.com/design/resources/download/SF-Pro.dmg"
+          wget -q "https://developer.huawei.com/images/download/next/HarmonyOS-Sans.zip"
           ls -ltrah
           ./unzipper.sh
           tree
@@ -77,12 +78,8 @@ jobs:
           draft: false
           prerelease: false
           files: |
-            Download/SFProFonts/Library/Fonts/SF-Pro-Display-Regular.otf
-            Download/SFProFonts/Library/Fonts/SF-Pro-Display-Medium.otf
-            Download/SFProFonts/Library/Fonts/SF-Pro-Rounded-Regular.otf
-            Download/SFProFonts/Library/Fonts/SF-Pro-Rounded-Medium.otf
-            Download/SFProFonts/Library/Fonts/SF-Pro-Text-Medium.otf
-            Download/SFProFonts/Library/Fonts/SF-Pro-Text-Regular.otf
+            Download/*ediu*
+            Download/*gula*
 
 
             
