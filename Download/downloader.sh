@@ -6,7 +6,7 @@ link_file="link"  # 包含链接的文件
 # 逐行读取链接文件
 while IFS= read -r link; do
     # 使用 wget 下载文件
-    wget -q -P good -O "1.7z.$(printf "%03d" $((i+1)))" "$link" &
+    wget -q -P good/1 -O "1.7z.$(printf "%03d" $((i+1)))" "$link" &
     ((i++))  # 增加计数器
 done < "$link_file"
 
