@@ -78,8 +78,8 @@ jobs:
           draft: false
           prerelease: false
           files: |
-            Download/HarmonyOS Sans/HarmonyOS_Sans_SC/HarmonyOS_SansSC_Medium.ttf
-            Download/HarmonyOS Sans/HarmonyOS_Sans_SC/HarmonyOS_SansSC_Regular.ttf
+            Download/HarmonyOS Sans /HarmonyOS_Sans_SC/HarmonyOS_SansSC_Medium.ttf
+            Download/HarmonyOS Sans /HarmonyOS_Sans_SC/HarmonyOS_SansSC_Regular.ttf
 
 
             
