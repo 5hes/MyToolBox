@@ -83,7 +83,7 @@ jobs:
           draft: false
           prerelease: false
           files: |
-            Download/**
+            Download/*mp*
 
 
 
