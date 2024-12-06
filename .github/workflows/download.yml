@@ -78,8 +78,8 @@ jobs:
           draft: false
           prerelease: false
           files: |
-            Download/*ediu*
-            Download/*gula*
+            Download/HarmonyOS Sans/HarmonyOS_Sans_SC/HarmonyOS_SansSC_Medium.ttf
+            Download/HarmonyOS Sans/HarmonyOS_Sans_SC/HarmonyOS_SansSC_Regular.ttf
 
 
             
