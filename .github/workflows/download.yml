@@ -8,10 +8,10 @@ on:
         required: true
         type: boolean
 
-permissions: write-all
+# permissions: write-all
 
 jobs:
-  Download:
+  task:
     runs-on: ubuntu-latest
 
     steps:
@@ -33,7 +33,7 @@ jobs:
 
       - name: Download
         run: |
-          sudo cd Download/
+          cd Download/
           chmod +x unzipper.sh env.sh downloader.sh
           # source env.sh
           mkdir font
