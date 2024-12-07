@@ -1,0 +1,35 @@
+name: Download font and release
+
+on:
+  workflow_dispatch:
+    inputs:
+      task:
+        description: "Download font and release"
+        required: true
+        type: boolean
+jobs:
+  task:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Download
+      run: |
+        mkdir font
+        wget -q -P font/ "https://coloros-website-cn.allawnfs.com/font/OPPO_Sans_4.0.zip"
+        cd font
+        unzip *.zip
+
+    - name: Create Release and Upload Release Asset
+      uses: softprops/action-gh-release@v2
+      with:
+        tag_name: v0.0.5
+        name: opposans
+        draft: false
+        prerelease: false
+        files: |
+          font/**
+
+
