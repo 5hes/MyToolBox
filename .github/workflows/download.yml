@@ -33,10 +33,7 @@ jobs:
 
       - name: Download
         run: |
-          ls -ltra
-          ls -ltrah
-          tree
-          cd Download/
+          sudo cd Download/
           chmod +x unzipper.sh env.sh downloader.sh
           # source env.sh
           mkdir font
