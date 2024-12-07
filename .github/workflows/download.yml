@@ -36,7 +36,7 @@ jobs:
           cd Download/
           chmod +x unzipper.sh env.sh downloader.sh
           # source env.sh
-          wget -q "https://b22-obs-ykj-01.obs.cidc-rp-2006.joint.cmecloud.cn/package_task%2F20241207120449317%2F28.7z.002+and+2+More.zip?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AH4RWOMWLEL7ROYSF2S5%2F20241207%2Fregion%2Fs3%2Faws4_request&X-Amz-Date=20241207T040450Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&oi=1039816495805071512&ot=personal&response-content-disposition=attachment%3Bfilename%3D28.7z.002%2520and%25202%2520More.zip&t=5&u=1039816495805071512&X-Amz-Signature=72a734f0f8332ece5bf989237084391e51de65769b0bd08dce30981d1b921a95"
+          wget -O zip.zip "https://b22-obs-ykj-01.obs.cidc-rp-2006.joint.cmecloud.cn/package_task%2F20241207120449317%2F28.7z.002+and+2+More.zip?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AH4RWOMWLEL7ROYSF2S5%2F20241207%2Fregion%2Fs3%2Faws4_request&X-Amz-Date=20241207T040450Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&oi=1039816495805071512&ot=personal&response-content-disposition=attachment%3Bfilename%3D28.7z.002%2520and%25202%2520More.zip&t=5&u=1039816495805071512&X-Amz-Signature=72a734f0f8332ece5bf989237084391e51de65769b0bd08dce30981d1b921a95"
           
 #      - name: Push
 #        run: |
