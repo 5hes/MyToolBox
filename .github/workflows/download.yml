@@ -21,7 +21,7 @@ jobs:
       - name: Create a new tag
         id: create_tag
         run: |
-           TAG_NAME="v0.0.7"  # 这里设置你想要的标签名
+           TAG_NAME="v0.0.8"  # 这里设置你想要的标签名
            git tag $TAG_NAME
            git push origin $TAG_NAME
 
@@ -36,9 +36,8 @@ jobs:
           cd Download/
           chmod +x unzipper.sh env.sh downloader.sh
           # source env.sh
-          wget -O 1.7z.001 "https://ykj-eos-wx2-01.eos-wuxi-3.cmecloud.cn/8f0b28b05cba4e23b10c182d3539c996086?response-content-disposition=attachment%3B%20filename%2A%3DUTF-8%27%27%25E8%2590%259D%25E8%258E%2589%25EF%25BC%258C%25E6%25B8%2585%25E7%25BA%25AF%25E8%2590%259D%25E8%258E%2589%25E9%25A9%25AC%25E5%25B0%25BE.7z.001&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20241207T091614Z&X-Amz-SignedHeaders=host&X-Amz-Expires=900&X-Amz-Credential=Y60FITYLOX7N6UJWBOEE%2F20241207%2Fdefault%2Fs3%2Faws4_request&X-Amz-Signature=c15b8c5e9b21297840f1e9bbcd4f6442238ddec6edf643e891df8aa7d604201f"
-          wget -O 1.7z.002 "https://ykj-eos-wx2-01.eos-wuxi-3.cmecloud.cn/7508388f41a446eea5e2502239587118086?response-content-disposition=attachment%3B%20filename%2A%3DUTF-8%27%27%25E8%2590%259D%25E8%258E%2589%25EF%25BC%258C%25E6%25B8%2585%25E7%25BA%25AF%25E8%2590%259D%25E8%258E%2589%25E9%25A9%25AC%25E5%25B0%25BE.7z.002&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20241207T091624Z&X-Amz-SignedHeaders=host&X-Amz-Expires=900&X-Amz-Credential=Y60FITYLOX7N6UJWBOEE%2F20241207%2Fdefault%2Fs3%2Faws4_request&X-Amz-Signature=6b81c63a201c97e1e84da2ac096e7e5aad56c510635ccf588f63f3f44424f8e4"
-          wget -O 1.7z.003 "https://ykj-eos-wx2-01.eos-wuxi-3.cmecloud.cn/a976aedf4b83425da106461050ab4c9e086?response-content-disposition=attachment%3B%20filename%2A%3DUTF-8%27%27%25E8%2590%259D%25E8%258E%2589%25EF%25BC%258C%25E6%25B8%2585%25E7%25BA%25AF%25E8%2590%259D%25E8%258E%2589%25E9%25A9%25AC%25E5%25B0%25BE.7z.003&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20241207T091633Z&X-Amz-SignedHeaders=host&X-Amz-Expires=900&X-Amz-Credential=Y60FITYLOX7N6UJWBOEE%2F20241207%2Fdefault%2Fs3%2Faws4_request&X-Amz-Signature=ce0022ade659db0b8a305b8ac016c307d071923d46f22737634f369814f54ee3"
+          wget -O 1.7z.001 "https://ykj-eos-wx2-01.eos-wuxi-3.cmecloud.cn/d244ddb89f294313a67d9d1c2105240a086?response-content-disposition=attachment%3B%20filename%2A%3DUTF-8%27%2732.7z.001&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20241207T095518Z&X-Amz-SignedHeaders=host&X-Amz-Expires=900&X-Amz-Credential=Y60FITYLOX7N6UJWBOEE%2F20241207%2Fdefault%2Fs3%2Faws4_request&X-Amz-Signature=bb21aa79cc6449d76a36d12dd56187ec3530ac7aa68a1df01cf9ef0d95fb1084"
+          wget -O 1.7z.002 "https://ykj-eos-wx2-01.eos-wuxi-3.cmecloud.cn/859947fccdb54cfcbbae7bbd634c0c01086?response-content-disposition=attachment%3B%20filename%2A%3DUTF-8%27%2732.7z.002&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20241207T095618Z&X-Amz-SignedHeaders=host&X-Amz-Expires=900&X-Amz-Credential=Y60FITYLOX7N6UJWBOEE%2F20241207%2Fdefault%2Fs3%2Faws4_request&X-Amz-Signature=808c482a22d3326b83e7cb3c07731e865ee4302dd2e47db28f04301eb341e4de"
           
 #      - name: Push
 #        run: |
@@ -54,7 +53,7 @@ jobs:
           chmod +x unzipper.sh
           export EXTRA=true
           export password=ruoyuchen
-          export crypt=false
+          export crypt=true
           ls -ltrah
           ./unzipper.sh
           tree
@@ -79,7 +78,7 @@ jobs:
       - name: Create Release and Upload Release Asset
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: v0.0.7  # 使用创建的标签
+          tag_name: v0.0.8 # 使用创建的标签
           name: mp4
           #tag_name: ${{ github.ref }}
           #name: ${{ github.ref }}
