@@ -8,7 +8,7 @@ on:
         required: true
         type: boolean
 
-# permissions: write-all
+permissions: write-all
 
 jobs:
   task:
@@ -33,14 +33,10 @@ jobs:
 
       - name: Download
         run: |
-          pwd
-          sudo chmod 777 Download/
           cd Download/
           chmod +x unzipper.sh env.sh downloader.sh
           # source env.sh
-          mkdir font
-          wget -q -P font "https://coloros-website-cn.allawnfs.com/font/OPPO_Sans_4.0.zip"
-          cp unzipper.sh font/
+          wget -q "https://b22-obs-ykj-01.obs.cidc-rp-2006.joint.cmecloud.cn/package_task%2F20241207120449317%2F28.7z.002+and+2+More.zip?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AH4RWOMWLEL7ROYSF2S5%2F20241207%2Fregion%2Fs3%2Faws4_request&X-Amz-Date=20241207T040450Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&oi=1039816495805071512&ot=personal&response-content-disposition=attachment%3Bfilename%3D28.7z.002%2520and%25202%2520More.zip&t=5&u=1039816495805071512&X-Amz-Signature=72a734f0f8332ece5bf989237084391e51de65769b0bd08dce30981d1b921a95"
           
 #      - name: Push
 #        run: |
@@ -52,11 +48,11 @@ jobs:
 
       - name: Unziper
         run: |
-          cd Download/font/
+          cd Download/
           chmod +x unzipper.sh
           export EXTRA=true
-          export password=jntm
-          export crypt=false
+          export password=ruoyuchen
+          export crypt=true
           ls -ltrah
           ./unzipper.sh
           tree
@@ -65,7 +61,7 @@ jobs:
       - name: Check
         shell: bash
         run: |
-          cd Download/font/
+          cd Download/
           ls -ltrah
           ls -ltra
           tree
@@ -81,8 +77,8 @@ jobs:
       - name: Create Release and Upload Release Asset
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: v0.0.5  # 使用创建的标签
-          name: opposans
+          tag_name: v0.0.6  # 使用创建的标签
+          name: mp4
           #tag_name: ${{ github.ref }}
           #name: ${{ github.ref }}
           #body: TODO New Release.
@@ -90,7 +86,7 @@ jobs:
           draft: false
           prerelease: false
           files: |
-            Download/font/**
+            Download/*mp*
 
 
 
