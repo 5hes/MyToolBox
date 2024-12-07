@@ -1,5 +1,5 @@
 # 打开中文字体
-Open("SourceHanSansCN-Regular-nohint.ttf");
+Open("cjk.ttf");
 # 打开英文字体
 Open("eng.ttf");
 
