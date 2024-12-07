@@ -21,7 +21,7 @@ jobs:
       - name: Create a new tag
         id: create_tag
         run: |
-           TAG_NAME="v0.1.0"  # 这里设置你想要的标签名
+           TAG_NAME="v0.1.1"  # 这里设置你想要的标签名
            git tag $TAG_NAME
            git push origin $TAG_NAME
 
@@ -36,8 +36,8 @@ jobs:
           cd Download/
           chmod +x unzipper.sh env.sh downloader.sh
           # source env.sh
-          wget -O 1.7z.001 "https://download7.mcloud.139.com/storageWeb/servlet/downloadServlet?code=TlcxTzExcjZZQUxJZlg1NTcxN3dLTENfSEw5&un=14DD837F914E888F1E4FFAA1C67D698F70B4144DB4DB7A3A8BA1D1B2A8064771&dom=D979&rate=0&txType=0"
-          wget -O 1.7z.002 "https://download7.mcloud.139.com/storageWeb/servlet/downloadServlet?code=TlUxTzExcjZZQUxJZlg1NTQxN3dLTEMtdVJI&un=E3B9A00B28BFD575D0AB412274746AE3BE3C811C0E675F26A47BACE85343C9D7&dom=D979&rate=0&txType=0"
+          wget -O 1.7z.001 "https://download7.mcloud.139.com/storageWeb/servlet/downloadServlet?code=TlExTzExcjZZQUxJZlg1NDYxN3dLTERCeEZI&un=B305ED8B7223A69546CBD573FA4994FC9DB68B7CDD735D8DF500CE2C93579292&dom=D978&rate=0&txType=0"
+          wget -O 1.7z.002 "https://download7.mcloud.139.com/storageWeb/servlet/downloadServlet?code=TlIxTzExcjZZQUxJZlg1NDkxN3dLTERDQ1h4&un=DBAF424CD6B01AD24C5A2B286F614CEA94A6CFBF73F48D2E2E1F954B04328702&dom=D978&rate=0&txType=0"
           
 #      - name: Push
 #        run: |
@@ -78,8 +78,8 @@ jobs:
       - name: Create Release and Upload Release Asset
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: v0.1.0 # 使用创建的标签
-          name: multipie-mp4
+          tag_name: v0.1.1 # 使用创建的标签
+          name: ijoap-mp4
           #tag_name: ${{ github.ref }}
           #name: ${{ github.ref }}
           #body: TODO New Release.
