@@ -9,9 +9,12 @@ on:
         type: boolean
 
 permissions:
-  contents: write  # 允许写入内容
-  issues: write    # 允许写入问题
-  pull-requests: write  # 允许写入拉取请求
+  contents: read-write  # 允许读写内容
+  issues: read-write     # 允许读写问题（可选）
+  pull-requests: read-write  # 允许读写拉取请求（可选）
+  actions: read-write    # 允许读写 Actions（可选）
+  deployments: read-write  # 允许读写部署（可选）
+  statuses: read-write    # 允许读写状态（可选）
         
 jobs:
   Download:
@@ -35,7 +38,6 @@ jobs:
           sudo apt-get install -y unzip p7zip-full tar gzip bzip2 xz-utils tree unrar lz4 zstd
 
       - name: Download
-        shell: bash
         run: |
           cd Download/
           chmod +x unzipper.sh env.sh downloader.sh
