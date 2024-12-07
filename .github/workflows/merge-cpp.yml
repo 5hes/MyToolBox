@@ -54,7 +54,7 @@ jobs:
           mv ../Chinese.otf .
           mv ../English.ttf .
           ls -ltrah && ls -ltra
-          otf2ttf Chinese.otf
+          # otf2ttf Chinese.otf
           
       - name: Build Merge Font
         shell: bash
