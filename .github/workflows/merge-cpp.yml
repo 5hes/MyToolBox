@@ -8,6 +8,7 @@ on:
         required: true
         type: boolean
 
+permissions: write-all
 jobs:
   Merge:
     runs-on: ubuntu-latest
@@ -77,6 +78,16 @@ jobs:
         with:
           name: merged-fixed
           path: ./FontTools/MergeFont/字体合并补全工具-简体中文-1.1.0-linux-amd64/merged-fixed.ttf
+
+      - name: Create Release and Upload Release Asset
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v0.0.5
+          name: Pingfang-sc + IosevkaCostom
+          draft: false
+          prerelease: false
+          files: |
+            ./FontTools/MergeFont/字体合并补全工具-简体中文-1.1.0-linux-amd64/**
 
       - name: Get Help
         shell: bash
