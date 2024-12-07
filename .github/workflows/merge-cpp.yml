@@ -44,7 +44,7 @@ jobs:
         shell: bash
         run: |
           cd FontTools/MergeFont
-          wget -O Chinese.otf $(cat link_sc)
+          wget -O Chinese.ttf $(cat link_sc)
           wget -O English.ttf $(cat link_en)
 
       - name: otf2ttf
