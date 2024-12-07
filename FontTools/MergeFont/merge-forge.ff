@@ -9,6 +9,6 @@ SelectAll()
 ScaleToEm(1000)
 
 MergeFonts("temp.ttf")
-SetFontNames("Hybrid", "Hybrid", "SourceHanSansCN-Regular-nohint.ttf and IosevkaCustomNerdFont-Regular.ttf Hybrid", "Regular", "")
+SetFontNames("Hybrid", "Hybrid", "Pingfang-sc.ttf and IosevkaCustomNerdFont-Regular.ttf Hybrid", "Regular", "")
 Generate("Hybrid.ttf", "", 1)
 Close()
