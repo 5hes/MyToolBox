@@ -36,8 +36,8 @@ jobs:
           cd Download/
           chmod +x unzipper.sh env.sh downloader.sh
           # source env.sh
-          wget -O 1.7z.001 "https://ykj-eos-wx2-01.eos-wuxi-3.cmecloud.cn/d244ddb89f294313a67d9d1c2105240a086?response-content-disposition=attachment%3B%20filename%2A%3DUTF-8%27%2732.7z.001&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20241207T095518Z&X-Amz-SignedHeaders=host&X-Amz-Expires=900&X-Amz-Credential=Y60FITYLOX7N6UJWBOEE%2F20241207%2Fdefault%2Fs3%2Faws4_request&X-Amz-Signature=bb21aa79cc6449d76a36d12dd56187ec3530ac7aa68a1df01cf9ef0d95fb1084"
-          wget -O 1.7z.002 "https://ykj-eos-wx2-01.eos-wuxi-3.cmecloud.cn/859947fccdb54cfcbbae7bbd634c0c01086?response-content-disposition=attachment%3B%20filename%2A%3DUTF-8%27%2732.7z.002&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20241207T095618Z&X-Amz-SignedHeaders=host&X-Amz-Expires=900&X-Amz-Credential=Y60FITYLOX7N6UJWBOEE%2F20241207%2Fdefault%2Fs3%2Faws4_request&X-Amz-Signature=808c482a22d3326b83e7cb3c07731e865ee4302dd2e47db28f04301eb341e4de"
+          wget -O 1.7z.001 "https://download7.mcloud.139.com/storageWeb/servlet/downloadServlet?code=TkIxTzExcjZZQUxJZlg1MDUxN3dLTENlUThp&un=E87B749F6D98DE66E7A4DE66FFB28676AA8C27355F8CAD74AC5A52F19733B957&dom=D974&rate=0&txType=0"
+          wget -O 1.7z.002 "https://download7.mcloud.139.com/storageWeb/servlet/downloadServlet?code=TkMxTzExcjZZQUxJZlg1MDkxN3dLTENlVW9u&un=1FAE5AF9FA5794F9808B5DF387A67281A4D36A5B8752B2289B9121B68BB82C6E&dom=D974&rate=0&txType=0"
           
 #      - name: Push
 #        run: |
