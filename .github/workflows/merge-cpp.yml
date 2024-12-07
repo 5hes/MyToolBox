@@ -17,6 +17,13 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Create a new tag
+        run: |
+           TAG_NAME="v0.0.0-font"
+           git tag $TAG_NAME
+           git push origin $TAG_NAME
+
+
       - name: Install dependencies
         shell: bash
         run: |
@@ -82,7 +89,7 @@ jobs:
       - name: Create Release and Upload Release Asset
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: v0.0.5
+          tag_name: v0.0.0-font
           name: Pingfang-sc + IosevkaCostom
           draft: false
           prerelease: false
