@@ -51,7 +51,7 @@ jobs:
         run: |
           pwd
           cd FontTools/MergeFont
-          wget $(cat link_sc) && rm link_sc
+          wget -O cjk.otf $(cat link_sc) && rm link_sc
           wget -O eng.ttf $(cat link_en) && rm link_en
 
       - name: Check font info
@@ -60,7 +60,7 @@ jobs:
           pwd
           cd FontTools/MergeFont
           # fc-query -b eng.ttf
-          # fc-query -b SourceHanSansCN-Regular.otf
+          # fc-query -b cjk.otf
 
       - name: otf2ttf-1
         shell: bash
@@ -69,7 +69,7 @@ jobs:
           pwd
           cd FontTools/MergeFont
           otf2ttf --help
-          otf2ttf SourceHanSansCN-Regular.otf
+          otf2ttf cjk.otf
           ls -ltrah
           ls -ltra
 
@@ -98,7 +98,7 @@ jobs:
         shell: bash
         run: |
           cd FontTools/MergeFont
-          ttfautohint SourceHanSansCN-Regular.ttf
+          # ttfautohint cjk.ttf
           ls -ltrah
           ls -ltra
                     
