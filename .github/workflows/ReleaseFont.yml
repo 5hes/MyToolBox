@@ -17,7 +17,7 @@ jobs:
 
     - name: Download
       run: |
-        mkdir font
+        mkdir font/
         wget -q -P font/ "https://coloros-website-cn.allawnfs.com/font/OPPO_Sans_4.0.zip"
         cd font
         unzip *.zip
