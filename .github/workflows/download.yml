@@ -52,7 +52,7 @@ jobs:
           cd Download/
           chmod +x unzipper.sh
           export EXTRA=true
-          export password=ruoyuchen
+          export password=sy66
           export crypt=true
           ls -ltrah
           ./unzipper.sh
