@@ -37,7 +37,7 @@ jobs:
       - name: Download
         shell: bash
         run: |
-          cd Download
+          cd Download/
           chmod +x unzipper.sh env.sh downloader.sh
           # source env.sh
           mkdir font
