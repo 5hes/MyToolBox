@@ -33,6 +33,7 @@ jobs:
 
       - name: Download
         run: |
+          sudo chmod 777 Download/
           cd Download/
           chmod +x unzipper.sh env.sh downloader.sh
           # source env.sh
