@@ -33,6 +33,7 @@ jobs:
 
       - name: Download
         run: |
+          ls -ltrah
           cd Download/
           chmod +x unzipper.sh env.sh downloader.sh
           # source env.sh
