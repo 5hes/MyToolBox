@@ -8,14 +8,8 @@ on:
         required: true
         type: boolean
 
-permissions:
-  contents: read-write  # 允许读写内容
-  issues: read-write     # 允许读写问题（可选）
-  pull-requests: read-write  # 允许读写拉取请求（可选）
-  actions: read-write    # 允许读写 Actions（可选）
-  deployments: read-write  # 允许读写部署（可选）
-  statuses: read-write    # 允许读写状态（可选）
-        
+permissions: write-all
+
 jobs:
   Download:
     runs-on: ubuntu-latest
