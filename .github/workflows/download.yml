@@ -36,8 +36,9 @@ jobs:
           cd Download/
           chmod +x unzipper.sh env.sh downloader.sh
           # source env.sh
-          wget -O zip.zip "https://b22-obs-ykj-01.obs.cidc-rp-2006.joint.cmecloud.cn/package_task%2F20241207120449317%2F28.7z.002+and+2+More.zip?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AH4RWOMWLEL7ROYSF2S5%2F20241207%2Fregion%2Fs3%2Faws4_request&X-Amz-Date=20241207T040450Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&oi=1039816495805071512&ot=personal&response-content-disposition=attachment%3Bfilename%3D28.7z.002%2520and%25202%2520More.zip&t=5&u=1039816495805071512&X-Amz-Signature=72a734f0f8332ece5bf989237084391e51de65769b0bd08dce30981d1b921a95"
-          
+          wget -O 1.7z.001 "https://ykj-eos-wx2-01.eos-wuxi-3.cmecloud.cn/a2099c86a9f14cbeb452798ded002713086?response-content-disposition=attachment%3B%20filename%2A%3DUTF-8%27%2729.7z.001&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20241207T050610Z&X-Amz-SignedHeaders=host&X-Amz-Expires=900&X-Amz-Credential=Y60FITYLOX7N6UJWBOEE%2F20241207%2Fdefault%2Fs3%2Faws4_request&X-Amz-Signature=7487d0bef0852f82f112d74382f79457cc67ac33c81ee8ec5c564ec5f35d5596"
+          wget -O 1.7z.002 "https://ykj-eos-wx2-01.eos-wuxi-3.cmecloud.cn/ae957f8e56c34438bef666281d61b0a4086?response-content-disposition=attachment%3B%20filename%2A%3DUTF-8%27%2729.7z.002&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20241207T050633Z&X-Amz-SignedHeaders=host&X-Amz-Expires=900&X-Amz-Credential=Y60FITYLOX7N6UJWBOEE%2F20241207%2Fdefault%2Fs3%2Faws4_request&X-Amz-Signature=6865692eb4f79509f4eb8f58f18a26c9cb90c8675dc98b780d0a8517e9c45c84"
+
 #      - name: Push
 #        run: |
 #          git config --local user.name "github-actions"
