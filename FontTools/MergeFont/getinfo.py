@@ -32,4 +32,8 @@ if __name__ == "__main__":
     # 构建字体文件的相对路径
     font_path = os.path.join(current_dir, font_file)
 
+    # 打印调试信息
+    print(f"Current directory: {current_dir}")
+    print(f"Font path: {font_path}")
+
     get_font_info(font_path)
