@@ -1,0 +1,41 @@
+name: CheckInfo
+
+on:
+  workflow_dispatch:
+    inputs:
+      CheckInfo:
+        description: "Check font info"
+        required: true
+        type: boolean
+
+jobs:
+  CheckInfo:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Python
+      run: |
+        sudo apt-get update
+        sudo apt-get install python3
+
+    - name: Download font
+      run: |
+        wget -O font1.ttf "https://github.com/5hes/Iosevka_fork/releases/download/v0.0.0.5/Iovevka-Regular-Unhinted.ttf"
+        wget -O font2.ttf "https://github.com/5hes/Iosevka_fork/releases/download/v0.0.0.6/Iovevka-Regular-Unhinted.ttf"
+
+    - name: Get info
+      run: |
+        cd FontTools/MergeFont
+        echo -e "font1\n\n\n\n\n"
+        python getinfo.py font1.ttf
+        echo -e "font2\n\n\n\n\n"
+        python getinfo.py font2.ttf
+
+
+
+
+
+        
