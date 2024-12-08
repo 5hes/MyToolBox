@@ -1,4 +1,5 @@
 import sys
+import os
 from fontTools.ttLib import TTFont
 
 def get_font_info(font_path):
@@ -25,4 +26,10 @@ if __name__ == "__main__":
         sys.exit(1)
 
     font_file = sys.argv[1]
-    get_font_info(font_file)
+
+    # 获取当前工作目录
+    current_dir = os.getcwd()
+    # 构建字体文件的相对路径
+    font_path = os.path.join(current_dir, font_file)
+
+    get_font_info(font_path)
