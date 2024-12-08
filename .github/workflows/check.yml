@@ -24,6 +24,7 @@ jobs:
 
     - name: Download font
       run: |
+        cd FontTools/MergeFont
         wget -O font1.ttf "https://github.com/5hes/Iosevka_fork/releases/download/v0.0.0.5/Iovevka-Regular-Unhinted.ttf"
         wget -O font2.ttf "https://github.com/5hes/Iosevka_fork/releases/download/v0.0.0.6/Iovevka-Regular-Unhinted.ttf"
 
