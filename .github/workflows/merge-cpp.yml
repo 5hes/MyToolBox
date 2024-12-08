@@ -19,9 +19,9 @@ jobs:
 
       - name: Create a new tag
         run: |
-          TAG_NAME="v0.0.3-font"
-          git tag $TAG_NAME
-          git push origin $TAG_NAME
+          # TAG_NAME="v0.0.3-font"
+          # git tag $TAG_NAME
+          # git push origin $TAG_NAME
 
       - name: Install dependencies
         shell: bash
