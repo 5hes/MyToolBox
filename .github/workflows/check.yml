@@ -27,7 +27,8 @@ jobs:
         cd FontTools/MergeFont
         wget -O font1.ttf "https://github.com/5hes/Iosevka_fork/releases/download/v0.0.0.5/Iovevka-Regular-Unhinted.ttf"
         wget -O font2.ttf "https://github.com/5hes/Iosevka_fork/releases/download/v0.0.0.6/Iovevka-Regular-Unhinted.ttf"
-
+        wget -O font3.ttf "https://github.com/JetBrains/JetBrainsMono/raw/refs/heads/master/fonts/ttf/JetBrainsMono-Medium.ttf"
+        
     - name: Get info
       run: |
         cd FontTools/MergeFont
@@ -35,11 +36,12 @@ jobs:
         ls -ltrah
         ls -ltra
         tree
-        echo -e "font1\n\n\n\n\n"
+        echo -e "\n\n\n\n\nfont1"
         python getinfo.py font1.ttf
-        echo -e "font2\n\n\n\n\n"
+        echo -e "\n\n\n\n\nfont2"
         python getinfo.py font2.ttf
-
+        echo -e "\n\n\n\n\nfont3"
+        python getinfo.py font3.ttf
 
 
 
