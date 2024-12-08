@@ -19,10 +19,9 @@ jobs:
 
       - name: Create a new tag
         run: |
-          TAG_NAME="v0.0.2-font"
+          TAG_NAME="v0.0.3-font"
           git tag $TAG_NAME
           git push origin $TAG_NAME
-
 
       - name: Install dependencies
         shell: bash
@@ -51,6 +50,7 @@ jobs:
         shell: bash
         run: |
           cd FontTools/MergeFont/字体合并补全工具-简体中文-1.1.0-linux-amd64
+          mv ../getinfo.py
           mv ../Chinese.ttf .
           mv ../English.ttf .
           ls -ltrah && ls -ltra
@@ -64,7 +64,7 @@ jobs:
           ./otfccdump --ignore-hints -o Eng.otd "English.ttf"
           ./otfccdump --ignore-hints -o Cjk.otd "Chinese.ttf"
           ./merge-otd Eng.otd Cjk.otd
-          ./otfccbuild -q -O3 -o merged.ttf Eng.otd
+          ./otfccbuild -q --keep-average-char-width -O3 -o merged.ttf Eng.otd
           ls -ltrah && ls -ltra
 
       - name: Fix
@@ -90,8 +90,8 @@ jobs:
       - name: Create Release and Upload Release Asset
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: v0.0.2-font
-          name: HarmonyOS_SansSC + IosevkaCostom-love3 (Regular)
+          tag_name: v0.0.3-font
+          name: HarmonyOS_SansSC + Iovevka-love1.0.0 (Regular)
           draft: false
           prerelease: false
           files: |
@@ -105,3 +105,16 @@ jobs:
           cd FontTools/MergeFont/字体合并补全工具-简体中文-1.1.0-linux-amd64
           ./otfccdump --help
           ./otfccbuild --help
+
+      - name: Check info
+        run: |
+          cd FontTools/MergeFont/字体合并补全工具-简体中文-1.1.0-linux-amd64
+          echo -e "merged.ttf"
+          python getinfo.py merged.ttf
+          echo -e "\e\e\e\e\emerged-fixed.ttf"
+          python getinfo.py merged-fixed.ttf
+          echo -e "\e\e\e\e\emerged-500.ttf"
+          python getinfo.py merged-500.ttf
+
+
+        
