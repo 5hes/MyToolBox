@@ -28,6 +28,7 @@ jobs:
         wget -O font1.ttf "https://github.com/5hes/Iosevka_fork/releases/download/v0.0.0.5/Iovevka-Regular-Unhinted.ttf"
         wget -O font2.ttf "https://github.com/5hes/Iosevka_fork/releases/download/v0.0.0.6/Iovevka-Regular-Unhinted.ttf"
         wget -O font3.ttf "https://github.com/JetBrains/JetBrainsMono/raw/refs/heads/master/fonts/ttf/JetBrainsMono-Medium.ttf"
+        wget -O font4.ttf "https://github.com/5hes/MyToolBox/releases/download/v0.0.3/HarmonyOS_SansSC_Regular.ttf"
         
     - name: Get info
       run: |
@@ -38,11 +39,21 @@ jobs:
         tree
         echo -e "\n\n\n\n\nfont1"
         python getinfo.py font1.ttf
+        
         echo -e "\n\n\n\n\nfont2"
         python getinfo.py font2.ttf
+        
         echo -e "\n\n\n\n\nfont3"
         python getinfo.py font3.ttf
-
+        
+        echo -e "\n\n\n\n\nfont4"
+        python getinfo.py font4.ttf
+        
+        # echo -e "\n\n\n\n\nfont5"
+        # python getinfo.py font5.ttf
+        
+        # echo -e "\n\n\n\n\nfont6"
+        # python getinfo.py font6.ttf
 
 
 
