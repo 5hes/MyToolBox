@@ -25,7 +25,7 @@ jobs:
     - name: Download font
       run: |
         cd FontTools/MergeFont
-        wget -O font1.ttf "https://github.com/5hes/Iosevka_fork/releases/download/v0.0.0.5/Iovevka-Regular-Unhinted.ttf"
+        wget -O font1.ttf "https://github.com/5hes/MyToolBox/releases/download/v0.0.2-font/merged.ttf"
         wget -O font2.ttf "https://github.com/5hes/Iosevka_fork/releases/download/v0.0.0.6/Iovevka-Regular-Unhinted.ttf"
         wget -O font3.ttf "https://github.com/JetBrains/JetBrainsMono/raw/refs/heads/master/fonts/ttf/JetBrainsMono-Medium.ttf"
         wget -O font4.ttf "https://github.com/5hes/MyToolBox/releases/download/v0.0.3/HarmonyOS_SansSC_Regular.ttf"
