@@ -31,9 +31,9 @@ jobs:
       run: |
         cd FontTools/MergeFont
         echo -e "font1\n\n\n\n\n"
-        python getinfo.py ./font1.ttf
+        python getinfo.py font1.ttf
         echo -e "font2\n\n\n\n\n"
-        python getinfo.py ./font2.ttf
+        python getinfo.py font2.ttf
 
 
 
