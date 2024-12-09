@@ -51,7 +51,7 @@ jobs:
         run: |
           cd FontTools/MergeFont/字体合并补全工具-简体中文-1.1.0-linux-amd64
           mv ../getinfo.py .
-          mv ../fix-500.py
+          mv ../fix-500.py .
           mv ../Chinese.ttf .
           mv ../English.ttf .
           ls -ltrah && ls -ltra
