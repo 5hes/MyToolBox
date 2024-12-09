@@ -91,8 +91,8 @@ jobs:
       - name: Create Release and Upload Release Asset
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: v0.0.3-font
-          name: HarmonyOS_SansSC + Iovevka-love1.0.0 (Regular)
+          tag_name: v0.0.4-font
+          name: Harpf + Iovevka-love3.2.1 (Medium)
           draft: false
           prerelease: false
           files: |
@@ -112,10 +112,16 @@ jobs:
           cd FontTools/MergeFont/字体合并补全工具-简体中文-1.1.0-linux-amd64
           echo -e "merged.ttf"
           python getinfo.py merged.ttf
-          echo -e "\e\e\e\e\emerged-fixed.ttf"
+          echo -e "\n\n\n\n\nmerged-fixed.ttf"
           python getinfo.py merged-fixed.ttf
-          echo -e "\e\e\e\e\emerged-500.ttf"
+          echo -e "\n\n\n\n\nmerged-500.ttf"
           python getinfo.py merged-500.ttf
+          echo -e "\n\n\n\n\n"
+          ls -ltrah
+          ls -ltra
+          md5sum merged-500.ttf merged-fixed.ttf merged.ttf
+          
+        
 
 
         
