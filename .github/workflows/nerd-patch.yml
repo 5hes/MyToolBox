@@ -1,0 +1,34 @@
+name: NerdPatch
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      patch:
+        description: "Patch NerdFont"
+        required: true
+        type: boolean
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Download font
+      run: wget -O Iovevka.ttf "https://github.com/5hes/Iosevka_fork/releases/download/v0.0.1.5/Iovevka-Regular-Unhinted.ttf"
+
+    - name: Patch
+      run: |
+        wget -O Patcher.zip "https://github.com/ryanoasis/nerd-fonts/releases/latest/download/FontPatcher.zip"
+        unzip -x Patcher.zip && rm Patcher.zip
+        ./font-patcher -c Iovevka.ttf -o patched
+        tree
+
+    - name: Upload
+      uses: actions/upload-artifact@v4
+      with:
+        path: 
+          patched/**
