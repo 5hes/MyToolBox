@@ -17,6 +17,9 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
+    - name: Setup environment
+      run: sudo apt-get update && sudo apt-get install fontforge python3-fontforge python3
+
     - name: Download font
       run: wget -O Iovevka.ttf "https://github.com/5hes/Iosevka_fork/releases/download/v0.0.1.5/Iovevka-Regular-Unhinted.ttf"
 
