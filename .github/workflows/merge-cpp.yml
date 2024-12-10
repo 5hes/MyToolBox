@@ -19,7 +19,7 @@ jobs:
 
       - name: Create a new tag
         run: |
-          TAG_NAME="v0.0.4-font"
+          TAG_NAME="v0.0.5-font"
           git tag $TAG_NAME
           git push origin $TAG_NAME
 
@@ -28,7 +28,7 @@ jobs:
         run: |
           cd FontTools/MergeFont
           sudo apt-get update
-          sudo apt-get install xz-utils python3 ttfautohint
+          sudo apt-get install xz-utils python3 ttfautohint fontconfig
           pip install fonttools
           pip install otf2ttf
 
@@ -52,6 +52,7 @@ jobs:
           cd FontTools/MergeFont/字体合并补全工具-简体中文-1.1.0-linux-amd64
           mv ../getinfo.py .
           mv ../fix-500.py .
+          mv ../fix-spacing .
           mv ../Chinese.otf .
           mv ../English.ttf .
           ls -ltrah && ls -ltra
@@ -73,8 +74,9 @@ jobs:
         run: |
           cd FontTools/MergeFont/字体合并补全工具-简体中文-1.1.0-linux-amd64
           cp ../fix-cpp.py .
+          cp merged.ttf merged-origin.ttf
           python fix-cpp.py
-          python fix-500.py
+          python fix-spacing.py merged.ttf 100 merged-100.ttf
           
       - name: Upload artifact
         uses: actions/upload-artifact@v4
@@ -91,14 +93,14 @@ jobs:
       - name: Create Release and Upload Release Asset
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: v0.0.4-font
-          name: Harpf + Iovevka-love3.2.1 (Medium)
+          tag_name: v0.0.5-font
+          name: Harpf + Iovevka-love3.9alpha (Medium)
           draft: false
           prerelease: false
           files: |
             ./FontTools/MergeFont/字体合并补全工具-简体中文-1.1.0-linux-amd64/merged-fixed.ttf
-            ./FontTools/MergeFont/字体合并补全工具-简体中文-1.1.0-linux-amd64/merged.ttf
-            ./FontTools/MergeFont/字体合并补全工具-简体中文-1.1.0-linux-amd64/merged-500.ttf
+            ./FontTools/MergeFont/字体合并补全工具-简体中文-1.1.0-linux-amd64/merged-origin.ttf
+            ./FontTools/MergeFont/字体合并补全工具-简体中文-1.1.0-linux-amd64/merged-100.ttf
             
       - name: Get Help
         shell: bash
@@ -112,14 +114,23 @@ jobs:
           cd FontTools/MergeFont/字体合并补全工具-简体中文-1.1.0-linux-amd64
           echo -e "merged.ttf"
           python getinfo.py merged.ttf
+          echo -e "\n\n"
+          fc-query -b merged.ttf
+          
           echo -e "\n\n\n\n\nmerged-fixed.ttf"
           python getinfo.py merged-fixed.ttf
-          echo -e "\n\n\n\n\nmerged-500.ttf"
-          python getinfo.py merged-500.ttf
-          echo -e "\n\n\n\n\n"
+          echo -e "\n\n"
+          fc-query -b merged-fixed.ttf
+          
+          echo -e "\n\n\n\n\nmerged-100.ttf"          
+          python getinfo.py merged-100.ttf
+          echo -e "\n\n"
+          fc-query -b merged-100.ttf
+          
+          echo -e "\n\n\n\n\n"          
           ls -ltrah
           ls -ltra
-          md5sum merged-500.ttf merged-fixed.ttf merged.ttf
+          md5sum merged-100.ttf merged-fixed.ttf merged.ttf merged-origin.ttf
           
         
 
