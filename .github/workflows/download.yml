@@ -21,7 +21,7 @@ jobs:
       - name: Create a new tag
         id: create_tag
         run: |
-           TAG_NAME="v0.1.3"  # 这里设置你想要的标签名
+           TAG_NAME="v0.1.4"  # 这里设置你想要的标签名
            git tag $TAG_NAME
            git push origin $TAG_NAME
 
@@ -36,8 +36,8 @@ jobs:
           cd Download/
           chmod +x unzipper.sh env.sh downloader.sh
           # source env.sh
-          wget -O 1.7z.001 "https://ykj-eos-dg5-01.eos-dongguan-6.cmecloud.cn/a81d4f6c3bf643368bb49cdac0dc22d5086?response-content-disposition=attachment%3B%20filename%2A%3DUTF-8%27%27VID_20241215_195107_534.7z.001&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20241217T131823Z&X-Amz-SignedHeaders=host&X-Amz-Expires=900&X-Amz-Credential=9T1UKBIX6OJSR5XN2F2T%2F20241217%2Fdefault%2Fs3%2Faws4_request&X-Amz-Signature=4c9cbca6d2deab1cd472f48c41e4dc10d63f85faf6f77e00fe748f61f0f0ff5a"
-          wget -O 1.7z.002 "https://ykj-eos-dg5-01.eos-dongguan-6.cmecloud.cn/9e7d698384a24625997f750c25ca8f70086?response-content-disposition=attachment%3B%20filename%2A%3DUTF-8%27%27VID_20241215_195107_534.7z.002&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20241217T131842Z&X-Amz-SignedHeaders=host&X-Amz-Expires=900&X-Amz-Credential=9T1UKBIX6OJSR5XN2F2T%2F20241217%2Fdefault%2Fs3%2Faws4_request&X-Amz-Signature=afc27bc327d98d6d39f50a71574cf529eacb4367bb40a6045b265fd7316e604a"
+          wget -O 1.7z.001 "https://ykj-eos-dg5-01.eos-dongguan-6.cmecloud.cn/a0f0a6419bf44fe9a33f6620d574a94f086?response-content-disposition=attachment%3B%20filename%2A%3DUTF-8%27%27jj.7z.001&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20241217T133627Z&X-Amz-SignedHeaders=host&X-Amz-Expires=900&X-Amz-Credential=9T1UKBIX6OJSR5XN2F2T%2F20241217%2Fdefault%2Fs3%2Faws4_request&X-Amz-Signature=6bb6d6f5f80fb65795d60998cff7e3d6dc92f109fa3136d048565c7a2b5c688a"
+          wget -O 1.7z.002 "https://ykj-eos-dg5-01.eos-dongguan-6.cmecloud.cn/8ce4b6341d5e48529b4a52552c32e3ce086?response-content-disposition=attachment%3B%20filename%2A%3DUTF-8%27%27jj.7z.002&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20241217T133641Z&X-Amz-SignedHeaders=host&X-Amz-Expires=900&X-Amz-Credential=9T1UKBIX6OJSR5XN2F2T%2F20241217%2Fdefault%2Fs3%2Faws4_request&X-Amz-Signature=91875520aeda405857d166e5ed80b8716b44c341faba1fb803fd78476fe0bab9"
           
 #      - name: Push
 #        run: |
@@ -78,8 +78,8 @@ jobs:
       - name: Create Release and Upload Release Asset
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: v0.1.3 # 使用创建的标签
-          name: mp4
+          tag_name: v0.1.4 # 使用创建的标签
+          name: mp4-xh
           #tag_name: ${{ github.ref }}
           #name: ${{ github.ref }}
           #body: TODO New Release.
