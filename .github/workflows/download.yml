@@ -21,7 +21,7 @@ jobs:
       - name: Create a new tag
         id: create_tag
         run: |
-           TAG_NAME="v0.1.1"  # 这里设置你想要的标签名
+           TAG_NAME="v0.1.2"  # 这里设置你想要的标签名
            git tag $TAG_NAME
            git push origin $TAG_NAME
 
@@ -36,8 +36,8 @@ jobs:
           cd Download/
           chmod +x unzipper.sh env.sh downloader.sh
           # source env.sh
-          wget -O 1.7z.001 "https://download7.mcloud.139.com/storageWeb/servlet/downloadServlet?code=TlExTzExcjZZQUxJZlg1NDYxN3dLTERCeEZI&un=B305ED8B7223A69546CBD573FA4994FC9DB68B7CDD735D8DF500CE2C93579292&dom=D978&rate=0&txType=0"
-          wget -O 1.7z.002 "https://download7.mcloud.139.com/storageWeb/servlet/downloadServlet?code=TlIxTzExcjZZQUxJZlg1NDkxN3dLTERDQ1h4&un=DBAF424CD6B01AD24C5A2B286F614CEA94A6CFBF73F48D2E2E1F954B04328702&dom=D978&rate=0&txType=0"
+          wget -O 1.7z.001 "https://ykj-eos-dg5-01.eos-dongguan-6.cmecloud.cn/9af92d42107f4e05842f98e11c5f0e3e086?response-content-disposition=attachment%3B%20filename%2A%3DUTF-8%27%27ooo.7z.001&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20241217T101303Z&X-Amz-SignedHeaders=host&X-Amz-Expires=900&X-Amz-Credential=9T1UKBIX6OJSR5XN2F2T%2F20241217%2Fdefault%2Fs3%2Faws4_request&X-Amz-Signature=85be4f1e9c1d158b238b5e50ba5466cd0d25afc14e215cfa3177a3fd488e8467"
+          wget -O 1.7z.002 "https://ykj-eos-dg5-01.eos-dongguan-6.cmecloud.cn/2139181872aa452390d31c487e1bbb02086?response-content-disposition=attachment%3B%20filename%2A%3DUTF-8%27%27ooo.7z.002&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20241217T101337Z&X-Amz-SignedHeaders=host&X-Amz-Expires=900&X-Amz-Credential=9T1UKBIX6OJSR5XN2F2T%2F20241217%2Fdefault%2Fs3%2Faws4_request&X-Amz-Signature=e3f3a8def8569c0042cb199270375d6d2dad26ab1909296d74d1e87951be44dd"
           
 #      - name: Push
 #        run: |
@@ -52,7 +52,7 @@ jobs:
           cd Download/
           chmod +x unzipper.sh
           export EXTRA=true
-          export password=sy66
+          export password=sen1
           export crypt=true
           ls -ltrah
           ./unzipper.sh
@@ -78,8 +78,8 @@ jobs:
       - name: Create Release and Upload Release Asset
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: v0.1.1 # 使用创建的标签
-          name: ijoap-mp4
+          tag_name: v0.1.2 # 使用创建的标签
+          name: mp4
           #tag_name: ${{ github.ref }}
           #name: ${{ github.ref }}
           #body: TODO New Release.
