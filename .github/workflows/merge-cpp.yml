@@ -57,7 +57,7 @@ jobs:
           mv ../English.ttf .
           mv ../ttf2otf.py .
           ls -ltrah && ls -ltra
-          python ttf2otf.py English.ttf
+          fontforge -script ttf2otf.py English.ttf
           
       - name: Build Merge Font
         shell: bash
