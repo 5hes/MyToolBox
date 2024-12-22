@@ -19,9 +19,9 @@ jobs:
 
       - name: Create a new tag
         run: |
-          # TAG_NAME="v0.0.5-font"
-          # git tag $TAG_NAME
-          # git push origin $TAG_NAME
+          TAG_NAME="v0.0.6-font"
+          git tag $TAG_NAME
+          git push origin $TAG_NAME
 
       - name: Install dependencies
         shell: bash
@@ -56,17 +56,17 @@ jobs:
           mv ../Chinese.otf .
           mv ../English.ttf .
           ls -ltrah && ls -ltra
-          otf2ttf Chinese.otf
+          fontforge -lang=ff -c 'Open(\$1); Generate(\$2);' English.ttf English.otf
           
       - name: Build Merge Font
         shell: bash
         run: |
           cd FontTools/MergeFont/字体合并补全工具-简体中文-1.1.0-linux-amd64
           ls -ltrah && ls -ltra
-          ./otfccdump --ignore-hints -o Eng.otd "English.ttf"
-          ./otfccdump --ignore-hints -o Cjk.otd "Chinese.ttf"
+          ./otfccdump --ignore-hints -o Eng.otd "English.otf"
+          ./otfccdump --ignore-hints -o Cjk.otd "Chinese.otf"
           ./merge-otd Eng.otd Cjk.otd
-          ./otfccbuild -q --keep-average-char-width -O3 -o merged.ttf Eng.otd
+          ./otfccbuild -q --keep-average-char-width -O3 -o merged.otf Eng.otd
           ls -ltrah && ls -ltra
 
       - name: Fix
@@ -74,33 +74,31 @@ jobs:
         run: |
           cd FontTools/MergeFont/字体合并补全工具-简体中文-1.1.0-linux-amd64
           cp ../fix-cpp.py .
-          cp merged.ttf merged-origin.ttf
-          python fix-cpp.py
-          python fix-spacing.py merged.ttf 100 merged-100.ttf
+          cp merged.otf merged-origin.otf
+          # python fix-cpp.py
+          # python fix-spacing.py merged.otf 100 merged-100.otf
           
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: merged
-          path: ./FontTools/MergeFont/字体合并补全工具-简体中文-1.1.0-linux-amd64/merged.ttf
+          path: ./FontTools/MergeFont/字体合并补全工具-简体中文-1.1.0-linux-amd64/merged.otf
 
-      - name: Upload artifact fixed
-        uses: actions/upload-artifact@v4
-        with:
-          name: merged-fixed
-          path: ./FontTools/MergeFont/字体合并补全工具-简体中文-1.1.0-linux-amd64/merged-fixed.ttf
+#       - name: Upload artifact fixed
+#         uses: actions/upload-artifact@v4
+#         with:
+#           name: merged-fixed
+#           path: ./FontTools/MergeFont/字体合并补全工具-简体中文-1.1.0-linux-amd64/merged-fixed.otf
 
       - name: Create Release and Upload Release Asset
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: v0.0.5-font
-          name: Harpf + Iovevka-love3.9alpha (Medium)
+          tag_name: v0.0.6-font
+          name: Harpf + Iovevka-4-alpha-hooky-mix
           draft: false
           prerelease: false
           files: |
-            ./FontTools/MergeFont/字体合并补全工具-简体中文-1.1.0-linux-amd64/merged-fixed.ttf
-            ./FontTools/MergeFont/字体合并补全工具-简体中文-1.1.0-linux-amd64/merged-origin.ttf
-            ./FontTools/MergeFont/字体合并补全工具-简体中文-1.1.0-linux-amd64/merged-100.ttf
+            ./FontTools/MergeFont/字体合并补全工具-简体中文-1.1.0-linux-amd64/merged-origin.otf
             
       - name: Get Help
         shell: bash
@@ -112,26 +110,25 @@ jobs:
       - name: Check info
         run: |
           cd FontTools/MergeFont/字体合并补全工具-简体中文-1.1.0-linux-amd64
-          echo -e "merged.ttf"
-          python getinfo.py merged.ttf
+          echo -e "merged.otf"
+          python getinfo.py merged.otf
           echo -e "\n\n"
-          fc-query -b merged.ttf
+          fc-query -b merged.otf
           
           echo -e "\n\n\n\n\nmerged-fixed.ttf"
-          python getinfo.py merged-fixed.ttf
+          # python getinfo.py merged-fixed.ttf
           echo -e "\n\n"
-          fc-query -b merged-fixed.ttf
+          # fc-query -b merged-fixed.ttf
           
           echo -e "\n\n\n\n\nmerged-100.ttf"          
-          python getinfo.py merged-100.ttf
+          # python getinfo.py merged-100.ttf
           echo -e "\n\n"
-          fc-query -b merged-100.ttf
+          # fc-query -b merged-100.ttf
           
           echo -e "\n\n\n\n\n"          
           ls -ltrah
           ls -ltra
-          md5sum merged-100.ttf merged-fixed.ttf merged.ttf merged-origin.ttf
-          
+          md5sum *.otf
         
 
 
