@@ -1,6 +1,7 @@
 name: Merge Font Cpp
 
 on:
+  push:
   workflow_dispatch:
     inputs:
       Merge:
@@ -28,7 +29,7 @@ jobs:
         run: |
           cd FontTools/MergeFont
           sudo apt-get update
-          sudo apt-get install xz-utils python3 ttfautohint fontconfig
+          sudo apt-get install xz-utils python3 ttfautohint fontconfig fontforge python3-fontforge
           pip install fonttools
           pip install otf2ttf
 
