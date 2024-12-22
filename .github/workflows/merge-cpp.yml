@@ -55,8 +55,9 @@ jobs:
           mv ../fix-spacing.py .
           mv ../Chinese.otf .
           mv ../English.ttf .
+          mv ../ttf2otf.py .
           ls -ltrah && ls -ltra
-          fontforge -lang=ff -c 'Open(\$1); Generate(\$2);' English.ttf English.otf
+          fontforge -script ttf2otf.py English.ttf
           
       - name: Build Merge Font
         shell: bash
