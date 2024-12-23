@@ -169,4 +169,3 @@ if __name__ == "__main__":
             args.family_name,
             args.version
         )
-    input("\033[0m按回车键退出...")
