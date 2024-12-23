@@ -23,9 +23,9 @@ jobs:
       - name: Create a new tag
         id: create_tag
         run: |
-           TAG_NAME="v0.1.6"  # 这里设置你想要的标签名
-           git tag $TAG_NAME
-           git push origin $TAG_NAME
+           # TAG_NAME="v0.1.6"  # 这里设置你想要的标签名
+           # git tag $TAG_NAME
+           # git push origin $TAG_NAME
 
       - name: Install Depends
         shell: bash
@@ -38,7 +38,7 @@ jobs:
           cd Download/
           chmod +x unzipper.sh env.sh downloader.sh
           # source env.sh
-          wget zip.zip "https://productionresultssa18.blob.core.windows.net/actions-results/77296c63-2f6d-4dca-9c28-8e89da64c990/workflow-job-run-5015ee18-cc8d-5890-6f18-7451317b8c86/artifacts/65e83a561328b64c7fd3d380ab32607ceac84ce62fd8a8da2a0235b475de6ed4.zip?rscd=attachment%3B+filename%3D%22termux-app_v0.118.0%2B5fec235-apt-android-7-github-release_arm64-v8a.zip%22&se=2024-12-23T13%3A39%3A40Z&sig=uAbmNF56pEx47I1EOa7r4D2SzeUBkdkD%2BkDOOXrHSH4%3D&ske=2024-12-23T23%3A01%3A16Z&skoid=ca7593d4-ee42-46cd-af88-8b886a2f84eb&sks=b&skt=2024-12-23T11%3A01%3A16Z&sktid=398a6654-997b-47e9-b12b-9515b896b4de&skv=2024-11-04&sp=r&spr=https&sr=b&st=2024-12-23T13%3A29%3A35Z&sv=2024-11-04"
+          wget -O zip.zip "https://productionresultssa18.blob.core.windows.net/actions-results/77296c63-2f6d-4dca-9c28-8e89da64c990/workflow-job-run-5015ee18-cc8d-5890-6f18-7451317b8c86/artifacts/65e83a561328b64c7fd3d380ab32607ceac84ce62fd8a8da2a0235b475de6ed4.zip?rscd=attachment%3B+filename%3D%22termux-app_v0.118.0%2B5fec235-apt-android-7-github-release_arm64-v8a.zip%22&se=2024-12-23T13%3A39%3A40Z&sig=uAbmNF56pEx47I1EOa7r4D2SzeUBkdkD%2BkDOOXrHSH4%3D&ske=2024-12-23T23%3A01%3A16Z&skoid=ca7593d4-ee42-46cd-af88-8b886a2f84eb&sks=b&skt=2024-12-23T11%3A01%3A16Z&sktid=398a6654-997b-47e9-b12b-9515b896b4de&skv=2024-11-04&sp=r&spr=https&sr=b&st=2024-12-23T13%3A29%3A35Z&sv=2024-11-04"
           # wget -O 1.7z.001 ""
           # wget -O 1.7z.002 ""
           
