@@ -1,6 +1,7 @@
 name: Download File
 
 on:
+  push:
   workflow_dispatch:
     inputs:
       task:
@@ -13,6 +14,7 @@ permissions: write-all
 jobs:
   task:
     runs-on: ubuntu-latest
+    permissions: write-all
 
     steps:
       - name: Check Out
