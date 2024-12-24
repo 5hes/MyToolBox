@@ -35,9 +35,10 @@ def convert_ttf_to_otf(input_file, backup=False):
 
         # 额外的优化步骤
         # font.autoHint()  # 自动提示以提高渲染质量
-        font.smooth()  # 平滑轮廓
+        # font.smooth()  # 平滑轮廓
         font.round()  # 四舍五入坐标以提高兼容性
         font.removeOverlap()  # 再次移除重叠以确保没有问题
+        font.head_optimized_for_cleartype = True
 
         # 设置字体特性
         # font.addLookup("gpos", "gpos", (("gpos", "1.0"),))
