@@ -44,7 +44,7 @@ def convert_ttf_to_otf(input_file, backup=False):
         # font.addLookup("gsub", "gsub", (("gsub", "1.0"),))
 
         # 生成 OTF 文件，使用更高质量的选项
-        font.generate(output_file, flags=("opentype", "no-kerning", "no-embed", "no-embed-fonts"))
+        font.generate(output_file, flags=("opentype", "no-embed", "no-embed-fonts"))
         print(f"Successfully converted '{input_file}' to '{output_file}' with super ultimate high quality settings.")
 
     except Exception as e:
