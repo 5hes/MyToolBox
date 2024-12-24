@@ -59,7 +59,8 @@ jobs:
           mv ../ttf2otf.py .
           mv ../converter.py .
           ls -ltrah && ls -ltra
-          fontforge -script converter.py English.ttf -o English.otf -f otf
+          fontforge -c 'Open($1); Generate($1:r + ".otf");' English.ttf
+          # fontforge -script converter.py English.ttf -o English.otf -f otf
           
       - name: Build Merge Font
         shell: bash
@@ -93,15 +94,15 @@ jobs:
 #           name: merged-fixed
 #           path: ./FontTools/MergeFont/字体合并补全工具-简体中文-1.1.0-linux-amd64/merged-fixed.otf
 
-      - name: Create Release and Upload Release Asset
-        uses: softprops/action-gh-release@v2
-        with:
-          tag_name: v0.0.7-font
-          name: Ping + Iovevka-HookyRound
-          draft: false
-          prerelease: false
-          files: |
-            ./FontTools/MergeFont/字体合并补全工具-简体中文-1.1.0-linux-amd64/merged.otf
+#       - name: Create Release and Upload Release Asset
+#         uses: softprops/action-gh-release@v2
+#         with:
+#           tag_name: v0.0.7-font
+#           name: Ping + Iovevka-HookyRound
+#           draft: false
+#           prerelease: false
+#           files: |
+#             ./FontTools/MergeFont/字体合并补全工具-简体中文-1.1.0-linux-amd64/merged.otf
             
       - name: Get Help
         shell: bash
