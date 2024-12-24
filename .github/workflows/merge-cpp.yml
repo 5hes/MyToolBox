@@ -59,7 +59,7 @@ jobs:
           mv ../ttf2otf.py .
           mv ../converter.py .
           ls -ltrah && ls -ltra
-          fontforge -c 'Open($1); Generate($1:r + ".otf");' English.ttf
+          fontforge -c 'Open("English.ttf"); Generate("English.otf");'
           # fontforge -script converter.py English.ttf -o English.otf -f otf
           
       - name: Build Merge Font
