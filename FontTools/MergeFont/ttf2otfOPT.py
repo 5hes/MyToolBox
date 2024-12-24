@@ -40,8 +40,8 @@ def convert_ttf_to_otf(input_file, backup=False):
         font.removeOverlap()  # 再次移除重叠以确保没有问题
 
         # 设置字体特性
-        font.addLookup("gpos", "gpos", (("gpos", "1.0"),))
-        font.addLookup("gsub", "gsub", (("gsub", "1.0"),))
+        # font.addLookup("gpos", "gpos", (("gpos", "1.0"),))
+        # font.addLookup("gsub", "gsub", (("gsub", "1.0"),))
 
         # 生成 OTF 文件，使用更高质量的选项
         font.generate(output_file, flags=("opentype", 'round', 'dummy-dsig', 'apple'))
