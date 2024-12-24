@@ -49,6 +49,7 @@ jobs:
         cd FontTools/MergeFont
         sudo apt-get update
         sudo apt-get install xz-utils python3 ttfautohint fontconfig fontforge python3-fontforge
+        python -m pip install foundrytools-cli
         pip install fonttools
         pip install otf2ttf
 
@@ -75,7 +76,8 @@ jobs:
         mv ../字体合并补全工具-简体中文-1.1.0-linux-amd64 .
         cd 字体合并补全工具-简体中文-1.1.0-linux-amd64
         ls -ltrah && ls -ltra
-        fontforge -script ttf2otfOPT.py English.ttf
+        ftcli converter ttf2otf --tolerance 0.0 English.ttf
+        # fontforge -script ttf2otfOPT.py English.ttf
         # fontforge -c 'open("English.ttf"); generate("English.otf");'
         # fontforge -script converter.py English.ttf -o English.otf -f otf
           
