@@ -64,7 +64,7 @@ jobs:
       run: |
         echo $PATH
         ls /usr/bin
-        ll /usr/bin
+        # ll /usr/bin
         
     - name: Download Tools
       shell: bash
