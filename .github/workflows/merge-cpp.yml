@@ -63,8 +63,8 @@ jobs:
     - name: Check PATH
       run: |
         echo $PATH
-        ls $PATH
-        ll $PATH
+        ls /usr/bin
+        ll /usr/bin
         
     - name: Download Tools
       shell: bash
