@@ -92,7 +92,8 @@ jobs:
         mv ../字体合并补全工具-简体中文-1.1.0-linux-amd64 .
         cd 字体合并补全工具-简体中文-1.1.0-linux-amd64
         ls -ltrah && ls -ltra
-        ft-cli converter ttf2otf --mode tx English.ttf
+        # ft-cli converter ttf2otf --mode tx English.ttf
+        ft-cli converter ttf2otf --tolerance 3.0 English.ttf
         # fontforge -script ttf2otfOPT.py English.ttf
         # fontforge -c 'open("English.ttf"); generate("English.otf");'
         # fontforge -script converter.py English.ttf -o English.otf -f otf
@@ -102,6 +103,7 @@ jobs:
       run: |
         cd FontTools/MergeFont/字体合并补全工具-简体中文-1.1.0-linux-amd64
         ls -ltrah && ls -ltra
+        exit 127
         ./otfccdump --ignore-hints -o Eng.otd "English.otf"
         ./otfccdump --ignore-hints -o Cjk.otd "Chinese.otf"
         ./merge-otd Eng.otd Cjk.otd
@@ -126,7 +128,7 @@ jobs:
     - name: Create Release and Upload Release Asset
       uses: softprops/action-gh-release@v2
       with:
-        tag_name: v0.0.7-font
+        tag_name: v0.0.999-font
         name: Ping + IovevkaHookyRound
         draft: false
         prerelease: false
