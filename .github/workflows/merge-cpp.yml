@@ -40,9 +40,9 @@ jobs:
 
     - name: Create a new tag
       run: |
-        # TAG_NAME="v0.0.8-font"
-        # git tag $TAG_NAME
-        # git push origin $TAG_NAME
+        TAG_NAME="v0.0.9-font"
+        git tag $TAG_NAME
+        git push origin $TAG_NAME
 
     - name: Install dependencies
       shell: bash
@@ -59,9 +59,7 @@ jobs:
         git clone https://github.com/ftCLI/FoundryTools-CLI-2.git
         cp FoundryTools-CLI-2/foundrytools_cli_2/cli/converter/tasks/ttf_to_otf.py FontTools/MergeFont
         cd FoundryTools-CLI-2
-        pip install .
-        which ftcli-2
-        ftcli-2 --help
+        # pip install .
         
     - name: Check PATH
       run: |
@@ -80,9 +78,10 @@ jobs:
       shell: bash
       run: |
         cd FontTools/MergeFont
-        wget -O Chinese.otf $(cat link_sc)
-        # wget -O English.otf "https://github.com/JetBrains/JetBrainsMono/raw/refs/heads/master/fonts/otf/JetBrainsMono-Regular.otf"
-        wget -O English.ttf $(cat link_en)
+        wget -O Chinese.otf "https://github.com/ACT-02/PingFang-for-Windows/raw/refs/heads/main/PingFangSC-Medium.otf"
+        # wget -O Chinese.otf $(cat link_sc)
+        wget -O English.otf "https://github.com/JetBrains/JetBrainsMono/raw/refs/heads/master/fonts/otf/JetBrainsMono-Medium.otf"
+        # wget -O English.ttf $(cat link_en)
 
     - name: otf2ttf
       shell: bash
@@ -131,15 +130,15 @@ jobs:
 #         name: merged-fixed
 #         path: ./FontTools/MergeFont/字体合并补全工具-简体中文-1.1.0-linux-amd64/merged-fixed.otf
 
-#     - name: Create Release and Upload Release Asset
-#       uses: softprops/action-gh-release@v2
-#       with:
-#         tag_name: v0.0.7-font
-#         name: Ping + JetBrainsMono (Regular)
-#         draft: false
-#         prerelease: false
-#         files: |
-#             ./FontTools/MergeFont/字体合并补全工具-简体中文-1.1.0-linux-amd64/merged.otf
+    - name: Create Release and Upload Release Asset
+      uses: softprops/action-gh-release@v2
+      with:
+        tag_name: v0.0.9-font
+        name: Ping + JetBrainsMono (Medium)
+        draft: false
+        prerelease: false
+        files: |
+            ./FontTools/MergeFont/字体合并补全工具-简体中文-1.1.0-linux-amd64/merged.otf
             
     - name: Get Help
       shell: bash
