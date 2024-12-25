@@ -40,9 +40,9 @@ jobs:
 
     - name: Create a new tag
       run: |
-        TAG_NAME="v0.0.9-font"
-        git tag $TAG_NAME
-        git push origin $TAG_NAME
+        # TAG_NAME="v0.0.9-font"
+        # git tag $TAG_NAME
+        # git push origin $TAG_NAME
 
     - name: Install dependencies
       shell: bash
@@ -52,20 +52,20 @@ jobs:
         sudo apt-get install xz-utils python3 ttfautohint fontconfig fontforge python3-fontforge
         # python -m pip install foundrytools-cli
         pip install fonttools
-        pip install otf2ttf
+        # pip install otf2ttf
 
     - name: Install ftcli
       run: |
         git clone https://github.com/ftCLI/FoundryTools-CLI-2.git
         cp FoundryTools-CLI-2/foundrytools_cli_2/cli/converter/tasks/ttf_to_otf.py FontTools/MergeFont
         cd FoundryTools-CLI-2
-        # pip install .
+        pip install .
         
     - name: Check PATH
       run: |
-        echo $PATH
-        ls /usr/bin
-        # ll /usr/bin
+        ft-cli
+        pip show foundrytools-cli-2
+        ft-cli --help
         
     - name: Download Tools
       shell: bash
@@ -78,10 +78,10 @@ jobs:
       shell: bash
       run: |
         cd FontTools/MergeFont
-        wget -O Chinese.otf "https://github.com/ACT-02/PingFang-for-Windows/raw/refs/heads/main/PingFangSC-Medium.otf"
-        # wget -O Chinese.otf $(cat link_sc)
-        wget -O English.otf "https://github.com/JetBrains/JetBrainsMono/raw/refs/heads/master/fonts/otf/JetBrainsMono-Medium.otf"
-        # wget -O English.ttf $(cat link_en)
+        # wget -O Chinese.otf "https://github.com/ACT-02/PingFang-for-Windows/raw/refs/heads/main/PingFangSC-Medium.otf"
+        wget -O Chinese.otf $(cat link_sc)
+        # wget -O English.otf "https://github.com/JetBrains/JetBrainsMono/raw/refs/heads/master/fonts/otf/JetBrainsMono-Medium.otf"
+        wget -O English.ttf $(cat link_en)
 
     - name: otf2ttf
       shell: bash
@@ -92,8 +92,7 @@ jobs:
         mv ../字体合并补全工具-简体中文-1.1.0-linux-amd64 .
         cd 字体合并补全工具-简体中文-1.1.0-linux-amd64
         ls -ltrah && ls -ltra
-        # python ttf_to_otf.py --tolerance 0.0 English.ttf
-        # ftcli-2 converter ttf2otf --tolerance 0.0 English.ttf
+        ft-cli converter ttf2otf --tolerance 0.0 English.ttf
         # fontforge -script ttf2otfOPT.py English.ttf
         # fontforge -c 'open("English.ttf"); generate("English.otf");'
         # fontforge -script converter.py English.ttf -o English.otf -f otf
@@ -130,15 +129,15 @@ jobs:
 #         name: merged-fixed
 #         path: ./FontTools/MergeFont/字体合并补全工具-简体中文-1.1.0-linux-amd64/merged-fixed.otf
 
-    - name: Create Release and Upload Release Asset
-      uses: softprops/action-gh-release@v2
-      with:
-        tag_name: v0.0.9-font
-        name: Ping + JetBrainsMono (Medium)
-        draft: false
-        prerelease: false
-        files: |
-            ./FontTools/MergeFont/字体合并补全工具-简体中文-1.1.0-linux-amd64/merged.otf
+#     - name: Create Release and Upload Release Asset
+#       uses: softprops/action-gh-release@v2
+#       with:
+#         tag_name: v0.0.7-font
+#         name: Ping + JetBrainsMono (Medium)
+#         draft: false
+#         prerelease: false
+#         files: |
+#           ./FontTools/MergeFont/字体合并补全工具-简体中文-1.1.0-linux-amd64/merged.otf
             
     - name: Get Help
       shell: bash
