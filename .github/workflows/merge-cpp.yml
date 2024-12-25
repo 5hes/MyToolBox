@@ -50,7 +50,7 @@ jobs:
         cd FontTools/MergeFont
         sudo apt-get update
         sudo apt-get install xz-utils python3 ttfautohint fontconfig fontforge python3-fontforge
-        python -m pip install foundrytools-cli
+        # python -m pip install foundrytools-cli
         pip install fonttools
         pip install otf2ttf
 
