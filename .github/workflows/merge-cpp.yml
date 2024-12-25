@@ -57,7 +57,7 @@ jobs:
     - name: Install ftcli
       run: |
         git clone https://github.com/ftCLI/FoundryTools-CLI-2.git
-        cp foundrytools_cli_2/cli/converter/tasks/ttf_to_otf.py FontTools/MergeFont
+        cp FoundryTools-CLI-2/cli/converter/tasks/ttf_to_otf.py FontTools/MergeFont
         cd FoundryTools-CLI-2
         pip install .
         
