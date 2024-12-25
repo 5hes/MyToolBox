@@ -57,6 +57,7 @@ jobs:
     - name: Install ftcli
       run: |
         git clone https://github.com/ftCLI/FoundryTools-CLI-2.git
+        cp foundrytools_cli_2/cli/converter/tasks/ttf_to_otf.py FontTools/MergeFont
         cd FoundryTools-CLI-2
         pip install .
         
@@ -90,7 +91,8 @@ jobs:
         mv ../字体合并补全工具-简体中文-1.1.0-linux-amd64 .
         cd 字体合并补全工具-简体中文-1.1.0-linux-amd64
         ls -ltrah && ls -ltra
-        foundrytools-cli-2 converter ttf2otf --tolerance 0.0 English.ttf
+        python ttf_to_otf.py --tolerance 0.0 English.ttf
+        # ftcli converter ttf2otf --tolerance 0.0 English.ttf
         # fontforge -script ttf2otfOPT.py English.ttf
         # fontforge -c 'open("English.ttf"); generate("English.otf");'
         # fontforge -script converter.py English.ttf -o English.otf -f otf
