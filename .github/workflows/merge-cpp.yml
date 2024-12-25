@@ -116,28 +116,23 @@ jobs:
         cp merged.otf merged-origin.otf
         # python fix-cpp.py
         # python fix-spacing.py merged.otf 100 merged-100.otf
-          
-    - name: Upload artifact
-      uses: actions/upload-artifact@v4
-      with:
-        name: merged
-        path: ./FontTools/MergeFont/字体合并补全工具-简体中文-1.1.0-linux-amd64/merged.otf
 
 #     - name: Upload artifact fixed
 #       uses: actions/upload-artifact@v4
 #       with:
-#         name: merged-fixed
-#         path: ./FontTools/MergeFont/字体合并补全工具-简体中文-1.1.0-linux-amd64/merged-fixed.otf
+#         name: merged
+#         path: ./FontTools/MergeFont/字体合并补全工具-简体中文-1.1.0-linux-amd64/merged.otf
 
     - name: Create Release and Upload Release Asset
       uses: softprops/action-gh-release@v2
       with:
         tag_name: v0.0.7-font
-        name: Ping + JetBrainsMono (Medium)
+        name: Ping + IovevkaHookyRound
         draft: false
         prerelease: false
         files: |
           ./FontTools/MergeFont/字体合并补全工具-简体中文-1.1.0-linux-amd64/merged.otf
+          ./FontTools/MergeFont/字体合并补全工具-简体中文-1.1.0-linux-amd64/English.otf
             
     - name: Get Help
       shell: bash
