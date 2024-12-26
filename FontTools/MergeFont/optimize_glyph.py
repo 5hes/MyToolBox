@@ -352,7 +352,7 @@ def process_font(input_file, simplify_value=0.5):
 
         # 处理优化字形扩展（可选）
 
-        processing_optimization_glyph_extension(glyph)
+        # processing_optimization_glyph_extension(glyph)
 
 
 
