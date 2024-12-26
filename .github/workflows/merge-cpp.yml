@@ -40,9 +40,9 @@ jobs:
 
     - name: Create a new tag
       run: |
-        # TAG_NAME="v0.0.9-font"
-        # git tag $TAG_NAME
-        # git push origin $TAG_NAME
+        TAG_NAME="v0.1.0-font"
+        git tag $TAG_NAME
+        git push origin $TAG_NAME
 
     - name: Install dependencies
       shell: bash
@@ -80,7 +80,7 @@ jobs:
         cd FontTools/MergeFont
         wget -O Chinese.otf "https://github.com/ACT-02/PingFang-for-Windows/raw/refs/heads/main/PingFangSC-Semibold.otf"
         # wget -O Chinese.otf $(cat link_sc)
-        wget -O English.otf "https://github.com/JetBrains/JetBrainsMono/raw/refs/heads/master/fonts/otf/JetBrainsMono-Bold.otf"
+        wget -O English.otf "https://github.com/JetBrains/JetBrainsMono/raw/refs/heads/master/fonts/otf/JetBrainsMono-SemiBold.otf"
         # wget -O English.ttf $(cat link_en)
 
     - name: otf2ttf
@@ -110,9 +110,8 @@ jobs:
         ./merge-otd Eng.otd Cjk.otd
         ./otfccbuild -q --keep-average-char-width -O3 -o merged.otf Eng.otd
         ls -ltrah && ls -ltra
-        fontforge -script optimize_glyph.py merged.otf
-        ls -ltrah && ls -ltra
-        exit 127
+        # fontforge -script optimize_glyph.py merged.otf
+        # ls -ltrah && ls -ltra
 
     - name: Fix
       shell: bash
@@ -132,8 +131,8 @@ jobs:
     - name: Create Release and Upload Release Asset
       uses: softprops/action-gh-release@v2
       with:
-        tag_name: v0.0.999-font
-        name: Ping + IovevkaHookyRound
+        tag_name: v0.1.0-font
+        name: PingFang@ACT-02(github.com) + JetBrainsMono (SemiBold)
         draft: false
         prerelease: false
         files: |
