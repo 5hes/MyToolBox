@@ -387,7 +387,7 @@ def process_font(input_file, simplify_value=0.5):
 
 
 if __name__ == "__main__":
-
+"""
     import argparse
 
 
@@ -412,8 +412,8 @@ if __name__ == "__main__":
 
 
 
-    # if not args.font_file:
-
+    if not args.font_file:
+"""
 
     
     # input("\033[0m按回车键退出...")
