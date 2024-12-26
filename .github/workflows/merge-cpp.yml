@@ -78,10 +78,10 @@ jobs:
       shell: bash
       run: |
         cd FontTools/MergeFont
-        # wget -O Chinese.otf "https://github.com/ACT-02/PingFang-for-Windows/raw/refs/heads/main/PingFangSC-Medium.otf"
-        wget -O Chinese.otf $(cat link_sc)
-        # wget -O English.otf "https://github.com/JetBrains/JetBrainsMono/raw/refs/heads/master/fonts/otf/JetBrainsMono-Medium.otf"
-        wget -O English.ttf $(cat link_en)
+        wget -O Chinese.otf "https://github.com/ACT-02/PingFang-for-Windows/raw/refs/heads/main/PingFangSC-Medium.otf"
+        # wget -O Chinese.otf $(cat link_sc)
+        wget -O English.otf "https://github.com/JetBrains/JetBrainsMono/raw/refs/heads/master/fonts/otf/JetBrainsMono-Medium.otf"
+        # wget -O English.ttf $(cat link_en)
 
     - name: otf2ttf
       shell: bash
@@ -97,6 +97,7 @@ jobs:
         # fontforge -script ttf2otfOPT.py English.ttf
         # fontforge -c 'open("English.ttf"); generate("English.otf");'
         # fontforge -script converter.py English.ttf -o English.otf -f otf
+        pyftmerge English.otf Chinese.otf
           
     - name: Build Merge Font
       shell: bash
