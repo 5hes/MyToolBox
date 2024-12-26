@@ -388,7 +388,7 @@ def process_font(input_file, simplify_value=0.5):
 
 if __name__ == "__main__":
 
-    # import argparse
+    import argparse
 
 
 
@@ -408,7 +408,7 @@ if __name__ == "__main__":
 
 
 
-    # args = parser.parse_args()
+    args = parser.parse_args()
 
 
 
