@@ -396,15 +396,15 @@ if __name__ == "__main__":
 
     parser.add_argument('font_file', nargs='?', help='字体文件路径')
 
-    # parser.add_argument(
+    parser.add_argument(
 
-        # '-s', '--simplify',
+        '-s', '--simplify',
 
-        # type=float, default=0.5,
+        type=float, default=0.5,
 
-        # help='simplify 参数值 (默认: 0.5)'
+        help='simplify 参数值 (默认: 0.5)'
 
-    # )
+    )
 
 
 
