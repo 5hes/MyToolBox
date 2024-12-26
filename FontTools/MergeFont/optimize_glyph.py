@@ -302,11 +302,11 @@ def process_font(input_file, simplify_value=0.5):
 
         # 第一轮优化：初步清理和简化
 
-        # glyph.simplify(0.1, ('mergelines', 'choosehv'), 0.1, 0.1, 0)
+        glyph.simplify(0.1, ('mergelines', 'choosehv'), 0.1, 0.1, 0)
 
-        # glyph.round(1)
+        glyph.round(1)
 
-        # glyph.simplify(0, ('forcelines',))  # 强制将接近直线的段转换为直线
+        glyph.simplify(0, ('forcelines',))  # 强制将接近直线的段转换为直线
 
 
 
@@ -314,45 +314,45 @@ def process_font(input_file, simplify_value=0.5):
 
         process_line_endpoints(glyph)
 
-        # glyph.simplify(simplify_value, ('mergelines', 'smoothcurves', 'removesingletonpoints'), 0.3, 0, 0.5)
+        glyph.simplify(simplify_value, ('mergelines', 'smoothcurves', 'removesingletonpoints'), 0.3, 0, 0.5)
 
 
 
         # 第二轮优化：添加必要的控制点和标准化
 
-        # glyph.addExtrema()            # 在曲线的极值处添加控制点，提高编辑精度
+        glyph.addExtrema()            # 在曲线的极值处添加控制点，提高编辑精度
 
-        # glyph.canonicalContours()     # 确保轮廓按标准顺序排列
+        glyph.canonicalContours()     # 确保轮廓按标准顺序排列
 
-        # glyph.canonicalStart()        # 设置标准起始点，有助于后续处理
+        glyph.canonicalStart()        # 设置标准起始点，有助于后续处理
 
 
 
         # 第三轮优化：最终清理
 
-        # glyph.round()                 # 将控制点坐标取整
+        glyph.round()                 # 将控制点坐标取整
 
-        # glyph.simplify()              # 再次简化轮廓，去除冗余点
+        glyph.simplify()              # 再次简化轮廓，去除冗余点
 
 
 
         # 第四轮优化：轮廓处理和微调
 
-        # glyph.removeOverlap()         # 合并所有重叠的路径
+        glyph.removeOverlap()         # 合并所有重叠的路径
 
-        # glyph.correctDirection()      # 确保外轮廓为顺时针，内轮廓为逆时针
+        glyph.correctDirection()      # 确保外轮廓为顺时针，内轮廓为逆时针
 
-        # glyph.simplify(simplify_value, ('mergelines', 'smoothcurves'), 0.3, 0, 0.5)
+        glyph.simplify(simplify_value, ('mergelines', 'smoothcurves'), 0.3, 0, 0.5)
 
-        # glyph.round()                 # 最终的坐标取整
+        glyph.round()                 # 最终的坐标取整
 
-        # glyph.autoHint()              # 添加自动提示信息，改善小尺寸显示效果
+        glyph.autoHint()              # 添加自动提示信息，改善小尺寸显示效果
 
 
 
         # 处理优化字形扩展（可选）
 
-        # processing_optimization_glyph_extension(glyph)
+        processing_optimization_glyph_extension(glyph)
 
 
 
@@ -386,33 +386,33 @@ def process_font(input_file, simplify_value=0.5):
 
 
 
-if __name__ == "__main__":
+# if __name__ == "__main__":
 
-    import argparse
-
-
-
-    parser = argparse.ArgumentParser(description='字体轮廓优化工具')
-
-    parser.add_argument('font_file', nargs='?', help='字体文件路径')
-
-    parser.add_argument(
-
-        '-s', '--simplify',
-
-        type=float, default=0.5,
-
-        help='simplify 参数值 (默认: 0.5)'
-
-    )
+    # import argparse
 
 
 
-    args = parser.parse_args()
+    # parser = argparse.ArgumentParser(description='字体轮廓优化工具')
+
+    # parser.add_argument('font_file', nargs='?', help='字体文件路径')
+
+    # parser.add_argument(
+
+    #     '-s', '--simplify',
+
+    #     type=float, default=0.5,
+
+    #     help='simplify 参数值 (默认: 0.5)'
+
+    # )
 
 
 
-    if not args.font_file:
+    # args = parser.parse_args()
+
+
+
+    # if not args.font_file:
 
         print("\033[32m\n ============================= 使用说明 ==============================")
 
@@ -472,7 +472,7 @@ if __name__ == "__main__":
 
         # input("\033[0m按回车键退出...")
 
-        sys.exit(1)
+        # sys.exit(1)
 
 
 
@@ -484,9 +484,9 @@ if __name__ == "__main__":
 
         print("处理完成！")
 
-    except Exception as e:
+    # except Exception as e:
 
-        print(f"\n\033[31m发生严重错误：{str(e)}\033[0m")
+        # print(f"\n\033[31m发生严重错误：{str(e)}\033[0m")
 
         # input("按回车键退出...")
 
