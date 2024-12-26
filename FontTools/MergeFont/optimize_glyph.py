@@ -379,15 +379,18 @@ def process_font(input_file, simplify_value=0.5):
     # file_name, file_extension = os.path.splitext(input_file)
 
     # output_file = f"{file_name}_merge_glyphs{file_extension}"
-    file_name, file_extension = "English"
+
+    # 获取字体家族名称
+
+    file_name, file_extension = font.familyName
 
     output_file = f"{file_name}_merge_glyphs.otf"
 
     font.generate(output_file, flags=('opentype', 'round', 'dummy-dsig', 'apple'))
 
     print(f"\n新字体已保存为: {output_file}")
-
-
+    
+    font.close()
 
 if __name__ == "__main__":
 
