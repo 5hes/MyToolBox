@@ -64,7 +64,7 @@ import contextlib
 
 
 
-os.system('color')
+# os.system('color')
 
 
 
