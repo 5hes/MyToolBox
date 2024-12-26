@@ -387,33 +387,33 @@ def process_font(input_file, simplify_value=0.5):
 
 
 if __name__ == "__main__":
-"""
-    import argparse
+
+    # import argparse
 
 
 
-    parser = argparse.ArgumentParser(description='字体轮廓优化工具')
+    # parser = argparse.ArgumentParser(description='字体轮廓优化工具')
 
-    parser.add_argument('font_file', nargs='?', help='字体文件路径')
+    # parser.add_argument('font_file', nargs='?', help='字体文件路径')
 
-    parser.add_argument(
+    # parser.add_argument(
 
-        '-s', '--simplify',
+        # '-s', '--simplify',
 
-        type=float, default=0.5,
+        # type=float, default=0.5,
 
-        help='simplify 参数值 (默认: 0.5)'
+        # help='simplify 参数值 (默认: 0.5)'
 
-    )
-
-
-
-    args = parser.parse_args()
+    # )
 
 
 
-    if not args.font_file:
-"""
+    # args = parser.parse_args()
+
+
+
+    # if not args.font_file:
+
 
     
     # input("\033[0m按回车键退出...")
