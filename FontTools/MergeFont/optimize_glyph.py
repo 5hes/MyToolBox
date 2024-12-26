@@ -392,9 +392,9 @@ if __name__ == "__main__":
 
 
 
-    # parser = argparse.ArgumentParser(description='字体轮廓优化工具')
+    parser = argparse.ArgumentParser(description='字体轮廓优化工具')
 
-    # parser.add_argument('font_file', nargs='?', help='字体文件路径')
+    parser.add_argument('font_file', nargs='?', help='字体文件路径')
 
     # parser.add_argument(
 
