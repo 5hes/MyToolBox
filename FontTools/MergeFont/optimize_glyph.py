@@ -376,9 +376,12 @@ def process_font(input_file, simplify_value=0.5):
 
     # 保存新字体
 
-    file_name, file_extension = os.path.splitext(input_file)
+    # file_name, file_extension = os.path.splitext(input_file)
 
-    output_file = f"{file_name}_merge_glyphs{file_extension}"
+    # output_file = f"{file_name}_merge_glyphs{file_extension}"
+    file_name, file_extension = "English"
+
+    output_file = f"{file_name}_merge_glyphs.otf"
 
     font.generate(output_file, flags=('opentype', 'round', 'dummy-dsig', 'apple'))
 
@@ -394,7 +397,7 @@ if __name__ == "__main__":
 
     parser = argparse.ArgumentParser(description='字体轮廓优化工具')
 
-    # parser.add_argument('font_file', nargs='?', help='字体文件路径')
+    parser.add_argument('font_file', nargs='?', help='字体文件路径')
 
     parser.add_argument(
 
