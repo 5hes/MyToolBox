@@ -414,63 +414,9 @@ def process_font(input_file, simplify_value=0.5):
 
     # if not args.font_file:
 
-        print("\033[32m\n ============================= 使用说明 ==============================")
 
-        print("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓")
-
-        print("┃　1. 打开命令行(cmd)　　　　　　　　　　　　　　　　　　 　　　　　 ┃")
-
-        print("┃　2. 基本命令：　　　　　　　　　　　　　　　　　　 　　　　　　　  ┃")
-
-        print('┃　 　fontforge -script optimize_glyph.py "你的字体文件路径"　　　　 ┃')
-
-        print("┃　3. 高级命令（自定义 simplify 参数）：　　　　　　　　　　　　　   ┃")
-
-        print('┃　 　fontforge -script optimize_glyph.py "字体路径" -s 2.0　　　 　 ┃')
-
-        print("┃　　　　　　　　　　　　　　　　　　 　　　　　　　　　　　　　　　 ┃")
-
-        print("┃　例如：　　　　　　　　　　　　　　　　　　　　　 　　　　　　　　 ┃")
-
-        print('┃　 　fontforge -script optimize_glyph.py "C:\\字体\\测试字体.ttf"　　 ┃')
-
-        print('┃　 　fontforge -script optimize_glyph.py "测试字体.ttf" -s 2.5　　　┃')
-
-        print(r'┃　 或者把 `fontforge` 换成 ".\bin\fontforge.exe" 　　　　　　　　　 ┃')
-
-        print("┃　　　　　　　　　　　　　　　　　　 　　　　　　　　　　　　　　　 ┃")
-
-        print("┃　注意：路径中如果有空格，需要用引号括起来　　　　　　　　　　　　  ┃")
-
-        print("┃　　　　　　　　　　　　　　　　　　 　　　　　　　　　　　　　　　 ┃")
-
-        print("┃　关于 simplify 参数：　　　　　　　　　　　　　　　　　　　　　　　┃")
-
-        print("┃　·作用：控制字体轮廓的简化程度　　　　　　　　　　　　　　　　　　┃")
-
-        print("┃　·默认值：0.5（保守模式）　　　　　　　　　　　　　　　　　　　　 ┃")
-
-        print("┃　·参考值范围：　　　　　　　　　　　　　　　　　　　　　　　　　　┃")
-
-        print("┃　　- 0.5-1.0：保守模式，保留更多细节，文件更大　　　　　　　　　　 ┃")
-
-        print("┃　　- 1.0-2.0：平衡模式，适中的优化效果　　　　　　　　　　　　　　 ┃")
-
-        print("┃　　- 2.0-3.0：激进模式，更大程度简化，文件更小　　　　　　　　　　 ┃")
-
-        print("┃　·建议：　　　　　　　　　　　　　　　　　　　　　　　　　　　　　┃")
-
-        print("┃　　- 细节丰富的美术字体建议使用较小值（0.5-1.0）　　　　　　　　　 ┃")
-
-        print("┃　　- 常规字体推荐使用默认值（1.5）　　　　　　　　　　　　　　　　 ┃")
-
-        print("┃　　- 笔画简单的字体可以尝试较大值（2.0-3.0）　　　　　　　　　　　 ┃")
-
-        print("┃　　　　　　　　　　　　　　　　　　 　　　　　　　　　　　　　　　 ┃")
-
-        print('┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛')
-
-        # input("\033[0m按回车键退出...")
+    
+    # input("\033[0m按回车键退出...")
 
         # sys.exit(1)
 
