@@ -1,6 +1,7 @@
 name: font_opt
 
 on:
+  push:
   workflow_dispatch:
     inputs:
       opt:
