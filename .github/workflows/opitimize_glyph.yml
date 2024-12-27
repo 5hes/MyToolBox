@@ -59,12 +59,13 @@ jobs:
         
     - name: Opitimizing
       run: |
-        cp FontTools/MergeFont/optimize_glyph.py work/
+        cp FontTools/MergeFont/ work/
         cp FontTools/MergeFont/Optimizer/* work/
         cd work
         ls -ltrah && ls -ltra
         fontforge -script optimize_glyph.py English.otf
-        python woff2OPT.py English.otf English.woff2
+        # python woff2OPT.py English.otf English.woff2
+        fontforge -script converter.py -o English.woff2
         python woff2otf.py English.woff2 woffOPT.otf
         python woff2otfft.py . otf
         # fontforge -script optimize_glyph.py Chinese.otf
