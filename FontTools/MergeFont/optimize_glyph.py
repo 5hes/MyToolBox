@@ -346,7 +346,7 @@ def process_font(input_file, simplify_value=0.5):
 
         glyph.round()                 # 最终的坐标取整
 
-        glyph.autoHint()              # 添加自动提示信息，改善小尺寸显示效果
+        # glyph.autoHint()              # 添加自动提示信息，改善小尺寸显示效果
 
 
 
@@ -386,7 +386,7 @@ def process_font(input_file, simplify_value=0.5):
 
     file_extension = font.familyname
 
-    output_file = f"{file_name}_merge_glyphs.otf"
+    output_file = f"font_merge_glyphs.otf"
 
     font.generate(output_file, flags=('opentype', 'round', 'dummy-dsig', 'apple'))
 
