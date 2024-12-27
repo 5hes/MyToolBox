@@ -4,6 +4,7 @@ import tkinter as tk
 from tkinter import filedialog, messagebox, ttk
 from ttkthemes import ThemedTk
 import shutil
+from pyvirtualdisplay import Display
 
 def find_pyftsubset():
     pyftsubset_path = shutil.which('pyftsubset')
@@ -149,6 +150,9 @@ class FontOptimizerApp:
         optimize_font(input_path, output_path, glyphs, features, flavor)
 
 if __name__ == "__main__":
+    # 启动虚拟显示
+    display = Display(visible=0, size=(800, 600))
+    display.start()
     root = ThemedTk(theme="arc")
     app = FontOptimizerApp(root)
     root.mainloop()
