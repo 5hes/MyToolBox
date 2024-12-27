@@ -46,7 +46,7 @@ jobs:
       run: |
         sudo apt-get update
         sudo apt-get install fontforge
-        pip install fonttools ttkthemes brotli PyVirtualDisplay
+        pip install fonttools ttkthemes brotli PyVirtualDisplay woff2 -y
     
     - name: Download fonts
       run: |
@@ -55,7 +55,6 @@ jobs:
         wget -O English.otf "https://github.com/JetBrains/JetBrainsMono/raw/refs/heads/master/fonts/otf/JetBrainsMono-SemiBold.otf"
         wget -O woff2otfft.py "https://github.com/basisvectors/woff2otf/raw/refs/heads/main/woff2otf.py"
         wget "https://github.com/hanikesn/woff2otf/raw/refs/heads/main/woff2otf.py"
-        
         
     - name: Opitimizing
       run: |
