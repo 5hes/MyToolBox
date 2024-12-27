@@ -51,7 +51,8 @@ jobs:
     - name: Download fonts
       run: |
         # mkdir work && cd work
-        realhome=$PWD
+        pwd
+        realhome="$PWD"
         cd FontTools/MergeFont
         mkdir Optimizer && cd Optimizer
         wget -O woff2OPT.py "https://github.com/OlinykFS/font-Optimization/raw/refs/heads/master/main.py"
@@ -59,6 +60,7 @@ jobs:
         wget -O woff2otfft.py "https://github.com/basisvectors/woff2otf/raw/refs/heads/main/woff2otf.py"
         wget "https://github.com/hanikesn/woff2otf/raw/refs/heads/main/woff2otf.py"
         cd $realhome
+        pwd
         git config --global user.email "actions@github.com"
         git config --global user.name "actions"
         git add FontTools/MergeFont/Optimizer/FontTools/MergeFont/woff2OPT.py
