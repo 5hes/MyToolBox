@@ -384,7 +384,7 @@ def process_font(input_file, simplify_value=0.5):
 
     file_name, file_extension = font.familyname
 
-    output_file = f"{file_name}_merge_glyphs.otf"
+    output_file = f"English_merge_glyphs.otf"
 
     font.generate(output_file, flags=('opentype', 'round', 'dummy-dsig', 'apple'))
 
