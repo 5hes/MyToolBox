@@ -56,7 +56,6 @@ jobs:
         
     - name: Opitimizing
       run: |
-        cp English.otf work/
         cp FontTools/MergeFont/optimize_glyph.py work/
         cd work
         ls -ltrah && ls -ltra
