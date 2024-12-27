@@ -1,0 +1,61 @@
+name: font_opt
+
+on:
+  workflow_dispatch:
+    inputs:
+      opt:
+        description: "Optimize font(glyph and more)"
+        required: true
+        type: boolean
+  
+jobs:
+  opt:
+    runs-on: ubuntu-latest
+  
+    steps:
+    - uses: actions/checkout@v4.1.1
+
+    - name: Replace software sources with the latest
+      run: |
+        # 删除原有的软件源
+        sudo rm -f /etc/apt/sources.list
+
+        # 添加最新的 Ubuntu 24.04 (Noble Numbat) 官方软件源
+        echo "deb http://archive.ubuntu.com/ubuntu/ jammy main restricted universe multiverse" | sudo tee /etc/apt/sources.list
+        echo "deb http://archive.ubuntu.com/ubuntu/ jammy-updates main restricted universe multiverse" | sudo tee -a /etc/apt/sources.list
+        echo "deb http://archive.ubuntu.com/ubuntu/ jammy-security main restricted universe multiverse" | sudo tee -a /etc/apt/sources.list
+        echo "deb http://archive.ubuntu.com/ubuntu/ jammy-backports main restricted universe multiverse" | sudo tee -a /etc/apt/sources.list
+
+        wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | sudo apt-key add -
+        echo "deb http://apt.llvm.org/focal/ llvm-toolchain-focal-19 main" | sudo tee /etc/apt/sources.list.d/llvm-toolchain.list
+
+    - name: Add Ubuntu GPG key
+      run: |
+        # 添加 Ubuntu 官方 GPG 密钥
+        curl -fsSL http://archive.ubuntu.com/ubuntu/project/ubuntu-archive-keyring.gpg | sudo gpg --dearmour -o /etc/apt/trusted.gpg.d/ubuntu.gpg
+    
+    - name: Setup Python
+      uses: actions/setup-python@v5.3.0
+      with:
+        python-version: 3.13
+
+    - name: Setup env
+      run: |
+        sudo apt-get update
+        sudo apt-get install fontforge
+        pip install fonttools
+    
+    - name: Download fonts
+      run: |
+        wget -O English.otf "https://github.com/JetBrains/JetBrainsMono/raw/refs/heads/master/fonts/otf/JetBrainsMono-SemiBold.otf"
+
+    - name: Opitimizing
+      run: |
+        mkdir work
+        cp English.otf work/
+        cp FontTools/MergeFont/optimize_glyph.py work/
+        cd work
+        ls -ltrah && ls -ltra
+        fontforge -script optimize_glyph.py English.otf
+        # fontforge -script optimize_glyph.py Chinese.otf
+        ls -ltrah && ls -ltra
