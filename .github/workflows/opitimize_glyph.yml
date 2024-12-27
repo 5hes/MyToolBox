@@ -46,7 +46,7 @@ jobs:
       run: |
         sudo apt-get update
         sudo apt-get install fontforge
-        pip install fonttools ttkthemes brotli
+        pip install fonttools ttkthemes brotli PyVirtualDisplay
     
     - name: Download fonts
       run: |
