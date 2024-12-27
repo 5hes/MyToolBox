@@ -48,7 +48,7 @@ jobs:
     
     - name: Download fonts
       run: |
-        cd work
+        mkdir work && cd work
         wget -O woff2OPT.py "https://github.com/OlinykFS/font-Optimization/raw/refs/heads/master/main.py"
         wget -O English.otf "https://github.com/JetBrains/JetBrainsMono/raw/refs/heads/master/fonts/otf/JetBrainsMono-SemiBold.otf"
         wget -O woff2otfft.py "https://github.com/basisvectors/woff2otf/raw/refs/heads/main/woff2otf.py"
@@ -56,7 +56,6 @@ jobs:
         
     - name: Opitimizing
       run: |
-        mkdir work
         cp English.otf work/
         cp FontTools/MergeFont/optimize_glyph.py work/
         cd work
