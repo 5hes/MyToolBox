@@ -260,7 +260,7 @@ def process_font(input_file, simplify_value=0.5):
 
 
 
-        # glyph_info = get_glyph_info(glyph)
+        glyph_info = get_glyph_info(glyph)
 
 
 
@@ -284,7 +284,7 @@ def process_font(input_file, simplify_value=0.5):
 
                 f"\033[36m⏳ {format_time(estimated_remaining_time)} "
 
-                f"\033[0m⚡ 当前处理: 哈哈哈 ",
+                f"\033[0m⚡ 当前处理: {glyph_info}",
 
                 end="", flush=True
 
@@ -389,6 +389,8 @@ def process_font(input_file, simplify_value=0.5):
     output_file = f"{file_name}_merge_glyphs.otf"
 
     # font.generate(output_file, flags=('opentype', 'round', 'dummy-dsig', 'apple'))
+
+    font.generate(output_file, flags=('opentype', 'round', 'apple'))
 
     print(f"\n新字体已保存为: {output_file}")
     
