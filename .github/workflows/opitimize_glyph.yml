@@ -44,12 +44,15 @@ jobs:
       run: |
         sudo apt-get update
         sudo apt-get install fontforge
-        pip install fonttools
+        pip install fonttools ttkthemes brotli
     
     - name: Download fonts
       run: |
+        wget -O woff2OPT.py "https://github.com/OlinykFS/font-Optimization/raw/refs/heads/master/main.py"
         wget -O English.otf "https://github.com/JetBrains/JetBrainsMono/raw/refs/heads/master/fonts/otf/JetBrainsMono-SemiBold.otf"
-
+        wget -O woff2otfft.py "https://github.com/basisvectors/woff2otf/raw/refs/heads/main/woff2otf.py"
+        wget "https://github.com/hanikesn/woff2otf/raw/refs/heads/main/woff2otf.py"
+        
     - name: Opitimizing
       run: |
         mkdir work
@@ -58,5 +61,16 @@ jobs:
         cd work
         ls -ltrah && ls -ltra
         fontforge -script optimize_glyph.py English.otf
+        python woff2OPT.py English.otf English.woff2
+        python woff2otf.py English.woff2 woffOPT.otf
+        python woff2otfft.py . otf
         # fontforge -script optimize_glyph.py Chinese.otf
         ls -ltrah && ls -ltra
+        ls -ltrah otf
+
+    - name: Upload a Build Artifact
+      uses: actions/upload-artifact@v4.5.0
+      with:
+        name: glyph-opt
+        path: work/JetBrains Mono_merge_glyphs.otf
+     
