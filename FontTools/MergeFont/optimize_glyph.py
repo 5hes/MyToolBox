@@ -390,7 +390,7 @@ def process_font(input_file, simplify_value=0.5):
 
     # font.generate(output_file, flags=('opentype', 'round', 'dummy-dsig', 'apple'))
 
-    font.generate(output_file, flags=('round', 'dummy-dsig', 'apple'))
+    font.generate(output_file, flags=('opentype', 'round', 'dummy-dsig'))
     
     print(f"\n新字体已保存为: {output_file}")
     
