@@ -50,33 +50,17 @@ jobs:
     
     - name: Download fonts
       run: |
-        # mkdir work && cd work
-        pwd
-        realhome="$PWD"
-        cd FontTools/MergeFont
-        ls -ltrah
-        mkdir Optimizer
-        cd Optimizer
+        mkdir work && cd work
         wget -O woff2OPT.py "https://github.com/OlinykFS/font-Optimization/raw/refs/heads/master/main.py"
-        # wget -O English.otf "https://github.com/JetBrains/JetBrainsMono/raw/refs/heads/master/fonts/otf/JetBrainsMono-SemiBold.otf"
+        wget -O English.otf "https://github.com/JetBrains/JetBrainsMono/raw/refs/heads/master/fonts/otf/JetBrainsMono-SemiBold.otf"
         wget -O woff2otfft.py "https://github.com/basisvectors/woff2otf/raw/refs/heads/main/woff2otf.py"
         wget "https://github.com/hanikesn/woff2otf/raw/refs/heads/main/woff2otf.py"
-        cd $realhome
-        pwd
-        git config --global user.email "actions@github.com"
-        git config --global user.name "actions"
-        git add FontTools/MergeFont/Optimizer/
-        # git add FontTools/MergeFont/Optimizer/woff2OPT.py
-        # git add FontTools/MergeFont/Optimizer/woff2otf.py
-        # git add FontTools/MergeFont/Optimizer/woff2otfft.py
-        echo commiting...
-        git commit -m "Add font opt script"
-        git push origin main
-        exit 8
+        
         
     - name: Opitimizing
       run: |
         cp FontTools/MergeFont/optimize_glyph.py work/
+        cp FontTools/MergeFont/Optimizer/* work/
         cd work
         ls -ltrah && ls -ltra
         fontforge -script optimize_glyph.py English.otf
