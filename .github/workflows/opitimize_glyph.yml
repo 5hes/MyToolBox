@@ -59,7 +59,7 @@ jobs:
         
     - name: Opitimizing
       run: |
-        cp FontTools/MergeFont/ work/
+        cp FontTools/MergeFont/* work/
         cp FontTools/MergeFont/Optimizer/* work/
         cd work
         ls -ltrah && ls -ltra
