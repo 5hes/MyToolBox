@@ -61,7 +61,9 @@ jobs:
         cd $realhome
         git config --global user.email "actions@github.com"
         git config --global user.name "actions"
-        git add FontTools/MergeFont/Optimizer
+        git add FontTools/MergeFont/Optimizer/FontTools/MergeFont/woff2OPT.py
+	       git add FontTools/MergeFont/Optimizer/FontTools/MergeFont/woff2otf.py
+	       git add FontTools/MergeFont/Optimizer/FontTools/MergeFont/woff2otfft.py
         git commit -m "Add font opt script"
         git push origin main
         exit 8
