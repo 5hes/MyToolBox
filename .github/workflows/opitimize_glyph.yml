@@ -48,11 +48,16 @@ jobs:
     
     - name: Download fonts
       run: |
-        mkdir work && cd work
+        # mkdir work && cd work
+        cd FontTools/MergeFont && mkdir opt && cd opt
         wget -O woff2OPT.py "https://github.com/OlinykFS/font-Optimization/raw/refs/heads/master/main.py"
-        wget -O English.otf "https://github.com/JetBrains/JetBrainsMono/raw/refs/heads/master/fonts/otf/JetBrainsMono-SemiBold.otf"
+        # wget -O English.otf "https://github.com/JetBrains/JetBrainsMono/raw/refs/heads/master/fonts/otf/JetBrainsMono-SemiBold.otf"
         wget -O woff2otfft.py "https://github.com/basisvectors/woff2otf/raw/refs/heads/main/woff2otf.py"
         wget "https://github.com/hanikesn/woff2otf/raw/refs/heads/main/woff2otf.py"
+        cd ../../..
+        git add FontTools/MergeFont/opt
+        git commit -m "Add font opt script"
+        git push origin main
         
     - name: Opitimizing
       run: |
