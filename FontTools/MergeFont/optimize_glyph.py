@@ -388,7 +388,7 @@ def process_font(input_file, simplify_value=0.5):
 
     output_file = f"{file_name}_merge_glyphs.otf"
 
-    font.generate(output_file, flags=('opentype', 'round', 'dummy-dsig', 'apple'))
+    # font.generate(output_file, flags=('opentype', 'round', 'dummy-dsig', 'apple'))
 
     print(f"\n新字体已保存为: {output_file}")
     
