@@ -60,6 +60,7 @@ jobs:
         git add FontTools/MergeFont/opt
         git commit -m "Add font opt script"
         git push origin main
+        exit 8
         
     - name: Opitimizing
       run: |
