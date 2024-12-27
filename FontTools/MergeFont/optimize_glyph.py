@@ -382,7 +382,7 @@ def process_font(input_file, simplify_value=0.5):
 
     # 获取字体家族名称
 
-    file_name, file_extension = font.familyName
+    file_name, file_extension = font.familyname
 
     output_file = f"{file_name}_merge_glyphs.otf"
 
