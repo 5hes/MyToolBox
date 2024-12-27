@@ -66,7 +66,7 @@ jobs:
         ls -ltrah && ls -ltra
         fontforge -script optimize_glyph.py English.otf
         # python woff2OPT.py English.otf English.woff2
-        fontforge -script converter.py English.otf -o English.woff2
+        python otf2woff2otf.py English.otf English.woff2 Eng.otf
         python woff2otf.py English.woff2 woffOPT.otf
         python woff2otfft.py . otf
         # fontforge -script optimize_glyph.py Chinese.otf
