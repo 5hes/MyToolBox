@@ -99,7 +99,6 @@ jobs:
         # ../FontTools/MergeFont/字体合并补全工具-简体中文-1.1.0-linux-amd64/otfccbuild --help
         # ./otfccdump --help
         # ./otfccbuild --help
-        exit 66
         
     - name: otf2ttf
       shell: bash
