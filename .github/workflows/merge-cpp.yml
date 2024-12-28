@@ -93,7 +93,7 @@ jobs:
         cp ../FontTools/MergeFont/Chinese.otf .
         chmod +x otfccbuild otfccdump merge-otd
         ./otfccdump --help
-        ./otfccbuild --help
+        ./merge-otd --help
         exit 66
         
     - name: otf2ttf
