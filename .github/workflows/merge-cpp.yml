@@ -48,8 +48,8 @@ jobs:
       run: |
         cd FontTools/MergeFont
         sudo apt-get update
-        sudo apt-get install python3 
-        # xz-utils ttfautohint fontconfig fontforge python3-fontforge -y
+        sudo apt-get install python3 fontconfig fontforge python3-fontforge -y
+        # xz-utils ttfautohint
         # python -m pip install foundrytools-cli
         pip install fonttools
         # pip install otf2ttf
