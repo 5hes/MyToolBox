@@ -39,9 +39,9 @@ jobs:
 
     - name: Create a new tag
       run: |
-        # TAG_NAME="v0.1.0-font"
-        # git tag $TAG_NAME
-        # git push origin $TAG_NAME
+        TAG_NAME="v0.1.0-font-2"
+        git tag $TAG_NAME
+        git push origin $TAG_NAME
 
     - name: Install dependencies
       shell: bash
@@ -122,6 +122,7 @@ jobs:
         ./otfccdump --ignore-hints --ignore-glyph-order -o Cjk-opt.otd "Chinese.otf"
         ./merge-otd Eng-opt.otd Cjk-opt.otd
         ./merge-otd Eng.otd Cjk.otd
+        ./otfccbuild -q --keep-average-char-width --merge-lookups -O3 -o merged-O4.otf Eng.otd
         ./otfccbuild -q --keep-average-char-width -O3 -o merged.otf Eng.otd
         ./otfccbuild -q --keep-average-char-width --merge-lookups --subroutinize --short-post --merge-features --ignore-glyph-order --force-cid -O3 -o merged-opt.otf Eng-opt.otd
         ./otfccbuild -q --keep-average-char-width --merge-lookups --subroutinize --short-post --merge-features --ignore-glyph-order --force-cid -o merged-opt-O1145.otf Eng-opt.otd
@@ -134,15 +135,13 @@ jobs:
       run: |
         cd work-2
         ls -ltrah && ls -ltra
-        ./otfccbuild
-        ./otfccdump --ignore-hints --ignore-glyph-order -o Eng-opt.otd "English.otf"
-        ./otfccdump --ignore-hints --ignore-glyph-order -o Cjk-opt.otd "Chinese.otf"
         ./otfccdump --ignore-hints -o Eng.otd "English.otf"
         ./otfccdump --ignore-hints -o Cjk.otd "Chinese.otf"
         ./merge-otd Eng.otd Cjk.otd
         ./otfccbuild -q --keep-average-char-width -O3 -o merged-2.otf Eng.otd
-        ./otfccbuild -q --keep-average-char-width --merge-lookups --subroutinize --short-post --merge-features --ignore-glyph-order --force-cid -O3 -o merged-2-opt.otf Eng-opt.otd
-        ./otfccbuild -q --keep-average-char-width --merge-lookups --subroutinize --short-post --merge-features --ignore-glyph-order --force-cid -o merged-opt-O1145.otf Eng-opt.otd
+        ls -ltrah
+        ./otfccbuild -q --keep-average-char-width --merge-lookups --subroutinize --short-post --merge-features --ignore-glyph-order --force-cid -O3 -o merged-2-opt.otf Eng.otd
+        ./otfccbuild -q --keep-average-char-width --merge-lookups --subroutinize --short-post --merge-features --ignore-glyph-order --force-cid -o merged-opt-O1145.otf Eng.otd
         ls -ltrah && ls -ltra
         md5sum *
         exit 66
@@ -165,14 +164,18 @@ jobs:
     - name: Create Release and Upload Release Asset
       uses: softprops/action-gh-release@v2
       with:
-        tag_name: v0.1.0-font
+        tag_name: v0.1.0-font-2
         name: PingFang@ACT-02(github.com) + JetBrainsMono (SemiBold)
         draft: false
         prerelease: false
         files: |
           ./FontTools/MergeFont/字体合并补全工具-简体中文-1.1.0-linux-amd64/merged.otf
-          ./FontTools/MergeFont/字体合并补全工具-简体中文-1.1.0-linux-amd64/English.otf
+          ./FontTools/MergeFont/字体合并补全工具-简体中文-1.1.0-linux-amd64/merged-opt.otf
+          ./FontTools/MergeFont/字体合并补全工具-简体中文-1.1.0-linux-amd64/merged-O4.otf
+          ./FontTools/MergeFont/字体合并补全工具-简体中文-1.1.0-linux-amd64/merged-O1145.otf
           ./work-2/merged-2.otf
+          ./work-2/merged-2-opt.otf
+          ./work-2/merged-2-O1145.otf
           
     - name: Get Help
       shell: bash
