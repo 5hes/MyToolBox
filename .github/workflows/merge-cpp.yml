@@ -116,11 +116,14 @@ jobs:
       run: |
         cd FontTools/MergeFont/字体合并补全工具-简体中文-1.1.0-linux-amd64
         ls -ltrah && ls -ltra
-        ./otfccdump --ignore-hints --name-by-hash --ignore-glyph-order -o Eng.otd "English.otf"
-        ./otfccdump --ignore-hints --name-by-hash --ignore-glyph-order -o Cjk.otd "Chinese.otf"
+        ./otfccdump --ignore-hints -o Eng.otd "English.otf"
+        ./otfccdump --ignore-hints -o Cjk.otd "Chinese.otf"
+        ./otfccdump --ignore-hints --name-by-hash --ignore-glyph-order -o Eng-opt.otd "English.otf"
+        ./otfccdump --ignore-hints --name-by-hash --ignore-glyph-order -o Cjk-opt.otd "Chinese.otf"
+        ./merge-otd Eng-opt.otd Cjk-opt.otd
         ./merge-otd Eng.otd Cjk.otd
         ./otfccbuild -q --keep-average-char-width -O3 -o merged.otf Eng.otd
-        ./otfccbuild -q --keep-average-char-width --merge-lookups --subroutinize --short-post --merge-features --ignore-glyph-order --force-cid -O3 -o merged-opt.otf Eng.otd
+        ./otfccbuild -q --keep-average-char-width --merge-lookups --subroutinize --short-post --merge-features --ignore-glyph-order --force-cid -O3 -o merged-opt.otf Eng-opt.otd
         ls -ltrah && ls -ltra
         # fontforge -script optimize_glyph.py merged.otf
         # ls -ltrah && ls -ltra
@@ -129,11 +132,17 @@ jobs:
       run: |
         cd work-2
         ls -ltrah && ls -ltra
-        ./otfccdump --ignore-hints --name-by-hash --ignore-glyph-order -o Eng.otd "English.otf"
-        ./otfccdump --ignore-hints --name-by-hash --ignore-glyph-order -o Cjk.otd "Chinese.otf"
+        ./otfccdump -h
+        ./otfccdump
+        ./otfccbuild -h
+        ./otfccbuild
+        ./otfccdump --ignore-hints --name-by-hash --ignore-glyph-order -o Eng-opt.otd "English.otf"
+        ./otfccdump --ignore-hints --name-by-hash --ignore-glyph-order -o Cjk-opt.otd "Chinese.otf"
+        ./otfccdump --ignore-hints -o Eng.otd "English.otf"
+        ./otfccdump --ignore-hints -o Cjk.otd "Chinese.otf"
         ./merge-otd Eng.otd Cjk.otd
         ./otfccbuild -q --keep-average-char-width -O3 -o merged-2.otf Eng.otd
-        ./otfccbuild -q --keep-average-char-width --merge-lookups --subroutinize --short-post --merge-features --ignore-glyph-order --force-cid -O3 -o merged-2-opt.otf Eng.otd
+        ./otfccbuild -q --keep-average-char-width --merge-lookups --subroutinize --short-post --merge-features --ignore-glyph-order --force-cid -O3 -o merged-2-opt.otf Eng-opt.otd
         ls -ltrah && ls -ltra
         exit 66
         
