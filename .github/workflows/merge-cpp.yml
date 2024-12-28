@@ -101,14 +101,20 @@ jobs:
         ls -ltrah && ls -ltra
         ./otfccdump --ignore-hints -o Eng.otd "English.otf"
         ./otfccdump --ignore-hints -o Cjk.otd "Chinese.otf"
+        cp Eng.otd EngOrig.otd
+        cp Cjk.otd CjkOrig.otd
         ./otfccdump --ignore-hints --ignore-glyph-order -o Eng-opt.otd "English.otf"
         ./otfccdump --ignore-hints --ignore-glyph-order -o Cjk-opt.otd "Chinese.otf"
+        cp Eng-opt.otd EngOrig-opt.otd
+        cp Cjk-opt.otd CjkOrig-opt.otd
         ./merge-otd Eng-opt.otd Cjk-opt.otd
         ./merge-otd Eng.otd Cjk.otd
-        ./otfccbuild -q --keep-average-char-width --merge-lookups -O3 -o merged-O4.otf Eng.otd
+        ./otfccbuild -q --keep-average-char-width --merge-lookups -O3 -o merged-O4.otf Eng-opt.otd
         ./otfccbuild -q --keep-average-char-width -O3 -o merged.otf Eng.otd
-        ./otfccbuild -q --keep-average-char-width --merge-lookups --subroutinize --short-post --merge-features --ignore-glyph-order --force-cid -O3 -o merged-opt.otf Eng-opt.otd
-        ./otfccbuild -q --keep-average-char-width --merge-lookups --subroutinize --short-post --merge-features --ignore-glyph-order --force-cid -o merged-opt-O1145.otf Eng-opt.otd
+        ./otfccbuild -q --keep-average-char-width -O3 -o merged-opt.otf Eng-opt.otd
+        ./otfccbuild -q --keep-average-char-width --merge-lookups --subroutinize --short-post --merge-features --ignore-glyph-order --force-cid -O3 -o merged-O1145.otf Eng-opt.otd
+        ./otfccbuild -q --keep-average-char-width --merge-lookups -O3 -o eng-O3.otf EngOrig.otd
+        ./otfccbuild -q --keep-average-char-width --merge-lookups -O3 -o eng-O4.otf EngOrig-opt.otd
         ls -ltrah && ls -ltra
         md5sum *
         # fontforge -script optimize_glyph.py merged.otf
@@ -141,7 +147,9 @@ jobs:
           ./FontTools/MergeFont/字体合并补全工具-简体中文-1.1.0-linux-amd64/merged-opt.otf
           ./FontTools/MergeFont/字体合并补全工具-简体中文-1.1.0-linux-amd64/merged-O4.otf
           ./FontTools/MergeFont/字体合并补全工具-简体中文-1.1.0-linux-amd64/merged-O1145.otf
-          
+          ./FontTools/MergeFont/字体合并补全工具-简体中文-1.1.0-linux-amd64/eng-O3.otf
+          ./FontTools/MergeFont/字体合并补全工具-简体中文-1.1.0-linux-amd64/eng-O4.otf
+
     - name: Get Help
       shell: bash
       run: |
