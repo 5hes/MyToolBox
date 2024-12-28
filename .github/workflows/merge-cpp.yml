@@ -89,8 +89,8 @@ jobs:
         wget "https://github.com/5hes/Warcraft-Font-Merger/releases/download/v1.2.0/merge-otd"
         wget "https://github.com/5hes/Warcraft-Font-Merger/releases/download/v1.2.0/otfccbuild"
         wget "https://github.com/5hes/Warcraft-Font-Merger/releases/download/v1.2.0/otfccdump"
-        cp FontTools/MergeFont/English.otf .
-        cp FontTools/MergeFont/Chinese.otf .
+        cp ../FontTools/MergeFont/English.otf .
+        cp ../FontTools/MergeFont/Chinese.otf .
         ./otfccdump --help
         ./otfccbuild --help
         exit 66
