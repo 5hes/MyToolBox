@@ -1,6 +1,7 @@
 name: Merge Font Cpp
 
 on:
+  push:
   workflow_dispatch:
     inputs:
       Merge:
@@ -36,7 +37,6 @@ jobs:
         # 添加 Ubuntu 官方 GPG 密钥
         curl -fsSL http://archive.ubuntu.com/ubuntu/project/ubuntu-archive-keyring.gpg | sudo gpg --dearmour -o /etc/apt/trusted.gpg.d/ubuntu.gpg
 
-
     - name: Create a new tag
       run: |
         # TAG_NAME="v0.1.0-font"
@@ -48,23 +48,24 @@ jobs:
       run: |
         cd FontTools/MergeFont
         sudo apt-get update
-        sudo apt-get install xz-utils python3 ttfautohint fontconfig fontforge python3-fontforge
+        sudo apt-get install python3 
+        # xz-utils ttfautohint fontconfig fontforge python3-fontforge -y
         # python -m pip install foundrytools-cli
         pip install fonttools
         # pip install otf2ttf
 
     - name: Install ftcli
       run: |
-        git clone https://github.com/ftCLI/FoundryTools-CLI-2.git
-        cp FoundryTools-CLI-2/foundrytools_cli_2/cli/converter/tasks/ttf_to_otf.py FontTools/MergeFont
-        cd FoundryTools-CLI-2
-        pip install .
+        # git clone https://github.com/ftCLI/FoundryTools-CLI-2.git
+        # cp FoundryTools-CLI-2/foundrytools_cli_2/cli/converter/tasks/ttf_to_otf.py FontTools/MergeFont
+        # cd FoundryTools-CLI-2
+        # pip install .
         
     - name: Check PATH
       run: |
-        ft-cli
-        pip show foundrytools-cli-2
-        ft-cli --help
+        # ft-cli
+        # pip show foundrytools-cli-2
+        # ft-cli --help
         
     - name: Download Tools
       shell: bash
@@ -81,7 +82,19 @@ jobs:
         # wget -O Chinese.otf $(cat link_sc)
         wget -O English.otf "https://github.com/JetBrains/JetBrainsMono/raw/refs/heads/master/fonts/otf/JetBrainsMono-SemiBold.otf"
         # wget -O English.ttf $(cat link_en)
-
+        
+    - name: Download fonts-2
+      run: |
+        mkdir work-2 && cd work-2
+        wget "https://github.com/5hes/Warcraft-Font-Merger/releases/download/v1.2.0/merge-otd"
+        wget "https://github.com/5hes/Warcraft-Font-Merger/releases/download/v1.2.0/otfccbuild"
+        wget "https://github.com/5hes/Warcraft-Font-Merger/releases/download/v1.2.0/otfccdump"
+        cp FontTools/MergeFont/English.otf .
+        cp FontTools/MergeFont/Chinese.otf .
+        ./otfccdump --help
+        ./otfccbuild --help
+        exit 66
+        
     - name: otf2ttf
       shell: bash
       run: |
@@ -92,18 +105,12 @@ jobs:
         cd 字体合并补全工具-简体中文-1.1.0-linux-amd64
         ls -ltrah && ls -ltra
         # ft-cli converter ttf2otf --mode tx English.ttf
-        # fontforge -script ttf2otfOPT.py English.ttf
-        # fontforge -c 'open("English.ttf"); generate("English.otf");'
-        # fontforge -script converter.py English.ttf -o English.otf -f otf
-        # pyftmerge English.otf Chinese.otf
           
-    - name: Build Merge Font
+    - name: Merge Font
       shell: bash
       run: |
         cd FontTools/MergeFont/字体合并补全工具-简体中文-1.1.0-linux-amd64
         ls -ltrah && ls -ltra
-        # fontforge -script optimize_glyph.py English.otf
-        # fontforge -script optimize_glyph.py Chinese.otf
         ./otfccdump --ignore-hints -o Eng.otd "English.otf"
         ./otfccdump --ignore-hints -o Cjk.otd "Chinese.otf"
         ./merge-otd Eng.otd Cjk.otd
@@ -111,7 +118,17 @@ jobs:
         ls -ltrah && ls -ltra
         # fontforge -script optimize_glyph.py merged.otf
         # ls -ltrah && ls -ltra
-
+        
+    - name: Merge font-2
+      run: |
+        cd work-2
+        ls -ltrah && ls -ltra
+        ./otfccdump --ignore-hints -o Eng.otd "English.otf"
+        ./otfccdump --ignore-hints -o Cjk.otd "Chinese.otf"
+        ./merge-otd Eng.otd Cjk.otd
+        ./otfccbuild -q --keep-average-char-width -O3 -o merged-2.otf Eng.otd
+        ls -ltrah && ls -ltra
+        
     - name: Fix
       shell: bash
       run: |
@@ -137,7 +154,8 @@ jobs:
         files: |
           ./FontTools/MergeFont/字体合并补全工具-简体中文-1.1.0-linux-amd64/merged.otf
           ./FontTools/MergeFont/字体合并补全工具-简体中文-1.1.0-linux-amd64/English.otf
-            
+          ./work-2/merged-2.otf
+          
     - name: Get Help
       shell: bash
       run: |
@@ -149,10 +167,10 @@ jobs:
       run: |
         cd FontTools/MergeFont/字体合并补全工具-简体中文-1.1.0-linux-amd64
         file merged.otf
-        echo -e "\n\n\n"
-        echo -e "merged.otf"
-        python getinfo.py merged.otf
-        echo -e "\n\n"
+        # echo -e "\n\n\n"
+        # echo -e "merged.otf"
+        # python getinfo.py merged.otf
+        # echo -e "\n\n"
         fc-query -b merged.otf
           
         echo -e "\n\n\n\n\nmerged-fixed.ttf"
