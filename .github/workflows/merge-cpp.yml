@@ -118,13 +118,15 @@ jobs:
         ls -ltrah && ls -ltra
         ./otfccdump --ignore-hints -o Eng.otd "English.otf"
         ./otfccdump --ignore-hints -o Cjk.otd "Chinese.otf"
-        ./otfccdump --ignore-hints --name-by-hash --ignore-glyph-order -o Eng-opt.otd "English.otf"
-        ./otfccdump --ignore-hints --name-by-hash --ignore-glyph-order -o Cjk-opt.otd "Chinese.otf"
+        ./otfccdump --ignore-hints --ignore-glyph-order -o Eng-opt.otd "English.otf"
+        ./otfccdump --ignore-hints --ignore-glyph-order -o Cjk-opt.otd "Chinese.otf"
         ./merge-otd Eng-opt.otd Cjk-opt.otd
         ./merge-otd Eng.otd Cjk.otd
         ./otfccbuild -q --keep-average-char-width -O3 -o merged.otf Eng.otd
         ./otfccbuild -q --keep-average-char-width --merge-lookups --subroutinize --short-post --merge-features --ignore-glyph-order --force-cid -O3 -o merged-opt.otf Eng-opt.otd
+        ./otfccbuild -q --keep-average-char-width --merge-lookups --subroutinize --short-post --merge-features --ignore-glyph-order --force-cid -o merged-opt-O1145.otf Eng-opt.otd
         ls -ltrah && ls -ltra
+        md5sum *
         # fontforge -script optimize_glyph.py merged.otf
         # ls -ltrah && ls -ltra
         
@@ -132,18 +134,17 @@ jobs:
       run: |
         cd work-2
         ls -ltrah && ls -ltra
-        ./otfccdump -h
-        ./otfccdump
-        ./otfccbuild -h
         ./otfccbuild
-        ./otfccdump --ignore-hints --name-by-hash --ignore-glyph-order -o Eng-opt.otd "English.otf"
-        ./otfccdump --ignore-hints --name-by-hash --ignore-glyph-order -o Cjk-opt.otd "Chinese.otf"
+        ./otfccdump --ignore-hints --ignore-glyph-order -o Eng-opt.otd "English.otf"
+        ./otfccdump --ignore-hints --ignore-glyph-order -o Cjk-opt.otd "Chinese.otf"
         ./otfccdump --ignore-hints -o Eng.otd "English.otf"
         ./otfccdump --ignore-hints -o Cjk.otd "Chinese.otf"
         ./merge-otd Eng.otd Cjk.otd
         ./otfccbuild -q --keep-average-char-width -O3 -o merged-2.otf Eng.otd
         ./otfccbuild -q --keep-average-char-width --merge-lookups --subroutinize --short-post --merge-features --ignore-glyph-order --force-cid -O3 -o merged-2-opt.otf Eng-opt.otd
+        ./otfccbuild -q --keep-average-char-width --merge-lookups --subroutinize --short-post --merge-features --ignore-glyph-order --force-cid -o merged-opt-O1145.otf Eng-opt.otd
         ls -ltrah && ls -ltra
+        md5sum *
         exit 66
         
     - name: Fix
