@@ -91,6 +91,7 @@ jobs:
         wget "https://github.com/5hes/Warcraft-Font-Merger/releases/download/v1.2.0/otfccdump"
         cp ../FontTools/MergeFont/English.otf .
         cp ../FontTools/MergeFont/Chinese.otf .
+        chmod +x otfccbuild otfccdump merge-otd
         ./otfccdump --help
         ./otfccbuild --help
         exit 66
