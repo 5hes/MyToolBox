@@ -39,9 +39,9 @@ jobs:
 
     - name: Create a new tag
       run: |
-        TAG_NAME="v0.1.0-font-2"
-        git tag $TAG_NAME
-        git push origin $TAG_NAME
+        # TAG_NAME="v0.1.0-font-2"
+        # git tag $TAG_NAME
+        # git push origin $TAG_NAME
 
     - name: Install dependencies
       shell: bash
@@ -83,23 +83,6 @@ jobs:
         wget -O English.otf "https://github.com/JetBrains/JetBrainsMono/raw/refs/heads/master/fonts/otf/JetBrainsMono-SemiBold.otf"
         # wget -O English.ttf $(cat link_en)
         
-    - name: Download fonts-2
-      run: |
-        mkdir work-2 && cd work-2
-        wget "https://github.com/5hes/Warcraft-Font-Merger/releases/download/v1.2.0/merge-otd"
-        wget "https://github.com/5hes/Warcraft-Font-Merger/releases/download/v1.2.0/otfccbuild"
-        wget "https://github.com/5hes/Warcraft-Font-Merger/releases/download/v1.2.0/otfccdump"
-        cp ../FontTools/MergeFont/English.otf .
-        cp ../FontTools/MergeFont/Chinese.otf .
-        chmod +x otfccbuild otfccdump merge-otd
-        ls -l
-        ls -l ../FontTools/MergeFont/字体合并补全工具-简体中文-1.1.0-linux-amd64/otfccdump
-        ls -l ../FontTools/MergeFont/字体合并补全工具-简体中文-1.1.0-linux-amd64/otfccbuild
-        # ../FontTools/MergeFont/字体合并补全工具-简体中文-1.1.0-linux-amd64/otfccdump --help
-        # ../FontTools/MergeFont/字体合并补全工具-简体中文-1.1.0-linux-amd64/otfccbuild --help
-        # ./otfccdump --help
-        # ./otfccbuild --help
-        
     - name: otf2ttf
       shell: bash
       run: |
@@ -131,21 +114,6 @@ jobs:
         # fontforge -script optimize_glyph.py merged.otf
         # ls -ltrah && ls -ltra
         
-    - name: Merge font-2
-      run: |
-        cd work-2
-        ls -ltrah && ls -ltra
-        ./otfccdump --ignore-hints -o Eng.otd "English.otf"
-        ./otfccdump --ignore-hints -o Cjk.otd "Chinese.otf"
-        ./merge-otd Eng.otd Cjk.otd
-        ./otfccbuild -q --keep-average-char-width -O3 -o merged-2.otf Eng.otd
-        ls -ltrah
-        ./otfccbuild -q --keep-average-char-width --merge-lookups --subroutinize --short-post --merge-features --ignore-glyph-order --force-cid -O3 -o merged-2-opt.otf Eng.otd
-        ./otfccbuild -q --keep-average-char-width --merge-lookups --subroutinize --short-post --merge-features --ignore-glyph-order --force-cid -o merged-opt-O1145.otf Eng.otd
-        ls -ltrah && ls -ltra
-        md5sum *
-        exit 66
-        
     - name: Fix
       shell: bash
       run: |
@@ -173,9 +141,6 @@ jobs:
           ./FontTools/MergeFont/字体合并补全工具-简体中文-1.1.0-linux-amd64/merged-opt.otf
           ./FontTools/MergeFont/字体合并补全工具-简体中文-1.1.0-linux-amd64/merged-O4.otf
           ./FontTools/MergeFont/字体合并补全工具-简体中文-1.1.0-linux-amd64/merged-O1145.otf
-          ./work-2/merged-2.otf
-          ./work-2/merged-2-opt.otf
-          ./work-2/merged-2-O1145.otf
           
     - name: Get Help
       shell: bash
