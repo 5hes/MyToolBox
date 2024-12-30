@@ -39,9 +39,9 @@ jobs:
 
     - name: Create a new tag
       run: |
-        # TAG_NAME="v0.1.0-font-2"
-        # git tag $TAG_NAME
-        # git push origin $TAG_NAME
+        TAG_NAME="v0.1.1-font"
+        git tag $TAG_NAME
+        git push origin $TAG_NAME
 
     - name: Install dependencies
       shell: bash
@@ -56,10 +56,10 @@ jobs:
 
     - name: Install ftcli
       run: |
-        # git clone https://github.com/ftCLI/FoundryTools-CLI-2.git
-        # cp FoundryTools-CLI-2/foundrytools_cli_2/cli/converter/tasks/ttf_to_otf.py FontTools/MergeFont
-        # cd FoundryTools-CLI-2
-        # pip install .
+        git clone https://github.com/ftCLI/FoundryTools-CLI-2.git
+        cp FoundryTools-CLI-2/foundrytools_cli_2/cli/converter/tasks/ttf_to_otf.py FontTools/MergeFont
+        cd FoundryTools-CLI-2
+        pip install .
         
     - name: Check PATH
       run: |
@@ -78,10 +78,12 @@ jobs:
       shell: bash
       run: |
         cd FontTools/MergeFont
-        wget -O Chinese.otf "https://github.com/ACT-02/PingFang-for-Windows/raw/refs/heads/main/PingFangSC-Semibold.otf"
+        # wget -O Chinese.otf "https://github.com/ACT-02/PingFang-for-Windows/raw/refs/heads/main/PingFangSC-Semibold.otf"
         # wget -O Chinese.otf $(cat link_sc)
-        wget -O English.otf "https://github.com/JetBrains/JetBrainsMono/raw/refs/heads/master/fonts/otf/JetBrainsMono-SemiBold.otf"
+        # wget -O English.otf "https://github.com/JetBrains/JetBrainsMono/raw/refs/heads/master/fonts/otf/JetBrainsMono-SemiBold.otf"
         # wget -O English.ttf $(cat link_en)
+        wget -O Chinese.ttf "https://github.com/5hes/MyToolBox/releases/download/v0.0.3/HarmonyOS_SansSC_Medium.ttf"
+        wget -O English.ttf "/https://github.com/5hes/Iosevka_fork/releases/download/v0.0.4-Iover/Iover-Medium.ttf"
         
     - name: otf2ttf
       shell: bash
@@ -92,7 +94,7 @@ jobs:
         mv ../字体合并补全工具-简体中文-1.1.0-linux-amd64 .
         cd 字体合并补全工具-简体中文-1.1.0-linux-amd64
         ls -ltrah && ls -ltra
-        # ft-cli converter ttf2otf --mode tx English.ttf
+        ft-cli converter ttf2otf --mode tx English.ttf
           
     - name: Merge Font
       shell: bash
@@ -138,8 +140,8 @@ jobs:
     - name: Create Release and Upload Release Asset
       uses: softprops/action-gh-release@v2
       with:
-        tag_name: v0.1.0-font-2
-        name: PingFang@ACT-02(github.com) + JetBrainsMono (SemiBold)
+        tag_name: v0.1.1-font
+        name: HM + Iover
         draft: false
         prerelease: false
         files: |
