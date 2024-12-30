@@ -16,7 +16,7 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v4
+      uses: actions/checkout@v4.2.2
       
     - name: Replace software sources with the latest
       run: |
@@ -39,9 +39,9 @@ jobs:
 
     - name: Create a new tag
       run: |
-        TAG_NAME="v0.1.1-font"
-        git tag $TAG_NAME
-        git push origin $TAG_NAME
+        # TAG_NAME="v0.1.1-font"
+        # git tag $TAG_NAME
+        # git push origin $TAG_NAME
 
     - name: Install dependencies
       shell: bash
@@ -83,7 +83,8 @@ jobs:
         # wget -O English.otf "https://github.com/JetBrains/JetBrainsMono/raw/refs/heads/master/fonts/otf/JetBrainsMono-SemiBold.otf"
         # wget -O English.ttf $(cat link_en)
         wget -O Chinese.ttf "https://github.com/5hes/MyToolBox/releases/download/v0.0.3/HarmonyOS_SansSC_Medium.ttf"
-        wget -O English.ttf "/https://github.com/5hes/Iosevka_fork/releases/download/v0.0.4-Iover/Iover-Medium.ttf"
+        wget -O English.ttf
+"https://github.com/5hes/Iosevka_fork/releases/download/v0.0.6-Iover/Iover-Medium.ttf"
         
     - name: otf2ttf
       shell: bash
@@ -95,7 +96,8 @@ jobs:
         cd 字体合并补全工具-简体中文-1.1.0-linux-amd64
         ls -ltrah && ls -ltra
         ft-cli converter ttf2otf --mode tx English.ttf
-          
+        ft-cli converter ttf2otf --mode tx Chinese.ttf
+
     - name: Merge Font
       shell: bash
       run: |
@@ -151,6 +153,8 @@ jobs:
           ./FontTools/MergeFont/字体合并补全工具-简体中文-1.1.0-linux-amd64/merged-O1145.otf
           ./FontTools/MergeFont/字体合并补全工具-简体中文-1.1.0-linux-amd64/eng-O3.otf
           ./FontTools/MergeFont/字体合并补全工具-简体中文-1.1.0-linux-amd64/eng-O4.otf
+          ./FontTools/MergeFont/字体合并补全工具-简体中文-1.1.0-linux-amd64/English.otf
+          ./FontTools/MergeFont/字体合并补全工具-简体中文-1.1.0-linux-amd64/Chinese.otf
 
     - name: Get Help
       shell: bash
@@ -163,6 +167,8 @@ jobs:
       run: |
         cd FontTools/MergeFont/字体合并补全工具-简体中文-1.1.0-linux-amd64
         file merged.otf
+        file Chinese.otf
+        file English.otf
         # echo -e "\n\n\n"
         # echo -e "merged.otf"
         # python getinfo.py merged.otf
