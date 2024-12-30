@@ -112,19 +112,24 @@ jobs:
         cp Cjk-opt.otd CjkOrig-opt.otd
         ./merge-otd Eng-opt.otd Cjk-opt.otd
         ./merge-otd Eng.otd Cjk.otd
-        # 
-        ./merge-otf EngOrig.otd CjkOrig-opt.otd
-        # 
+        
+
+        ./merge-otd EngOrig.otd CjkOrig-opt.otd
+        
+
         ./otfccbuild -q --keep-average-char-width --merge-lookups -O3 -o merged-O4P.otf Eng-opt.otd
         ./otfccbuild -q --keep-average-char-width -O3 -o merged.otf Eng.otd
         ./otfccbuild -q --keep-average-char-width -O3 -o merged-O4.otf Eng-opt.otd
         ./otfccbuild -q --keep-average-char-width --merge-lookups --subroutinize --short-post --merge-features --ignore-glyph-order --force-cid -O3 -o merged-O1145.otf Eng-opt.otd
-        # 
-        # 
+        
+
+        
+
         ./otfccbuild -q --keep-average-char-width -O3 -o merged-NEW.otf EngOrig.otd
         ./otfccbuild -q --keep-average-char-width --merge-lookups -O3 -o merged-NEW-P.otf EngOrig.otd
-        # 
-        # 
+        
+
+        
         # ./otfccbuild -q --keep-average-char-width --merge-lookups -O3 -o eng-O3.otf EngOrig.otd
         # ./otfccbuild -q --keep-average-char-width --merge-lookups -O3 -o eng-O4.otf EngOrig-opt.otd
         ls -ltrah && ls -ltra
