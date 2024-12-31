@@ -1,6 +1,7 @@
 name: Merge Font Cpp
 
 on:
+  push:
   workflow_dispatch:
     inputs:
       Merge:
