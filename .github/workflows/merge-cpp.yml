@@ -38,7 +38,7 @@ jobs:
 
     - name: Create a new tag
       run: |
-        TAG_NAME="v0.1.2-font"
+        TAG_NAME="v0.1.3-font"
         git tag $TAG_NAME
         git push origin $TAG_NAME
 
@@ -82,7 +82,7 @@ jobs:
         # wget -O English.otf "https://github.com/JetBrains/JetBrainsMono/raw/refs/heads/master/fonts/otf/JetBrainsMono-SemiBold.otf"
         # wget -O English.ttf $(cat link_en)
         wget -O Chinese.ttf "https://github.com/5hes/MyToolBox/releases/download/v0.0.3/HarmonyOS_SansSC_Medium.ttf"
-        wget -O English.ttf "https://github.com/5hes/Iosevka_fork/releases/download/v0.0.4-Iover/Iover-Medium.ttf"
+        wget -O English.ttf "https://github.com/5hes/Iosevka_fork/releases/download/v0.0.0-test/Test-Medium.ttf"
         
     - name: otf2ttf
       shell: bash
@@ -154,7 +154,7 @@ jobs:
     - name: Create Release and Upload Release Asset
       uses: softprops/action-gh-release@v2
       with:
-        tag_name: v0.1.2-font
+        tag_name: v0.1.3-font
         name: HM + Iover
         draft: false
         prerelease: false
