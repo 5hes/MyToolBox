@@ -6,11 +6,15 @@ def modify_font_baseline(font_path, move_amount, output_path):
     font = TTFont(font_path)
 
     # 修改每个字形的基线
-    for table in font['glyf'].glyphs.values():
+    for glyph_name, table in font['glyf'].glyphs.items():
         if table.isComposite():
-            continue  # 跳过复合字形
-        table.yMin -= move_amount  # 下移字形的最小 Y 值
-        table.yMax -= move_amount  # 下移字形的最大 Y 值
+            # 对于复合字形，处理其组成部分
+            for component in table.components:
+                component.y += move_amount  # 移动组件
+        else:
+            # 对于简单字形，直接修改 yMin 和 yMax
+            table.yMin -= move_amount  # 下移字形的最小 Y 值
+            table.yMax -= move_amount  # 下移字形的最大 Y 值
 
     # 保存修改后的字体文件
     font.save(output_path)
