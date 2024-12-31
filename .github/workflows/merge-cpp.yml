@@ -39,9 +39,9 @@ jobs:
 
     - name: Create a new tag
       run: |
-        # TAG_NAME="v0.1.1-font"
-        # git tag $TAG_NAME
-        # git push origin $TAG_NAME
+        TAG_NAME="v0.1.2-font"
+        git tag $TAG_NAME
+        git push origin $TAG_NAME
 
     - name: Install dependencies
       shell: bash
@@ -83,7 +83,7 @@ jobs:
         # wget -O English.otf "https://github.com/JetBrains/JetBrainsMono/raw/refs/heads/master/fonts/otf/JetBrainsMono-SemiBold.otf"
         # wget -O English.ttf $(cat link_en)
         wget -O Chinese.ttf "https://github.com/5hes/MyToolBox/releases/download/v0.0.3/HarmonyOS_SansSC_Medium.ttf"
-        wget -O English.ttf "https://github.com/5hes/Iosevka_fork/releases/download/v0.0.6-Iover/Iover-Medium.ttf"
+        wget -O English.ttf "https://github.com/5hes/Iosevka_fork/releases/download/v0.0.4-Iover/Iover-Medium.ttf"
         
     - name: otf2ttf
       shell: bash
@@ -94,20 +94,20 @@ jobs:
         mv ../字体合并补全工具-简体中文-1.1.0-linux-amd64 .
         cd 字体合并补全工具-简体中文-1.1.0-linux-amd64
         ls -ltrah && ls -ltra
-        ft-cli converter ttf2otf --mode tx English.ttf
-        ft-cli converter ttf2otf --mode tx Chinese.ttf
+        # ft-cli converter ttf2otf --mode tx English.ttf
+        # ft-cli converter ttf2otf --mode tx Chinese.ttf
 
     - name: Merge Font
       shell: bash
       run: |
         cd FontTools/MergeFont/字体合并补全工具-简体中文-1.1.0-linux-amd64
         ls -ltrah && ls -ltra
-        ./otfccdump --ignore-hints -o Eng.otd "English.otf"
-        ./otfccdump --ignore-hints -o Cjk.otd "Chinese.otf"
+        ./otfccdump --ignore-hints -o Eng.otd "English.ttf"
+        ./otfccdump --ignore-hints -o Cjk.otd "Chinese.ttf"
         cp Eng.otd EngOrig.otd
         cp Cjk.otd CjkOrig.otd
-        ./otfccdump --ignore-hints --ignore-glyph-order -o Eng-opt.otd "English.otf"
-        ./otfccdump --ignore-hints --ignore-glyph-order -o Cjk-opt.otd "Chinese.otf"
+        ./otfccdump --ignore-hints --ignore-glyph-order -o Eng-opt.otd "English.ttf"
+        ./otfccdump --ignore-hints --ignore-glyph-order -o Cjk-opt.otd "Chinese.ttf"
         cp Eng-opt.otd EngOrig-opt.otd
         cp Cjk-opt.otd CjkOrig-opt.otd
         ./merge-otd Eng-opt.otd Cjk-opt.otd
@@ -117,21 +117,21 @@ jobs:
         ./merge-otd EngOrig.otd CjkOrig-opt.otd
         
 
-        ./otfccbuild -q --keep-average-char-width --merge-lookups -O3 -o merged-O4P.otf Eng-opt.otd
-        ./otfccbuild -q --keep-average-char-width -O3 -o merged.otf Eng.otd
-        ./otfccbuild -q --keep-average-char-width -O3 -o merged-O4.otf Eng-opt.otd
-        ./otfccbuild -q --keep-average-char-width --merge-lookups --subroutinize --short-post --merge-features --ignore-glyph-order --force-cid -O3 -o merged-O1145.otf Eng-opt.otd
+        ./otfccbuild -q --keep-average-char-width --merge-lookups -O3 -o merged-O4P.ttf Eng-opt.otd
+        ./otfccbuild -q --keep-average-char-width -O3 -o merged.ttf Eng.otd
+        ./otfccbuild -q --keep-average-char-width -O3 -o merged-O4.ttf Eng-opt.otd
+        ./otfccbuild -q --keep-average-char-width --merge-lookups --subroutinize --short-post --merge-features --ignore-glyph-order --force-cid -O3 -o merged-O1145.ttf Eng-opt.otd
         
 
         
 
-        ./otfccbuild -q --keep-average-char-width -O3 -o merged-NEW.otf EngOrig.otd
-        ./otfccbuild -q --keep-average-char-width --merge-lookups -O3 -o merged-NEW-P.otf EngOrig.otd
+        ./otfccbuild -q --keep-average-char-width -O3 -o merged-NEW.ttf EngOrig.otd
+        ./otfccbuild -q --keep-average-char-width --merge-lookups -O3 -o merged-NEW-P.ttf EngOrig.otd
         
 
         
-        # ./otfccbuild -q --keep-average-char-width --merge-lookups -O3 -o eng-O3.otf EngOrig.otd
-        # ./otfccbuild -q --keep-average-char-width --merge-lookups -O3 -o eng-O4.otf EngOrig-opt.otd
+        # ./otfccbuild -q --keep-average-char-width --merge-lookups -O3 -o eng-O3.ttf EngOrig.otd
+        # ./otfccbuild -q --keep-average-char-width --merge-lookups -O3 -o eng-O4.ttf EngOrig-opt.otd
         ls -ltrah && ls -ltra
         md5sum *
         # fontforge -script optimize_glyph.py merged.otf
@@ -142,7 +142,7 @@ jobs:
       run: |
         cd FontTools/MergeFont/字体合并补全工具-简体中文-1.1.0-linux-amd64
         cp ../fix-cpp.py .
-        cp merged.otf merged-origin.otf
+        cp merged.ttf merged-origin.ttf
         # python fix-cpp.py
         # python fix-spacing.py merged.otf 100 merged-100.otf
 
@@ -155,19 +155,19 @@ jobs:
     - name: Create Release and Upload Release Asset
       uses: softprops/action-gh-release@v2
       with:
-        tag_name: v0.1.1-font
+        tag_name: v0.1.2-font
         name: HM + Iover
         draft: false
         prerelease: false
         files: |
-          ./FontTools/MergeFont/字体合并补全工具-简体中文-1.1.0-linux-amd64/merged.otf
-          ./FontTools/MergeFont/字体合并补全工具-简体中文-1.1.0-linux-amd64/merged-O4P.otf
-          ./FontTools/MergeFont/字体合并补全工具-简体中文-1.1.0-linux-amd64/merged-O4.otf
-          ./FontTools/MergeFont/字体合并补全工具-简体中文-1.1.0-linux-amd64/merged-O1145.otf
-          ./FontTools/MergeFont/字体合并补全工具-简体中文-1.1.0-linux-amd64/English.otf
-          ./FontTools/MergeFont/字体合并补全工具-简体中文-1.1.0-linux-amd64/Chinese.otf
-          ./FontTools/MergeFont/字体合并补全工具-简体中文-1.1.0-linux-amd64/merged-NEW-P.otf
-          ./FontTools/MergeFont/字体合并补全工具-简体中文-1.1.0-linux-amd64/merged-NEW.otf
+          ./FontTools/MergeFont/字体合并补全工具-简体中文-1.1.0-linux-amd64/merged.ttf
+          ./FontTools/MergeFont/字体合并补全工具-简体中文-1.1.0-linux-amd64/merged-O4P.ttf
+          ./FontTools/MergeFont/字体合并补全工具-简体中文-1.1.0-linux-amd64/merged-O4.ttf
+          ./FontTools/MergeFont/字体合并补全工具-简体中文-1.1.0-linux-amd64/merged-O1145.ttf
+          ./FontTools/MergeFont/字体合并补全工具-简体中文-1.1.0-linux-amd64/English.ttf
+          ./FontTools/MergeFont/字体合并补全工具-简体中文-1.1.0-linux-amd64/Chinese.ttf
+          ./FontTools/MergeFont/字体合并补全工具-简体中文-1.1.0-linux-amd64/merged-NEW-P.ttf
+          ./FontTools/MergeFont/字体合并补全工具-简体中文-1.1.0-linux-amd64/merged-NEW.ttf
 
     - name: Get Help
       shell: bash
@@ -179,9 +179,9 @@ jobs:
     - name: Check info
       run: |
         cd FontTools/MergeFont/字体合并补全工具-简体中文-1.1.0-linux-amd64
-        file merged.otf
-        file Chinese.otf
-        file English.otf
+        file merged.ttf
+        file Chinese.ttf
+        file English.ttf
         # echo -e "\n\n\n"
         # echo -e "merged.otf"
         # python getinfo.py merged.otf
