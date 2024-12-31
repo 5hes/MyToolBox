@@ -10,6 +10,7 @@ def modify_font_baseline(font_path, move_amount, output_path):
         if glyph.isComposite():
             # 对于复合字形，处理其组成部分
             for component in glyph.components:
+                # 复合字形的组件是一个字典，包含 y 和其他信息
                 component.y += move_amount  # 移动组件
         else:
             # 对于简单字形，直接修改 yMin 和 yMax
