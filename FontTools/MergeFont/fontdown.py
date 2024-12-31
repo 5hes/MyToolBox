@@ -1,7 +1,6 @@
 import argparse
 from fontTools.ttLib import TTFont
 from fontTools.pens.recordingPen import RecordingPen
-from fontTools.pens.transformPen import TransformPen
 
 def modify_font_baseline(font_path, move_amount, output_path):
     # 打开字体文件
@@ -9,34 +8,25 @@ def modify_font_baseline(font_path, move_amount, output_path):
 
     # 修改每个字形的基线
     for glyph_name, glyph in font['glyf'].glyphs.items():
-        if glyph.isComposite():
-            # 对于复合字形，获取其组成部分的坐标
-            pen = RecordingPen()
-            glyph.draw(pen)
-            coordinates = pen.value
+        pen = RecordingPen()
+        
+        # 使用 glyfTable 作为参数
+        glyph.draw(pen, font['glyf'])
 
-            # 移动坐标
-            for point in coordinates:
-                point[1] += move_amount  # 移动 Y 坐标
+        # 获取坐标
+        coordinates = pen.value
 
-            # 重新绘制字形
-            glyph.clear()
-            for point in coordinates:
-                glyph.appendPoint(point[0], point[1], point[2])  # 添加移动后的点
-        else:
-            # 对于简单字形，获取坐标并移动
-            pen = RecordingPen()
-            glyph.draw(pen)
-            coordinates = pen.value
+        # 移动坐标
+        new_coordinates = []
+        for point in coordinates:
+            # point 是一个元组，包含 (x, y, onCurve)
+            new_y = point[1] + move_amount  # 移动 Y 坐标
+            new_coordinates.append((point[0], new_y, point[2]))
 
-            # 移动坐标
-            for point in coordinates:
-                point[1] += move_amount  # 移动 Y 坐标
-
-            # 重新绘制字形
-            glyph.clear()
-            for point in coordinates:
-                glyph.appendPoint(point[0], point[1], point[2])  # 添加移动后的点
+        # 清空当前字形并重新绘制
+        glyph.clear()
+        for point in new_coordinates:
+            glyph.appendPoint(point[0], point[1], point[2])  # 添加移动后的点
 
     # 保存修改后的字体文件
     font.save(output_path)
