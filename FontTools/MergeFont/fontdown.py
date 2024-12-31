@@ -19,8 +19,16 @@ def modify_font_baseline(font_path, move_amount, output_path):
         # 移动坐标
         new_coordinates = []
         for point in coordinates:
-            # point 是一个元组，包含 (x, y, onCurve)
-            x, y, onCurve = point  # 解包元组
+            if len(point) == 3:
+                # point 是一个元组，包含 (x, y, onCurve)
+                x, y, onCurve = point  # 解包元组
+            elif len(point) == 2:
+                # point 是一个元组，包含 (x, y)
+                x, y = point
+                onCurve = False  # 默认设置为 False，或根据需要进行调整
+            else:
+                continue  # 跳过不符合预期的点
+
             new_y = y + move_amount  # 移动 Y 坐标
             new_coordinates.append((x, new_y, onCurve))  # 重新构建元组
 
