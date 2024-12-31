@@ -1,5 +1,7 @@
 import argparse
 from fontTools.ttLib import TTFont
+from fontTools.pens.recordingPen import RecordingPen
+from fontTools.pens.transformPen import TransformPen
 
 def modify_font_baseline(font_path, move_amount, output_path):
     # 打开字体文件
@@ -8,17 +10,33 @@ def modify_font_baseline(font_path, move_amount, output_path):
     # 修改每个字形的基线
     for glyph_name, glyph in font['glyf'].glyphs.items():
         if glyph.isComposite():
-            # 对于复合字形，处理其组成部分
-            for component in glyph.components:
-                # 复合字形的组件是一个字典，包含 y 和其他信息
-                component.y += move_amount  # 移动组件
+            # 对于复合字形，获取其组成部分的坐标
+            pen = RecordingPen()
+            glyph.draw(pen)
+            coordinates = pen.value
+
+            # 移动坐标
+            for point in coordinates:
+                point[1] += move_amount  # 移动 Y 坐标
+
+            # 重新绘制字形
+            glyph.clear()
+            for point in coordinates:
+                glyph.appendPoint(point[0], point[1], point[2])  # 添加移动后的点
         else:
-            # 对于简单字形，直接修改 yMin 和 yMax
-            if hasattr(glyph, 'yMin') and hasattr(glyph, 'yMax'):
-                glyph.yMin -= move_amount  # 下移字形的最小 Y 值
-                glyph.yMax -= move_amount  # 下移字形的最大 Y 值
-            else:
-                print(f"警告: 字形 '{glyph_name}' 不包含 yMin 或 yMax 属性，跳过该字形。")
+            # 对于简单字形，获取坐标并移动
+            pen = RecordingPen()
+            glyph.draw(pen)
+            coordinates = pen.value
+
+            # 移动坐标
+            for point in coordinates:
+                point[1] += move_amount  # 移动 Y 坐标
+
+            # 重新绘制字形
+            glyph.clear()
+            for point in coordinates:
+                glyph.appendPoint(point[0], point[1], point[2])  # 添加移动后的点
 
     # 保存修改后的字体文件
     font.save(output_path)
