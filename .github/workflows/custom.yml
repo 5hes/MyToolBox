@@ -11,7 +11,7 @@ on:
 
 permissions: write-all
 jobs:
-  convert_and_merge:
+  downfont:
     runs-on: ubuntu-latest
 
     steps:
@@ -23,7 +23,7 @@ jobs:
         with:
           python-version: '3.13'
 
-      - name:Push a tag
+      - name: Push a tag
         run: |
           NAME='v0.0.0-custom'
           git tag "$NAME"
