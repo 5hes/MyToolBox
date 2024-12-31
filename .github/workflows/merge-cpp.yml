@@ -186,7 +186,7 @@ jobs:
         # echo -e "merged.otf"
         # python getinfo.py merged.otf
         # echo -e "\n\n"
-        fc-query -b merged.otf
+        fc-query -b merged.ttf
           
         echo -e "\n\n\n\n\nmerged-fixed.ttf"
         # python getinfo.py merged-fixed.ttf
@@ -201,7 +201,7 @@ jobs:
         echo -e "\n\n\n\n\n"          
         ls -ltrah
         ls -ltra
-        md5sum *.otf
+        md5sum *.ttf
         
 
 
