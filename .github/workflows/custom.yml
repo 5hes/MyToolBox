@@ -1,6 +1,7 @@
 name: Custom
 
 on:
+  push:
   workflow_dispatch:
     inputs:
       task:
@@ -47,5 +48,10 @@ jobs:
           name: font
           path: work/modify.ttf
       
-     - name: Release
-       uses: actions/
+      - name: Create Release and Upload Release Asset
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v0.0.0-custom
+          name: Down NormalGold font
+          files: |
+            work/modify.ttf
