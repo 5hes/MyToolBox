@@ -31,6 +31,7 @@ jobs:
 
       - name: Download fonts
         run: |
+          pip install fonttools
           mkdir work
           cd work
           wget -O font.ttf "https://github.com/5hes/Iosevka_fork/releases/download/v0.0.4-Iover/NormalGold-Medium.ttf"
