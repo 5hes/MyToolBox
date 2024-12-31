@@ -37,7 +37,7 @@ jobs:
 
       - name: Font down
         run: |
-          mv FontTools/MyToolBox/fontdown.py work/
+          mv FontTools/MergeFont/fontdown.py work/
           cd work
           python fontdown.py font.ttf 100 modify.ttf
           ls -ltrah && ls -ltra
