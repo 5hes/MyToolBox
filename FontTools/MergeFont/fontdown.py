@@ -20,8 +20,9 @@ def modify_font_baseline(font_path, move_amount, output_path):
         new_coordinates = []
         for point in coordinates:
             # point 是一个元组，包含 (x, y, onCurve)
-            new_y = point[1] + move_amount  # 移动 Y 坐标
-            new_coordinates.append((point[0], new_y, point[2]))
+            x, y, onCurve = point  # 解包元组
+            new_y = y + move_amount  # 移动 Y 坐标
+            new_coordinates.append((x, new_y, onCurve))  # 重新构建元组
 
         # 清空当前字形并重新绘制
         glyph.clear()
