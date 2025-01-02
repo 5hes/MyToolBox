@@ -34,7 +34,7 @@ def split_ttf(input_file):
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
-        print("Usage: python split_ttf.py <input_file.ttf>")
+        print("Usage: python split_multiple_weights.py <input_file.ttf>")
         sys.exit(1)
 
     input_file = sys.argv[1]
