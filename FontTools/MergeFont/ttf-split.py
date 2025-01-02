@@ -9,6 +9,11 @@ def split_variable_font(input_file):
     # 获取所有字重实例
     instances = fvar.instances
 
+    # 打印所有实例的信息
+    print("Instances:")
+    for instance in instances:
+        print(f"  Instance ID: {instance.subfamilyNameID}, Name: {instance.name}, Location: {instance.coordinates}")
+
     # 创建输出目录
     output_dir = f"{os.path.splitext(input_file)[0]}_split"
     os.makedirs(output_dir, exist_ok=True)
