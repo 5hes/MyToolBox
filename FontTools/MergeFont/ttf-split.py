@@ -42,6 +42,10 @@ def split_variable_font(input_file):
         # 只保留当前实例
         new_font['fvar'].instances = [instance]  
         
+        # 更新字体的其他相关信息
+        new_font['fvar'].axes = font['fvar'].axes  # 保留轴信息
+        new_font['fvar'].instanceCount = 1  # 设置实例数量为1
+        
         # 保存新字体文件
         output_file = os.path.join(output_dir, f"{subfamily_name}.ttf")
         new_font.save(output_file)
