@@ -49,6 +49,7 @@ jobs:
         run: |
           cd work
           fc-query -b font.ttf
+          echo -e "\n\n\n\n\n\n\n\n\n\n"
           fc-query -b font_split/Weight-500.0.ttf
           
 #       - name: Upload
