@@ -1,7 +1,6 @@
 name: Custom
 
 on:
-  push:
   workflow_dispatch:
     inputs:
       task:
