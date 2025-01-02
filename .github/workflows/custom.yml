@@ -57,4 +57,5 @@ jobs:
           name: split
           files: |
             work/*
-            work/OPPO Sans 4.0_split/*
+            wirk/font_split/*
+            # work/OPPO Sans 4.0_split/*
