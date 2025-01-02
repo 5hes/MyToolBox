@@ -12,7 +12,8 @@ def split_variable_font(input_file):
     # 打印所有实例的信息
     print("Instances:")
     for instance in instances:
-        print(f"  Instance ID: {instance.subfamilyNameID}, Name: {instance.name}, Location: {instance.coordinates}")
+        # 打印实例的所有属性
+        print(f"  Instance ID: {instance.subfamilyNameID}, Location: {instance.coordinates}")
 
     # 创建输出目录
     output_dir = f"{os.path.splitext(input_file)[0]}_split"
