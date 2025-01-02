@@ -54,7 +54,7 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           tag_name: v0.0.0-custom
-          name: split oppo sans
+          name: split
           files: |
             work/*
             work/OPPO Sans 4.0_split/*
