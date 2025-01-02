@@ -1,6 +1,7 @@
 name: Merge Font Cpp
 
 on:
+  push:
   workflow_dispatch:
     inputs:
       Merge:
@@ -38,7 +39,7 @@ jobs:
 
     - name: Create a new tag
       run: |
-        TAG_NAME="v0.1.4-font"
+        TAG_NAME="v0.1.5-font"
         git tag $TAG_NAME
         git push origin $TAG_NAME
 
@@ -55,10 +56,10 @@ jobs:
 
     - name: Install ftcli
       run: |
-        git clone https://github.com/ftCLI/FoundryTools-CLI-2.git
-        cp FoundryTools-CLI-2/foundrytools_cli_2/cli/converter/tasks/ttf_to_otf.py FontTools/MergeFont
-        cd FoundryTools-CLI-2
-        pip install .
+        # git clone https://github.com/ftCLI/FoundryTools-CLI-2.git
+        # cp FoundryTools-CLI-2/foundrytools_cli_2/cli/converter/tasks/ttf_to_otf.py FontTools/MergeFont
+        # cd FoundryTools-CLI-2
+        # pip install .
         
     - name: Check PATH
       run: |
@@ -81,8 +82,8 @@ jobs:
         # wget -O Chinese.otf $(cat link_sc)
         # wget -O English.otf "https://github.com/JetBrains/JetBrainsMono/raw/refs/heads/master/fonts/otf/JetBrainsMono-SemiBold.otf"
         # wget -O English.ttf $(cat link_en)
-        wget -O Chinese.ttf "https://github.com/5hes/MyToolBox/releases/download/v0.0.3/HarmonyOS_SansSC_Medium.ttf"
-        wget -O English.ttf "https://github.com/5hes/Iosevka_fork/releases/download/v0.0.1-test/Test-Medium.ttf"
+        wget -O Chinese.ttf "https://github.com/5hes/MyToolBox/releases/download/v0.0.1-custom/font_Regular.ttf"
+        wget -O English.ttf "https://github.com/5hes/Iosevka_fork/releases/download/v0.0.6-Iover/Stable-Regular.ttf"
         
     - name: otf2ttf
       shell: bash
@@ -154,8 +155,8 @@ jobs:
     - name: Create Release and Upload Release Asset
       uses: softprops/action-gh-release@v2
       with:
-        tag_name: v0.1.4-font
-        name: HM + Iover
+        tag_name: v0.1.5-font
+        name: op + Iover
         draft: false
         prerelease: false
         files: |
