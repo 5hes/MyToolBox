@@ -33,20 +33,20 @@ jobs:
           pip install fonttools
           mkdir work
           cd work
-          wget -O font.ttf "https://github.com/5hes/Iosevka_fork/releases/download/v0.0.4-Iover/NormalGold-Medium.ttf"
+          wget -O font.ttf "https://github.com/5hes/Font/releases/download/v0.1.1/OPPO.Sans.4.0.ttf"
 
       - name: Font down
         run: |
-          mv FontTools/MergeFont/fontdown.py work/
+          mv FontTools/MergeFont/ttf-split.py work/
           cd work
-          python fontdown.py font.ttf 100 modify.ttf
+          python ttf-split.py font.ttf
           ls -ltrah && ls -ltra
 
-      - name: Upload
-        uses: actions/upload-artifact@v4
-        with:
-          name: font
-          path: work/modify.ttf
+#       - name: Upload
+#         uses: actions/upload-artifact@v4
+#         with:
+#           name: font
+#           path: work/**
       
       - name: Create Release and Upload Release Asset
         uses: softprops/action-gh-release@v2
@@ -54,4 +54,4 @@ jobs:
           tag_name: v0.0.0-custom
           name: Down NormalGold font
           files: |
-            work/modify.ttf
+            work/*
