@@ -38,9 +38,10 @@ jobs:
 
       - name: Process
         run: |
-          mv FontTools/MergeFont/ttf-split.py work/
+          mv FontTools/MergeFont/var-extra.sh work/
           cd work
-          python ttf-split.py font.ttf
+          chmod +x var-extra.sh
+          ./var-extra.sh
           ls -ltrah && ls -ltra
           tree
 
@@ -49,7 +50,6 @@ jobs:
           cd work
           fc-query -b font.ttf
           echo -e "\n\n\n\n\n\n\n\n\n\n"
-          fc-query -b font_split/Weight-500.0.ttf
           
 #       - name: Upload
 #         uses: actions/upload-artifact@v4
@@ -63,6 +63,4 @@ jobs:
           tag_name: v0.0.1-custom
           name: split
           files: |
-            work/*
-            work/font_split/*
-            # work/OPPO Sans 4.0_split/*
+            work/**
