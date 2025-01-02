@@ -6,7 +6,7 @@ def split_variable_font(input_file):
     font = TTFont(input_file)
     fvar = font['fvar']
     
-    # 获取所有字重
+    # 获取所有字重实例
     instances = fvar.instances
 
     # 创建输出目录
@@ -17,12 +17,14 @@ def split_variable_font(input_file):
         # 创建新字体对象
         new_font = TTFont(input_file)
         
-        # 设置实例的名称
-        subfamily_name = font['name'].getName(instance.subfamilyNameID, 2, 3, 1, 1033).toUnicode()
+        # 获取子家族名称
+        subfamily_name = font['name'].getName(instance.subfamilyNameID, 2, 3, 1).toUnicode()
+        
+        # 设置新字体的名称
         new_font['name'].setName(subfamily_name, 2, 3, 1, 1033)  # Subfamily Name
         
-        # 设置其他必要的属性（如权重等）
-        new_font['fvar'].instances = [instance]  # 只保留当前实例
+        # 只保留当前实例
+        new_font['fvar'].instances = [instance]  
         
         # 保存新字体文件
         output_file = os.path.join(output_dir, f"{subfamily_name}.ttf")
