@@ -18,7 +18,13 @@ def split_variable_font(input_file):
         new_font = TTFont(input_file)
         
         # 获取子家族名称
-        subfamily_name = font['name'].getName(instance.subfamilyNameID, 2, 3, 1).toUnicode()
+        subfamily_name_record = font['name'].getName(instance.subfamilyNameID, 2, 3, 1)
+        
+        if subfamily_name_record is not None:
+            subfamily_name = subfamily_name_record.toUnicode()
+        else:
+            print(f"Warning: Subfamily name not found for instance ID {instance.subfamilyNameID}. Skipping this instance.")
+            continue  # 跳过没有名称的实例
         
         # 设置新字体的名称
         new_font['name'].setName(subfamily_name, 2, 3, 1, 1033)  # Subfamily Name
