@@ -25,9 +25,9 @@ jobs:
 
       - name: Push a tag
         run: |
-          # NAME='v0.0.0-custom'
-          # git tag "$NAME"
-          # git push origin "$NAME"
+          NAME='v0.0.1-custom'
+          git tag "$NAME"
+          git push origin "$NAME"
 
       - name: Download fonts
         run: |
@@ -36,7 +36,7 @@ jobs:
           cd work
           wget -O font.ttf "https://github.com/5hes/Font/releases/download/v0.1.1/OPPO.Sans.4.0.ttf"
 
-      - name: Font down
+      - name: Process
         run: |
           mv FontTools/MergeFont/ttf-split.py work/
           cd work
@@ -53,7 +53,7 @@ jobs:
       - name: Create Release and Upload Release Asset
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: v0.0.0-custom
+          tag_name: v0.0.1-custom
           name: split
           files: |
             work/*
