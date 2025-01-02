@@ -25,9 +25,9 @@ jobs:
 
       - name: Push a tag
         run: |
-          NAME='v0.0.1-custom'
-          git tag "$NAME"
-          git push origin "$NAME"
+          # NAME='v0.0.1-custom'
+          # git tag "$NAME"
+          # git push origin "$NAME"
 
       - name: Download fonts
         run: |
