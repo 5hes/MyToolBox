@@ -9,22 +9,9 @@ if [ ${#TTF_FILES[@]} -eq 0 ]; then
     exit 1
 fi
 
-# 列出 TTF 文件供用户选择
-echo "请选择要提取的字体文件："
-select VF_FILE in "${TTF_FILES[@]}"; do
-    if [[ -n "$VF_FILE" ]]; then
-        echo "您选择了： $VF_FILE"
-        break
-    else
-        echo "无效选择，请重试。"
-    fi
-done
-
-# 检查是否成功选择了文件
-if [ -z "$VF_FILE" ]; then
-    echo "没有选择有效的文件，脚本终止。"
-    exit 1
-fi
+# 自动选择第一个 TTF 文件
+VF_FILE="${TTF_FILES[0]}"
+echo "自动选择了： $VF_FILE"
 
 # 创建输出目录，以字体名称命名
 OUTPUT_DIR="${VF_FILE%.*}_fonts"
