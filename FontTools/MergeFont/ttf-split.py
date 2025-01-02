@@ -2,18 +2,20 @@ import os
 import sys
 from fontTools.ttLib import TTFont
 
+def print_name_table(font):
+    print("Name Table:")
+    for record in font['name'].names:
+        print(f"  ID: {record.nameID}, Platform: {record.platformID}, Encoding: {record.platEncID}, Language: {record.langID}, String: {record.toUnicode()}")
+
 def split_variable_font(input_file):
     font = TTFont(input_file)
     fvar = font['fvar']
     
+    # 打印名称表内容
+    print_name_table(font)
+
     # 获取所有字重实例
     instances = fvar.instances
-
-    # 打印所有实例的信息
-    print("Instances:")
-    for instance in instances:
-        # 打印实例的所有属性
-        print(f"  Instance ID: {instance.subfamilyNameID}, Location: {instance.coordinates}")
 
     # 创建输出目录
     output_dir = f"{os.path.splitext(input_file)[0]}_split"
@@ -29,8 +31,10 @@ def split_variable_font(input_file):
         if subfamily_name_record is not None:
             subfamily_name = subfamily_name_record.toUnicode()
         else:
-            print(f"Warning: Subfamily name not found for instance ID {instance.subfamilyNameID}. Skipping this instance.")
-            continue  # 跳过没有名称的实例
+            # 使用默认名称
+            weight_value = instance.coordinates.get('wght', 'Unknown')
+            subfamily_name = f"Weight-{weight_value}"
+            print(f"Warning: Subfamily name not found for instance ID {instance.subfamilyNameID}. Using default name: {subfamily_name}.")
         
         # 设置新字体的名称
         new_font['name'].setName(subfamily_name, 2, 3, 1, 1033)  # Subfamily Name
