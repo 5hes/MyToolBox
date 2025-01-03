@@ -22,7 +22,7 @@ fi
 OUTPUT_DIR="${VF_FILE%.*}_fonts"
 mkdir -p "$OUTPUT_DIR"
 
-weights = "400 500 600"
+export weights="400 500 600"
 
 # 将用户输入的字重分割成数组
 IFS=' ' read -ra weight_array <<< "$weights"
