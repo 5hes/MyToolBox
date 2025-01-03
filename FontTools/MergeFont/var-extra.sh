@@ -9,25 +9,33 @@ if [ ${#TTF_FILES[@]} -eq 0 ]; then
     exit 1
 fi
 
-# 自动选择第一个 TTF 文件
 VF_FILE="${TTF_FILES[0]}"
 echo "自动选择了： $VF_FILE"
+
+# 检查是否成功选择了文件
+if [ -z "$VF_FILE" ]; then
+    echo "没有选择有效的文件，脚本终止。"
+    exit 1
+fi
 
 # 创建输出目录，以字体名称命名
 OUTPUT_DIR="${VF_FILE%.*}_fonts"
 mkdir -p "$OUTPUT_DIR"
 
-# 指定要提取的字重
-TARGET_WEIGHT="400"  # 通常 Regular 字重对应的数值是 400
+weights = "400 500 600"
 
-# 提取 Regular 字重
-echo "正在提取 Regular 字重..."
-OUTPUT_FILE="$OUTPUT_DIR/${VF_FILE%.*}_Regular.ttf"
-fonttools varLib.instancer "$VF_FILE" "wght=$TARGET_WEIGHT" -o "$OUTPUT_FILE"
+# 将用户输入的字重分割成数组
+IFS=' ' read -ra weight_array <<< "$weights"
 
-# 检查提取是否成功
-if [ $? -eq 0 ]; then
-    echo "Regular 字重已成功提取！文件保存在：$OUTPUT_FILE"
-else
-    echo "提取 Regular 字重失败。"
-fi
+# 遍历数组并执行相应的操作
+for weight in "${weight_array[@]}"; do
+  echo "正在提取字重：$weight"
+  # 确保 fonttools 和 varLib.instancer 可用，这里假设它们已经被正确安装
+  OUTPUT_FILE="$OUTPUT_DIR/${VF_FILE%.*}_wght_$weight.ttf"
+  fonttools varLib.instancer "$VF_FILE" "wght=$weight" -o "$OUTPUT_FILE"
+  if [ $? -ne 0 ]; then
+    echo "提取字重 $weight 失败。"
+  fi
+done
+
+echo "提取字重已完成！文件保存在以原文件名命名的文件夹中"
