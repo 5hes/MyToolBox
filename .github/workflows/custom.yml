@@ -25,9 +25,9 @@ jobs:
 
       - name: Push a tag
         run: |
-          # NAME='v0.0.1-custom'
-          # git tag "$NAME"
-          # git push origin "$NAME"
+          NAME='v0.0.2-custom'
+          git tag "$NAME"
+          git push origin "$NAME"
 
       - name: Download fonts
         run: |
@@ -35,7 +35,8 @@ jobs:
           pip install fonttools
           mkdir work
           cd work
-          wget -O font.ttf "https://github.com/5hes/Font/releases/download/v0.1.1/OPPO.Sans.4.0.ttf"
+          # wget -O font.ttf "https://github.com/5hes/Font/releases/download/v0.1.1/OPPO.Sans.4.0.ttf"
+          wget -O font.ttf "https://github.com/5hes/Font/releases/download/v0.1.4/Pro.ttf"
 
       - name: Process
         run: |
@@ -61,7 +62,7 @@ jobs:
       - name: Create Release and Upload Release Asset
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: v0.0.1-custom
-          name: split
+          tag_name: v0.0.2-custom
+          name: MiLan Pro split
           files: |
             work/**
