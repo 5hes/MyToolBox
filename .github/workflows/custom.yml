@@ -1,7 +1,6 @@
 name: Custom
 
 on:
-  push:
   workflow_dispatch:
     inputs:
       task:
@@ -35,8 +34,11 @@ jobs:
           pip install fonttools
           mkdir work
           cd work
+          md5sum ../MiLanProVF.ttf
+          sha1sum ../MiLanProVF.ttf
+          cp ../MiLanProVF.ttf .
           # wget -O font.ttf "https://github.com/5hes/Font/releases/download/v0.1.1/OPPO.Sans.4.0.ttf"
-          wget -O font.ttf "https://github.com/5hes/Font/releases/download/v0.1.4/Pro.ttf"
+          # wget -O font.ttf "https://github.com/5hes/Font/releases/download/v0.1.4/Pro.ttf"
 
       - name: Process
         run: |
