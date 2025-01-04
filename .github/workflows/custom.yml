@@ -51,8 +51,7 @@ jobs:
 
       - name: Check info
         run: |
-          cd work
-          fc-query -b font.ttf
+          fc-query -b $(ls *.ttf)
           echo -e "\n\n\n\n\n\n\n\n\n\n"
           
 #       - name: Upload
