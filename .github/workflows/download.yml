@@ -34,6 +34,7 @@ jobs:
           sudo apt-get install -y unzip p7zip-full tar gzip bzip2 xz-utils tree unrar lz4 zstd
           touch 1.7z.001
           touch 1.7z.002
+          copy /b file.7z.00* file.7z
           ls -ltra
           exit 1
 
