@@ -1,6 +1,7 @@
 name: Download File
 
 on:
+  push:
   workflow_dispatch:
     inputs:
       task:
@@ -37,8 +38,8 @@ jobs:
           cd Download/
           chmod +x unzipper.sh env.sh downloader.sh
           # source env.sh
-          # wget -O 1.7z.001 ""
-          # wget -O 1.7z.002 ""
+          wget -O 1.7z.001 "https://ykj-eos-wx2-01.eos-wuxi-3.cmecloud.cn/d9fd85f06dc745b198905465d2687263086?response-content-disposition=attachment%3B%20filename%2A%3DUTF-8%27%27%25E5%25A6%25B9%25E5%25A6%25B9%25E8%25A2%25AB%25E5%2593%25A5%25E5%2593%25A5%25E7%258B%2582%25E5%25B9%25B2.zip.001&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20250115T141615Z&X-Amz-SignedHeaders=host&X-Amz-Expires=900&X-Amz-Credential=Y60FITYLOX7N6UJWBOEE%2F20250115%2Fdefault%2Fs3%2Faws4_request&t=2&u=1039932253763780017&ot=personal&oi=1039932253763780017&f=FlYgtyFqzukqwqR5RH7RHyIAqmucNs6lK&X-Amz-Signature=f77d144d30af58bc0e24b0477844f729b0e717f6eb5030d166ed37fb033d96ed"
+          wget -O 1.7z.002 "https://ykj-eos-wx2-01.eos-wuxi-3.cmecloud.cn/7662ecdd60a1462abcba52cc7fae4716086?response-content-disposition=attachment%3B%20filename%2A%3DUTF-8%27%27%25E5%25A6%25B9%25E5%25A6%25B9%25E8%25A2%25AB%25E5%2593%25A5%25E5%2593%25A5%25E7%258B%2582%25E5%25B9%25B2.zip.002&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20250115T141627Z&X-Amz-SignedHeaders=host&X-Amz-Expires=900&X-Amz-Credential=Y60FITYLOX7N6UJWBOEE%2F20250115%2Fdefault%2Fs3%2Faws4_request&t=2&u=1039932253763780017&ot=personal&oi=1039932253763780017&f=Fgq_RS16FMpPa0_CehjxJuJcNZmQJhSGT&X-Amz-Signature=2389109d13a5b6b6bb04f8a9334161f160bb147a79f4e92ac6265135ea472b12"
           
 #      - name: Push
 #        run: |
@@ -53,7 +54,8 @@ jobs:
           cd Download/
           chmod +x unzipper.sh
           export EXTRA=true
-          export password=sen1
+          export password=awfx
+          # sen1
           export crypt=false
           ls -ltrah
           ./unzipper.sh
