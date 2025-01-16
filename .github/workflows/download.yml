@@ -68,6 +68,8 @@ jobs:
           # chmod +x unzip
           # ./unzip
           7z x -pjntm 1.7z.001 -ooutput
+          zip out.zip output
+          tar -zcvf out.tar output
           tree
           ls -ltrah
 
@@ -99,7 +101,8 @@ jobs:
           draft: false
           prerelease: false
           files: |
-            Download/output/**
+            Download/out.tar
+            Download/out.zip
             
 
 
