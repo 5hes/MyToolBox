@@ -64,7 +64,7 @@ jobs:
           # echo "7z x -pawfx 1.7z.001 -o crypt" > unzip
           # echo "7z x 1.7z.001" > unzip
           # chmod +x unzip
-          ./unzip
+          # ./unzip
           tree
           ls -ltrah
 
