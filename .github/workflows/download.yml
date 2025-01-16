@@ -23,7 +23,7 @@ jobs:
       - name: Create a new tag
         id: create_tag
         run: |
-           TAG_NAME="v0.2.1"  # 这里设置你想要的标签名
+           TAG_NAME="v0.2.2"  # 这里设置你想要的标签名
            git tag $TAG_NAME
            git push origin $TAG_NAME
 
@@ -38,9 +38,9 @@ jobs:
           cd Download/
           chmod +x unzipper.sh env.sh downloader.sh
           # source env.sh
-          wget -O 1.7z.001 "https://ykj-eos-wx2-01.eos-wuxi-3.cmecloud.cn/5b23eb59a6194d3885db6cbd9ac5440a086?response-content-disposition=attachment%3B%20filename%2A%3DUTF-8%27%27%25E9%2585%2592.7z.001&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20250116T050043Z&X-Amz-SignedHeaders=host&X-Amz-Expires=900&X-Amz-Credential=Y60FITYLOX7N6UJWBOEE%2F20250116%2Fdefault%2Fs3%2Faws4_request&t=2&u=1039816495805071512&ot=personal&oi=1039816495805071512&f=Fgc4WWHEqzyB6cqc09SRAapRspBoLKtgg&X-Amz-Signature=2329d08dbd348ead781c84a081d6dbae1b90280e1ff406e9e852f7fd53c266e5"
-          wget -O 1.7z.002 "https://ykj-eos-wx2-01.eos-wuxi-3.cmecloud.cn/34055ab21a514079aac58f4a7c702d82086?response-content-disposition=attachment%3B%20filename%2A%3DUTF-8%27%27%25E9%2585%2592.7z.002&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20250116T050056Z&X-Amz-SignedHeaders=host&X-Amz-Expires=900&X-Amz-Credential=Y60FITYLOX7N6UJWBOEE%2F20250116%2Fdefault%2Fs3%2Faws4_request&t=2&u=1039816495805071512&ot=personal&oi=1039816495805071512&f=FmWkVjbUFlU-qMkui3DNEz4zLp8_PBYJP&X-Amz-Signature=78a4345e17d6dbed6d73b7ceb5df49851d7116fb9e96e3d6710cdabb07359b22"
-          wget -O 1.7z.003 "https://ykj-eos-wx2-01.eos-wuxi-3.cmecloud.cn/186d726c29794f3ba98078625c850d4c086?response-content-disposition=attachment%3B%20filename%2A%3DUTF-8%27%27%25E9%2585%2592.7z.003&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20250116T050108Z&X-Amz-SignedHeaders=host&X-Amz-Expires=900&X-Amz-Credential=Y60FITYLOX7N6UJWBOEE%2F20250116%2Fdefault%2Fs3%2Faws4_request&t=2&u=1039816495805071512&ot=personal&oi=1039816495805071512&f=Fi__uTXqakFILRjLQFLpHA55dXA8AmodS&X-Amz-Signature=8bb808f5347a556e6577767ec88244f1f91c74841d54d46660f25980e47b6aca"
+          wget -O 1.7z.001 "https://ykj-eos-wx2-01.eos-wuxi-3.cmecloud.cn/788402870c404ca0bfc9d461c81bfa70086?response-content-disposition=attachment%3B%20filename%2A%3DUTF-8%27%275.7z.001&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20250116T051115Z&X-Amz-SignedHeaders=host&X-Amz-Expires=900&X-Amz-Credential=Y60FITYLOX7N6UJWBOEE%2F20250116%2Fdefault%2Fs3%2Faws4_request&t=2&u=1039816495805071512&ot=personal&oi=1039816495805071512&f=FmYUcqsnMUKbgcgh6HfBFV4wnruizzEem&X-Amz-Signature=00f7231ddc54b4609db8f23714ad4b55f5684b35652b0e88fd1925a7332c8d0c"
+          wget -O 1.7z.002 "https://ykj-eos-wx2-01.eos-wuxi-3.cmecloud.cn/58429d822e994204b0c8c749e43d6c29086?response-content-disposition=attachment%3B%20filename%2A%3DUTF-8%27%275.7z.002&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20250116T051142Z&X-Amz-SignedHeaders=host&X-Amz-Expires=900&X-Amz-Credential=Y60FITYLOX7N6UJWBOEE%2F20250116%2Fdefault%2Fs3%2Faws4_request&t=2&u=1039816495805071512&ot=personal&oi=1039816495805071512&f=FrZzZCAwZ9FpyNdMwAJFDpbg-a0p2GeNa&X-Amz-Signature=073b4af7a67eb8459c81e7701178b7799052e82013b66d1bcd2253c407b40826"
+          # wget -O 1.7z.003 ""
           # wget -O 1.7z.004 "https://github.com/5hes/MyToolBox/releases/download/v0.2.0/1.7z.004"
           
 #      - name: Push
@@ -68,7 +68,7 @@ jobs:
           # echo "7z x 1.7z.001" > unzip
           # chmod +x unzip
           # ./unzip
-          7z x 1.7z.001 -ooutput
+          7z x -pruoyuchen 1.7z.001 -ooutput
           tar -zcvf out.tar output
           tree
           cd output
@@ -93,8 +93,8 @@ jobs:
       - name: Create Release and Upload Release Asset
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: v0.2.1
-          name: mp4 jiud
+          tag_name: v0.2.2
+          name: mp4 loudly
           #tag_name: ${{ github.ref }}
           #name: ${{ github.ref }}
           #body: TODO New Release.
