@@ -63,7 +63,7 @@ jobs:
           export crypt=false
           ls -ltrah
           # ./unzipper.sh
-          tar -xvf *.tar
+          # tar -xvf *.tar
           # echo "#!/bin/bash" > unzip
           # echo "7z x -pawfx 1.7z.001 -o crypt" > unzip
           # echo "7z x 1.7z.001" > unzip
