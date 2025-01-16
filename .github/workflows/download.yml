@@ -67,7 +67,7 @@ jobs:
           # echo "7z x 1.7z.001" > unzip
           # chmod +x unzip
           # ./unzip
-          7z x -pjntm 1.7z.001 -o output
+          7z x -pjntm 1.7z.001 -ooutput
           tree
           ls -ltrah
 
