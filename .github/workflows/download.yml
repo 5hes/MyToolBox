@@ -74,13 +74,13 @@ jobs:
           cd ..
 
           7z x -pruoyuchen 1.7z.001 -ooutput
-          cd output
-          7z x -pruoyuchen *001
-          find . -name "*mp4" -exec mv {} $sb \;
-          rm -rf *
-          mv $sb/* .
+          # cd output
+          # 7z x -pruoyuchen *001
+          # find . -name "*mp4" -exec mv {} $sb \;
+          # rm -rf *
+          # mv $sb/* .
           
-          cd ..
+          # cd ..
           tar -zcvf out.tar output
           tree
           cd output
