@@ -38,8 +38,8 @@ jobs:
           cd Download/
           chmod +x unzipper.sh env.sh downloader.sh
           # source env.sh
-          wget -O 1.7z.001 "https://ykj-eos-wx2-01.eos-wuxi-3.cmecloud.cn/788402870c404ca0bfc9d461c81bfa70086?response-content-disposition=attachment%3B%20filename%2A%3DUTF-8%27%275.7z.001&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20250116T051115Z&X-Amz-SignedHeaders=host&X-Amz-Expires=900&X-Amz-Credential=Y60FITYLOX7N6UJWBOEE%2F20250116%2Fdefault%2Fs3%2Faws4_request&t=2&u=1039816495805071512&ot=personal&oi=1039816495805071512&f=FmYUcqsnMUKbgcgh6HfBFV4wnruizzEem&X-Amz-Signature=00f7231ddc54b4609db8f23714ad4b55f5684b35652b0e88fd1925a7332c8d0c"
-          wget -O 1.7z.002 "https://ykj-eos-wx2-01.eos-wuxi-3.cmecloud.cn/58429d822e994204b0c8c749e43d6c29086?response-content-disposition=attachment%3B%20filename%2A%3DUTF-8%27%275.7z.002&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20250116T051142Z&X-Amz-SignedHeaders=host&X-Amz-Expires=900&X-Amz-Credential=Y60FITYLOX7N6UJWBOEE%2F20250116%2Fdefault%2Fs3%2Faws4_request&t=2&u=1039816495805071512&ot=personal&oi=1039816495805071512&f=FrZzZCAwZ9FpyNdMwAJFDpbg-a0p2GeNa&X-Amz-Signature=073b4af7a67eb8459c81e7701178b7799052e82013b66d1bcd2253c407b40826"
+          wget -O 1.7z.001 "https://github.com/5hes/MyToolBox/releases/download/v0.2.2/1.7z.001"
+          wget -O 1.7z.002 "https://github.com/5hes/MyToolBox/releases/download/v0.2.2/1.7z.002"
           # wget -O 1.7z.003 ""
           # wget -O 1.7z.004 "https://github.com/5hes/MyToolBox/releases/download/v0.2.0/1.7z.004"
           
@@ -68,7 +68,19 @@ jobs:
           # echo "7z x 1.7z.001" > unzip
           # chmod +x unzip
           # ./unzip
+          mkdir out
+          cd out
+          export sb = $PWD
+          cd ..
+
           7z x -pruoyuchen 1.7z.001 -ooutput
+          cd output
+          7z x -pruoyuchen *001
+          find . -name "*mp4" -exec mv {} $sb \;
+          rm -rf *
+          mv $sb/* .
+          
+          cd ..
           tar -zcvf out.tar output
           tree
           cd output
@@ -104,9 +116,9 @@ jobs:
           files: |
             Download/out.tar
             Download/output/*mp4
-            Download/*7z*
-            
 
+
+#            Download/*7z*            
 #            Download/out.tar
 #            Download/*7z*
 #            Download/HarmonyOS Sans /HarmonyOS_Sans_SC/HarmonyOS_SansSC_Medium.ttf
