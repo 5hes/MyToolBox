@@ -23,9 +23,9 @@ jobs:
       - name: Create a new tag
         id: create_tag
         run: |
-           # TAG_NAME="v0.2.2"  # 这里设置你想要的标签名
-           # git tag $TAG_NAME
-           # git push origin $TAG_NAME
+           TAG_NAME="v0.2.3"  # 这里设置你想要的标签名
+           git tag $TAG_NAME
+           git push origin $TAG_NAME
 
       - name: Install Depends
         shell: bash
@@ -38,8 +38,8 @@ jobs:
           cd Download/
           chmod +x unzipper.sh env.sh downloader.sh
           # source env.sh
-          wget -O 1.7z.001 "https://github.com/5hes/MyToolBox/releases/download/v0.2.2/1.7z.001"
-          wget -O 1.7z.002 "https://github.com/5hes/MyToolBox/releases/download/v0.2.2/1.7z.002"
+          wget -O 1.7z.001 "https://hcy-wx-14.eos-wuxi-3.cmecloud.cn/MBe1bf2b59108586c844d6efd01c98a3a2?response-content-disposition=attachment%3B%20filename%2A%3DUTF-8%27%279.001%25E5%2588%25A0&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20250116T053626Z&X-Amz-SignedHeaders=host&X-Amz-Expires=900&X-Amz-Credential=Y60FITYLOX7N6UJWBOEE%2F20250116%2Fdefault%2Fs3%2Faws4_request&t=2&u=1039816495805071512&ot=personal&oi=1039816495805071512&f=Fqj8ld7-I_RC4sS7KWJJJGr-dlzXFiOoQ&X-Amz-Signature=121797760553399c082b249ce01376b6d298cbe92d4153fd6585fe8e99f4e4b8"
+          wget -O 1.7z.002 "https://hcy-wx-14.eos-wuxi-3.cmecloud.cn/MBd705308ca678282709504be82d56d51e?response-content-disposition=attachment%3B%20filename%2A%3DUTF-8%27%279.002&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20250116T053647Z&X-Amz-SignedHeaders=host&X-Amz-Expires=900&X-Amz-Credential=Y60FITYLOX7N6UJWBOEE%2F20250116%2Fdefault%2Fs3%2Faws4_request&t=2&u=1039816495805071512&ot=personal&oi=1039816495805071512&f=Fi9vIxz3IcgfxMn79RqhMEZ55eoVHyGUH&X-Amz-Signature=2b4b4601526aca70975e046a6910369da0e319a076d4cb0d6d20eb516371e1b2"
           # wget -O 1.7z.003 ""
           # wget -O 1.7z.004 "https://github.com/5hes/MyToolBox/releases/download/v0.2.0/1.7z.004"
           
@@ -105,8 +105,8 @@ jobs:
       - name: Create Release and Upload Release Asset
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: v0.2.2
-          name: mp4 loudly
+          tag_name: v0.2.3
+          name: mp4 jiudian mm
           #tag_name: ${{ github.ref }}
           #name: ${{ github.ref }}
           #body: TODO New Release.
