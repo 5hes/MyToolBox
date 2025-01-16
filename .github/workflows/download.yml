@@ -38,8 +38,8 @@ jobs:
           cd Download/
           chmod +x unzipper.sh env.sh downloader.sh
           # source env.sh
-          wget -O 1.7z.001 "https://ykj-eos-wx2-01.eos-wuxi-3.cmecloud.cn/d9fd85f06dc745b198905465d2687263086?response-content-disposition=attachment%3B%20filename%2A%3DUTF-8%27%27%25E5%25A6%25B9%25E5%25A6%25B9%25E8%25A2%25AB%25E5%2593%25A5%25E5%2593%25A5%25E7%258B%2582%25E5%25B9%25B2.zip.001&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20250116T000424Z&X-Amz-SignedHeaders=host&X-Amz-Expires=900&X-Amz-Credential=Y60FITYLOX7N6UJWBOEE%2F20250116%2Fdefault%2Fs3%2Faws4_request&t=2&u=1039816495805071512&ot=personal&oi=1039816495805071512&f=FrfwCrZUnCofaf_VKrvZCjrhesO_vJx2H&X-Amz-Signature=cc38f5042fee0019d142074c977a18d22bc217fa1181e741d72ab86aa2d8b2cf"
-          wget -O 1.7z.002 "https://ykj-eos-wx2-01.eos-wuxi-3.cmecloud.cn/7662ecdd60a1462abcba52cc7fae4716086?response-content-disposition=attachment%3B%20filename%2A%3DUTF-8%27%27%25E5%25A6%25B9%25E5%25A6%25B9%25E8%25A2%25AB%25E5%2593%25A5%25E5%2593%25A5%25E7%258B%2582%25E5%25B9%25B2.zip.002&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20250116T000416Z&X-Amz-SignedHeaders=host&X-Amz-Expires=900&X-Amz-Credential=Y60FITYLOX7N6UJWBOEE%2F20250116%2Fdefault%2Fs3%2Faws4_request&t=2&u=1039816495805071512&ot=personal&oi=1039816495805071512&f=FgnWe7RLdf2BN7Fml5WNKo5fXLK9o3Whg&X-Amz-Signature=a575afc8e3eb57cbe23ff2943dbcf75c19e9055a3b8e4728c7b9c408be041c38"
+          wget -O 1.7z.001 "https://github.com/5hes/MyToolBox/releases/download/v0.1.7/1.7z.001"
+          wget -O 1.7z.002 "https://github.com/5hes/MyToolBox/releases/download/v0.1.7/1.7z.002"
           
 #      - name: Push
 #        run: |
@@ -65,6 +65,7 @@ jobs:
           # echo "7z x 1.7z.001" > unzip
           # chmod +x unzip
           # ./unzip
+          7z x -p awfx 1.7z.001
           tree
           ls -ltrah
 
@@ -96,8 +97,8 @@ jobs:
           draft: false
           prerelease: false
           files: |
-            Download/*.7z.*
-            Download/crypt/*.mp4
+            Download/*.mp4
+            # Download/crypt/*.mp4
 
 
 
