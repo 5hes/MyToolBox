@@ -65,7 +65,7 @@ jobs:
           # echo "7z x 1.7z.001" > unzip
           # chmod +x unzip
           # ./unzip
-          7z x -p awfx 1.7z.001
+          7z x -pawfx 1.7z.001
           tree
           ls -ltrah
 
