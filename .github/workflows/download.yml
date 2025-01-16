@@ -68,8 +68,8 @@ jobs:
           # chmod +x unzip
           # ./unzip
           7z x -pjntm 1.7z.001 -ooutput
-          zip out.zip output
-          tar -zcvf out.tar output
+          zip -r out.zip output
+          # tar -zcvf out.tar output
           tree
           ls -ltrah
 
@@ -101,11 +101,10 @@ jobs:
           draft: false
           prerelease: false
           files: |
-            Download/out.tar
             Download/out.zip
             
 
-
+#            Download/out.tar
 #            Download/*7z*
 #            Download/HarmonyOS Sans /HarmonyOS_Sans_SC/HarmonyOS_SansSC_Medium.ttf
   
