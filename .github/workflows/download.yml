@@ -23,9 +23,9 @@ jobs:
       - name: Create a new tag
         id: create_tag
         run: |
-           # TAG_NAME="v0.2.3"  # 这里设置你想要的标签名
-           # git tag $TAG_NAME
-           # git push origin $TAG_NAME
+           TAG_NAME="v0.2.4"  # 这里设置你想要的标签名
+           git tag $TAG_NAME
+           git push origin $TAG_NAME
 
       - name: Install Depends
         shell: bash
@@ -37,10 +37,10 @@ jobs:
         run: |
           cd Download/
           chmod +x unzipper.sh env.sh downloader.sh
-          wget "https://github.com/5hes/MyToolBox/releases/download/v0.2.3/out.tar"
+          # wget "https://github.com/5hes/MyToolBox/releases/download/v0.2.3/out.tar"
           # source env.sh
-          # wget -O 1.7z.001 ""
-          # wget -O 1.7z.002 ""
+          wget -O 1.7z.001 "https://hcy-wx-12.eos-wuxi-3.cmecloud.cn/M43aac05d7a2149c905135fb362a85fffa?response-content-disposition=attachment%3B%20filename%2A%3DUTF-8%27%278.001%25E5%2588%25A0&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20250116T060323Z&X-Amz-SignedHeaders=host&X-Amz-Expires=900&X-Amz-Credential=Y60FITYLOX7N6UJWBOEE%2F20250116%2Fdefault%2Fs3%2Faws4_request&t=2&u=1039816495805071512&ot=personal&oi=1039816495805071512&f=Fmky3AcQbkM0rWtNnnsRHmo_uBUO-G4fN&X-Amz-Signature=7a9d99ea30410cc8f677946a3668a86754ddfa508cd0e95be4dabd6b92f97474"
+          wget -O 1.7z.002 "https://hcy-wx-12.eos-wuxi-3.cmecloud.cn/M4eea7ae9b8b8ba0d298ef7e91ba010bd4?response-content-disposition=attachment%3B%20filename%2A%3DUTF-8%27%278.002&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20250116T060312Z&X-Amz-SignedHeaders=host&X-Amz-Expires=900&X-Amz-Credential=Y60FITYLOX7N6UJWBOEE%2F20250116%2Fdefault%2Fs3%2Faws4_request&t=2&u=1039816495805071512&ot=personal&oi=1039816495805071512&f=FmEBAaD2AKliWg28Pwo9Hvo3i8ipHgD1Y&X-Amz-Signature=6e5f8a5f77b8c201e4ce9e12affc29bd9d5627bd07fec27cd6db859acc3db5a1"
           # wget -O 1.7z.003 ""
           # wget -O 1.7z.004 "https://github.com/5hes/MyToolBox/releases/download/v0.2.0/1.7z.004"
           
@@ -74,10 +74,13 @@ jobs:
           export sb=$PWD
           cd ..
 
+          7z x -pruoyuchen 1.7z.001 -ooutput
+          tree
           cd output
           mv *001* 1.7z.001
           mv *002* 1.7z.002
-          7z x -pruoyuchen 1.7z.001          
+          7z x -pruoyuchen 1.7z.001
+          tree
           rm *7z*
 
           # cd output
@@ -111,8 +114,8 @@ jobs:
       - name: Create Release and Upload Release Asset
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: v0.2.3
-          name: mp4 jiudian mm
+          tag_name: v0.2.4
+          name: mp4 hunsha
           #tag_name: ${{ github.ref }}
           #name: ${{ github.ref }}
           #body: TODO New Release.
