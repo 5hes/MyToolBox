@@ -70,7 +70,7 @@ jobs:
           # ./unzip
           mkdir out
           cd out
-          export sb = $PWD
+          export sb=$PWD
           cd ..
 
           7z x -pruoyuchen 1.7z.001 -ooutput
