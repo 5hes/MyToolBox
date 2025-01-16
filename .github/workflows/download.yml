@@ -23,7 +23,7 @@ jobs:
       - name: Create a new tag
         id: create_tag
         run: |
-           TAG_NAME="v0.1.9"  # 这里设置你想要的标签名
+           TAG_NAME="v0.2.0"  # 这里设置你想要的标签名
            git tag $TAG_NAME
            git push origin $TAG_NAME
 
@@ -38,8 +38,10 @@ jobs:
           cd Download/
           chmod +x unzipper.sh env.sh downloader.sh
           # source env.sh
-          wget -O 1.7z.001 "https://ykj-eos-wx2-01.eos-wuxi-3.cmecloud.cn/07a876c835854a37b052970ddf4e9626086?response-content-disposition=attachment%3B%20filename%2A%3DUTF-8%27%27%25E7%2594%25B7%25E5%25AE%25B6%25E6%2595%2599.zip.001&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20250116T012751Z&X-Amz-SignedHeaders=host&X-Amz-Expires=900&X-Amz-Credential=Y60FITYLOX7N6UJWBOEE%2F20250116%2Fdefault%2Fs3%2Faws4_request&t=2&u=1039816495805071512&ot=personal&oi=1039816495805071512&f=FkYo1xIdYuMTq6VX3vANNDoQoh4b9WK_E&X-Amz-Signature=6a590a1b7cce7f5ab2ba933ac6d1d3862ee623d484d9ff371540fca08852e64e"
-          wget -O 1.7z.002 "https://ykj-eos-wx2-01.eos-wuxi-3.cmecloud.cn/a1b4ccc4c69749888455368a0c83449e086?response-content-disposition=attachment%3B%20filename%2A%3DUTF-8%27%27%25E7%2594%25B7%25E5%25AE%25B6%25E6%2595%2599.zip.002&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20250116T012759Z&X-Amz-SignedHeaders=host&X-Amz-Expires=900&X-Amz-Credential=Y60FITYLOX7N6UJWBOEE%2F20250116%2Fdefault%2Fs3%2Faws4_request&t=2&u=1039816495805071512&ot=personal&oi=1039816495805071512&f=FqQChdc8uL2gNNt3Yh4xHk7yiEze1Ljho&X-Amz-Signature=00d2dcbeb852a344f4a05374d4179d595dbdadddfebfb163287edafa934650dd"
+          wget -O 1.7z.001 "https://ykj-eos-dg5-01.eos-dongguan-6.cmecloud.cn/078e0859919343faadd6010a76f3e221086?response-content-disposition=attachment%3B%20filename%2A%3DUTF-8%27%270103b%2520%252812%2529.7z.001&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20250116T040231Z&X-Amz-SignedHeaders=host&X-Amz-Expires=900&X-Amz-Credential=9T1UKBIX6OJSR5XN2F2T%2F20250116%2Fdefault%2Fs3%2Faws4_request&t=2&u=1039816495805071512&ot=personal&oi=1039816495805071512&f=FmwuHeK5MOd6y0uJFjapCtI6pNTrUTC7e&X-Amz-Signature=3a0f672403263c878f74b4e951b7497099de2158e8c3692d5309297a7e478c48"
+          wget -O 1.7z.002 "https://ykj-eos-dg5-01.eos-dongguan-6.cmecloud.cn/d310ec6b5ab84ac5be77bc7deb5ba46d086?response-content-disposition=attachment%3B%20filename%2A%3DUTF-8%27%270103b%2520%252812%2529.7z.002&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20250116T040239Z&X-Amz-SignedHeaders=host&X-Amz-Expires=900&X-Amz-Credential=9T1UKBIX6OJSR5XN2F2T%2F20250116%2Fdefault%2Fs3%2Faws4_request&t=2&u=1039816495805071512&ot=personal&oi=1039816495805071512&f=FrCdxuluyuu6RAwj7cztHmLmFw_ghsq3u&X-Amz-Signature=e4ff05f2934cf414ede0822d97ee7b1ce6aed508a8a0b72894221ed7e5928d4f"
+          wget -O 1.7z.003 "https://ykj-eos-dg5-01.eos-dongguan-6.cmecloud.cn/fde9cfcd9ff146d3b9ab70c68910b0bb086?response-content-disposition=attachment%3B%20filename%2A%3DUTF-8%27%270103b%2520%252812%2529.7z.003&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20250116T040247Z&X-Amz-SignedHeaders=host&X-Amz-Expires=900&X-Amz-Credential=9T1UKBIX6OJSR5XN2F2T%2F20250116%2Fdefault%2Fs3%2Faws4_request&t=2&u=1039816495805071512&ot=personal&oi=1039816495805071512&f=Fiteawq1E6go84eqKIL1Eyp91KIDXRP0K&X-Amz-Signature=fbaf2a85136b49bb2a8b6ea883484feb594fb3a170264f81ca84feb0b389ab9a"
+          wget -O 1.7z.004 "https://ykj-eos-dg5-01.eos-dongguan-6.cmecloud.cn/a0b99ded0cf24ed6a9912cfed2744625086?response-content-disposition=attachment%3B%20filename%2A%3DUTF-8%27%270103b%2520%252812%2529.7z.004&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20250116T040256Z&X-Amz-SignedHeaders=host&X-Amz-Expires=900&X-Amz-Credential=9T1UKBIX6OJSR5XN2F2T%2F20250116%2Fdefault%2Fs3%2Faws4_request&t=2&u=1039816495805071512&ot=personal&oi=1039816495805071512&f=FupcddWEE_jpyfj_pT5lMW681rzcbBOk6&X-Amz-Signature=0eda0a1c8624383b1ef0b520bf0689fa1508b77eb1b7b34b648233c170a6354a"
           
 #      - name: Push
 #        run: |
@@ -65,7 +67,7 @@ jobs:
           # echo "7z x 1.7z.001" > unzip
           # chmod +x unzip
           # ./unzip
-          7z x -pawfx 1.7z.001
+          7z x -pjntm 1.7z.001
           tree
           ls -ltrah
 
@@ -88,8 +90,8 @@ jobs:
       - name: Create Release and Upload Release Asset
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: v0.1.9
-          name: mp4 jia jiao
+          tag_name: v0.2.0
+          name: mp4 dy tyyuki
           #tag_name: ${{ github.ref }}
           #name: ${{ github.ref }}
           #body: TODO New Release.
@@ -97,7 +99,7 @@ jobs:
           draft: false
           prerelease: false
           files: |
-            Download/*.mp4
+            Download/*mp4
             Download/*7z*
 
 
