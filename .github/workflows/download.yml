@@ -23,7 +23,7 @@ jobs:
       - name: Create a new tag
         id: create_tag
         run: |
-           TAG_NAME="v0.1.8"  # 这里设置你想要的标签名
+           TAG_NAME="v0.1.9"  # 这里设置你想要的标签名
            git tag $TAG_NAME
            git push origin $TAG_NAME
 
@@ -38,8 +38,8 @@ jobs:
           cd Download/
           chmod +x unzipper.sh env.sh downloader.sh
           # source env.sh
-          wget -O 1.7z.001 "https://ykj-eos-wx2-01.eos-wuxi-3.cmecloud.cn/49d36854f9a941ffb42cb2730843904f086?response-content-disposition=attachment%3B%20filename%2A%3DUTF-8%27%27%25E5%25BC%25A0%25E6%25B4%25A5%25E7%2591%259C%25E4%25B8%258D%25E9%259B%2585%25E8%25A7%2586%25E9%25A2%2591.001&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20250116T011155Z&X-Amz-SignedHeaders=host&X-Amz-Expires=900&X-Amz-Credential=Y60FITYLOX7N6UJWBOEE%2F20250116%2Fdefault%2Fs3%2Faws4_request&t=2&u=1039816495805071512&ot=personal&oi=1039816495805071512&f=FsUt8fR8R4PaV08Rxyb5PW6Tpzj9lEff2&X-Amz-Signature=70a54e2b9654676f173543a45421260bfc208b818247e95d712506e90d997a93"
-          wget -O 1.7z.002 "https://ykj-eos-wx2-01.eos-wuxi-3.cmecloud.cn/58af1f1ec06f47a6a87fe922327e2d7a086?response-content-disposition=attachment%3B%20filename%2A%3DUTF-8%27%27%25E5%25BC%25A0%25E6%25B4%25A5%25E7%2591%259C%25E4%25B8%258D%25E9%259B%2585%25E8%25A7%2586%25E9%25A2%2591.002&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20250116T011138Z&X-Amz-SignedHeaders=host&X-Amz-Expires=900&X-Amz-Credential=Y60FITYLOX7N6UJWBOEE%2F20250116%2Fdefault%2Fs3%2Faws4_request&t=2&u=1039816495805071512&ot=personal&oi=1039816495805071512&f=FpWD09WgENDeVB12GQpFDD7DCRrcSBCM3&X-Amz-Signature=3527a576e5c518422b17137bab57974d2d99ff7390b655fc132c0887fdc25a3b"
+          wget -O 1.7z.001 "https://ykj-eos-wx2-01.eos-wuxi-3.cmecloud.cn/07a876c835854a37b052970ddf4e9626086?response-content-disposition=attachment%3B%20filename%2A%3DUTF-8%27%27%25E7%2594%25B7%25E5%25AE%25B6%25E6%2595%2599.zip.001&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20250116T012751Z&X-Amz-SignedHeaders=host&X-Amz-Expires=900&X-Amz-Credential=Y60FITYLOX7N6UJWBOEE%2F20250116%2Fdefault%2Fs3%2Faws4_request&t=2&u=1039816495805071512&ot=personal&oi=1039816495805071512&f=FkYo1xIdYuMTq6VX3vANNDoQoh4b9WK_E&X-Amz-Signature=6a590a1b7cce7f5ab2ba933ac6d1d3862ee623d484d9ff371540fca08852e64e"
+          wget -O 1.7z.002 "https://ykj-eos-wx2-01.eos-wuxi-3.cmecloud.cn/a1b4ccc4c69749888455368a0c83449e086?response-content-disposition=attachment%3B%20filename%2A%3DUTF-8%27%27%25E7%2594%25B7%25E5%25AE%25B6%25E6%2595%2599.zip.002&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20250116T012759Z&X-Amz-SignedHeaders=host&X-Amz-Expires=900&X-Amz-Credential=Y60FITYLOX7N6UJWBOEE%2F20250116%2Fdefault%2Fs3%2Faws4_request&t=2&u=1039816495805071512&ot=personal&oi=1039816495805071512&f=FqQChdc8uL2gNNt3Yh4xHk7yiEze1Ljho&X-Amz-Signature=00d2dcbeb852a344f4a05374d4179d595dbdadddfebfb163287edafa934650dd"
           
 #      - name: Push
 #        run: |
@@ -88,8 +88,8 @@ jobs:
       - name: Create Release and Upload Release Asset
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: v0.1.8
-          name: mp4 grt
+          tag_name: v0.1.9
+          name: mp4 jia jiao
           #tag_name: ${{ github.ref }}
           #name: ${{ github.ref }}
           #body: TODO New Release.
