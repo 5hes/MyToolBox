@@ -60,10 +60,10 @@ jobs:
           ls -ltrah
           # ./unzipper.sh
           mkdir crypt
-          echo "#!/bin/bash" > unzip
+          # echo "#!/bin/bash" > unzip
           # echo "7z x -pawfx 1.7z.001 -o crypt" > unzip
-          echo "7z x 1.7z.001" > unzip
-          chmod +x unzip
+          # echo "7z x 1.7z.001" > unzip
+          # chmod +x unzip
           ./unzip
           tree
           ls -ltrah
@@ -96,7 +96,7 @@ jobs:
           draft: false
           prerelease: false
           files: |
-            Download/*.mp4
+            Download/*.7z.*
             Download/crypt/*.mp4
 
 
