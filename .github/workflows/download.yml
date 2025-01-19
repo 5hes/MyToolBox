@@ -23,7 +23,7 @@ jobs:
       - name: Create a new tag
         id: create_tag
         run: |
-           TAG_NAME="v0.2.7"  # 这里设置你想要的标签名
+           TAG_NAME="v0.2.8"  # 这里设置你想要的标签名
            git tag $TAG_NAME
            git push origin $TAG_NAME
 
@@ -37,7 +37,7 @@ jobs:
         run: |
           cd Download/
           chmod +x unzipper.sh env.sh downloader.sh
-          wget -O out.tar "https://ykj-eos-dg5-01.eos-dongguan-6.cmecloud.cn/9b37aa3f0fe945d786fae33e41eaad62086?response-content-disposition=attachment%3B%20filename%2A%3DUTF-8%27%27suki2.tar&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20250119T110057Z&X-Amz-SignedHeaders=host&X-Amz-Expires=900&X-Amz-Credential=9T1UKBIX6OJSR5XN2F2T%2F20250119%2Fdefault%2Fs3%2Faws4_request&t=2&u=1039816495805071512&ot=personal&oi=1039816495805071512&f=FvzGu1-Y374nEgXghhN1PeKqTHJWcN_iJ&X-Amz-Signature=c3099f8dd09e5dc11522b68cb8660525feba47740ce19e898184ec489159e4fd"
+          wget -O out.tar "https://ykj-eos-dg5-01.eos-dongguan-6.cmecloud.cn/080824725c78492c8f9d675991d1803b086?response-content-disposition=attachment%3B%20filename%2A%3DUTF-8%27%27%25E6%2599%2593%25E5%25BD%25A4.tar&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20250119T125458Z&X-Amz-SignedHeaders=host&X-Amz-Expires=900&X-Amz-Credential=9T1UKBIX6OJSR5XN2F2T%2F20250119%2Fdefault%2Fs3%2Faws4_request&t=2&u=1039816495805071512&ot=personal&oi=1039816495805071512&f=FgwzgNMYSufuhYrqopQhB7pauUna8Eq77&X-Amz-Signature=f4a7cfa668f1cf01b01b8fa4e9b4dba4839eb22bd94dea0beb2c4035b0ee2fc9"
           # source env.sh
           # wget -O 1.7z.001 ""
           # wget -O 1.7z.002 ""
@@ -120,8 +120,8 @@ jobs:
       - name: Create Release and Upload Release Asset
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: v0.2.7
-          name: mp4 suki2
+          tag_name: v0.2.8
+          name: mp4 xiaotong
           #tag_name: ${{ github.ref }}
           #name: ${{ github.ref }}
           #body: TODO New Release.
