@@ -23,9 +23,9 @@ jobs:
       - name: Create a new tag
         id: create_tag
         run: |
-           TAG_NAME="v0.2.5"  # 这里设置你想要的标签名
-           git tag $TAG_NAME
-           git push origin $TAG_NAME
+           # TAG_NAME="v0.2.5"  # 这里设置你想要的标签名
+           # git tag $TAG_NAME
+           # git push origin $TAG_NAME
 
       - name: Install Depends
         shell: bash
@@ -37,7 +37,7 @@ jobs:
         run: |
           cd Download/
           chmod +x unzipper.sh env.sh downloader.sh
-          wget -O out.tar "https://ykj-eos-dg5-01.eos-dongguan-6.cmecloud.cn/42fd16f5a70f431a84dc0c20a76e6058086?response-content-disposition=attachment%3B%20filename%2A%3DUTF-8%27%27sb.tar&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20250119T095322Z&X-Amz-SignedHeaders=host&X-Amz-Expires=900&X-Amz-Credential=9T1UKBIX6OJSR5XN2F2T%2F20250119%2Fdefault%2Fs3%2Faws4_request&t=2&u=1039816495805071512&ot=personal&oi=1039816495805071512&f=FmzUNxoOlGiLvGpkxOmtKkY6Xv4T5pQ0i&X-Amz-Signature=e14798338149d97613aae567c5ad14e373967d7ef0289a6da0538f0e51f9579b"
+          wget -O out.tar "https://ykj-eos-dg5-01.eos-dongguan-6.cmecloud.cn/42fd16f5a70f431a84dc0c20a76e6058086?response-content-disposition=attachment%3B%20filename%2A%3DUTF-8%27%27sb.tar&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20250119T102722Z&X-Amz-SignedHeaders=host&X-Amz-Expires=900&X-Amz-Credential=9T1UKBIX6OJSR5XN2F2T%2F20250119%2Fdefault%2Fs3%2Faws4_request&t=2&u=1039816495805071512&ot=personal&oi=1039816495805071512&f=FmzUNxoOlGiLvGpkxOmtKkY6Xv4T5pQ0i&X-Amz-Signature=f6100781bee06fe2c578657464c610ec56f986c65466bc96438881ac6a32ae5c"
           # source env.sh
           # wget -O 1.7z.001 ""
           # wget -O 1.7z.002 ""
@@ -99,7 +99,7 @@ jobs:
       - name: ez unzip
         run: |
           cd Download/
-          tar -xvf *.tar -C output
+          tar -xvf *.tar
           
       - name: Check
         shell: bash
@@ -130,7 +130,7 @@ jobs:
           prerelease: false
           files: |
             Download/out.tar
-            Download/output/*mp4
+            Download/*mp4
 
 
 #            Download/*7z*            
