@@ -104,7 +104,7 @@ jobs:
       - name: Check
         shell: bash
         run: |
-          cd Download/output
+          cd Download/
           ls -ltrah
           ls -ltra
           tree
