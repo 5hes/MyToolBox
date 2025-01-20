@@ -40,11 +40,11 @@ jobs:
         ls -ltrah
         ls -ltra
         ls -lh zig
-        cd ..
+        cd ../..
         
         echo -e "\n\n\n\n\n22222 fast"
         cd fast/bin
         ls -ltrah
         ls -ltra
         ls -lh zig
-        cd ..
+        cd ../..
