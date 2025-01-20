@@ -1,7 +1,6 @@
 name: Download File
 
 on:
-  push:
   workflow_dispatch:
     inputs:
       task:
