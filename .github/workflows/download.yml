@@ -1,6 +1,7 @@
 name: Download File
 
 on:
+  push:
   workflow_dispatch:
     inputs:
       task:
@@ -22,7 +23,7 @@ jobs:
       - name: Create a new tag
         id: create_tag
         run: |
-           TAG_NAME="v0.2.8"  # 这里设置你想要的标签名
+           TAG_NAME="v0.2.9"  # 这里设置你想要的标签名
            git tag $TAG_NAME
            git push origin $TAG_NAME
 
@@ -36,7 +37,8 @@ jobs:
         run: |
           cd Download/
           chmod +x unzipper.sh env.sh downloader.sh
-          wget -O out.tar "https://ykj-eos-dg5-01.eos-dongguan-6.cmecloud.cn/080824725c78492c8f9d675991d1803b086?response-content-disposition=attachment%3B%20filename%2A%3DUTF-8%27%27%25E6%2599%2593%25E5%25BD%25A4.tar&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20250119T125458Z&X-Amz-SignedHeaders=host&X-Amz-Expires=900&X-Amz-Credential=9T1UKBIX6OJSR5XN2F2T%2F20250119%2Fdefault%2Fs3%2Faws4_request&t=2&u=1039816495805071512&ot=personal&oi=1039816495805071512&f=FgwzgNMYSufuhYrqopQhB7pauUna8Eq77&X-Amz-Signature=f4a7cfa668f1cf01b01b8fa4e9b4dba4839eb22bd94dea0beb2c4035b0ee2fc9"
+          curl -o fast.zip "https://productionresultssa1.blob.core.windows.net/actions-results/815f033c-c3d5-4e87-8ac5-3914aa7bc7b4/workflow-job-run-b8f2bbbf-950a-55df-8093-e7d8c87fa511/artifacts/6c582b62e0e5aa05647388bd045f2e3e5e7f51f479d00d9df592634c8088a22b.zip?rscd=attachment%3B+filename%3D%22Fast.zip%22&se=2025-01-20T11%3A42%3A40Z&sig=dsh8mV72BPFoQuyWyTKA%2BFLt9AkplisErBvUYOHJOdw%3D&ske=2025-01-20T22%3A47%3A39Z&skoid=ca7593d4-ee42-46cd-af88-8b886a2f84eb&sks=b&skt=2025-01-20T10%3A47%3A39Z&sktid=398a6654-997b-47e9-b12b-9515b896b4de&skv=2024-11-04&sp=r&spr=https&sr=b&st=2025-01-20T11%3A32%3A35Z&sv=2024-11-04"
+          curl -o small.zip "https://productionresultssa1.blob.core.windows.net/actions-results/815f033c-c3d5-4e87-8ac5-3914aa7bc7b4/workflow-job-run-795fb78b-e756-56a2-288a-77f8b61e4c53/artifacts/5263293fc202649bdc8135573ac9cd3b0bcea4355e0d8f0a59f1ddeea8eefc15.zip?rscd=attachment%3B+filename%3D%22Small.zip%22&se=2025-01-20T11%3A42%3A13Z&sig=TM2XGRHaIODvwnm70x%2FjnQruF1Uf728Sfu37xirPdT8%3D&ske=2025-01-20T22%3A53%3A39Z&skoid=ca7593d4-ee42-46cd-af88-8b886a2f84eb&sks=b&skt=2025-01-20T10%3A53%3A39Z&sktid=398a6654-997b-47e9-b12b-9515b896b4de&skv=2024-11-04&sp=r&spr=https&sr=b&st=2025-01-20T11%3A32%3A08Z&sv=2024-11-04"
           # source env.sh
           # wget -O 1.7z.001 ""
           # wget -O 1.7z.002 ""
@@ -98,7 +100,16 @@ jobs:
       - name: ez unzip
         run: |
           cd Download/
-          tar -xvf *.tar
+          unzip fast.zip -d fast
+          unzip small.zip -d small
+          tar -zcf fast.tar fast
+          tar -zcf small.tar small
+          zstd -r fast -o fast.zst
+          zstd -r small -o small.zst
+          tar -cJf fast.tar.xz fast
+          tar -cJf small.tar.xz small
+          7z a fast.7z fast
+          7z a small.7z small
           
       - name: Check
         shell: bash
@@ -119,8 +130,8 @@ jobs:
       - name: Create Release and Upload Release Asset
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: v0.2.8
-          name: mp4 xiaotong
+          tag_name: v0.2.9
+          name: zig 14-dev d5db02728ce3ff3ba74a3e3f9050c3ea9ed34752
           #tag_name: ${{ github.ref }}
           #name: ${{ github.ref }}
           #body: TODO New Release.
@@ -128,10 +139,13 @@ jobs:
           draft: false
           prerelease: false
           files: |
-            Download/out.tar
-            Download/*mp4
+            Download/*.tar
+            Download/*.zip
+            Download/*.zst
+            Download/*.7z
+            Download/*.tar.xz
 
-
+#            Download/*mp4
 #            Download/*7z*            
 #            Download/out.tar
 #            Download/*7z*
