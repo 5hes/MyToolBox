@@ -40,7 +40,6 @@ jobs:
         ls -ltrah
         ls -ltra
 
-        file $(which fd)
         echo -e "\n\n\n\n\n11111 small"
         cd small
         ls -ltrah
@@ -56,3 +55,4 @@ jobs:
         cd ..
         
         echo -e "\n\n\n\n\n33333"
+        file -C $(which fd)
