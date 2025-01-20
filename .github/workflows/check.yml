@@ -1,6 +1,7 @@
 name: CheckInfo
 
 on:
+  push:
   workflow_dispatch:
     inputs:
       CheckInfo:
