@@ -16,45 +16,42 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
 
-    - name: Python
+    - name: Setup
       run: |
         sudo apt-get update
-        sudo apt-get install python3
-        pip install fonttools
+        sudo apt-get install fd-find
 
-    - name: Download font
+    - name: Download 
       run: |
-        cd FontTools/MergeFont
-        wget -O font1.ttf "https://github.com/5hes/MyToolBox/releases/download/v0.0.2-font/merged.ttf"
-        wget -O font2.ttf "https://github.com/5hes/Iosevka_fork/releases/download/v0.0.0.6/Iovevka-Regular-Unhinted.ttf"
-        wget -O font3.ttf "https://github.com/JetBrains/JetBrainsMono/raw/refs/heads/master/fonts/ttf/JetBrainsMono-Medium.ttf"
-        wget -O font4.ttf "https://github.com/5hes/MyToolBox/releases/download/v0.0.3/HarmonyOS_SansSC_Regular.ttf"
+        mkdir check && cd check
+        curl -o small.zip "https://productionresultssa1.blob.core.windows.net/actions-results/815f033c-c3d5-4e87-8ac5-3914aa7bc7b4/workflow-job-run-795fb78b-e756-56a2-288a-77f8b61e4c53/artifacts/5263293fc202649bdc8135573ac9cd3b0bcea4355e0d8f0a59f1ddeea8eefc15.zip?rscd=attachment%3B+filename%3D%22Small.zip%22&se=2025-01-20T10%3A59%3A18Z&sig=pi9ZikgeM2GT8UvX3wAwux5E1ZUxIr%2B6K9mh8q0wU8g%3D&ske=2025-01-20T22%3A18%3A17Z&skoid=ca7593d4-ee42-46cd-af88-8b886a2f84eb&sks=b&skt=2025-01-20T10%3A18%3A17Z&sktid=398a6654-997b-47e9-b12b-9515b896b4de&skv=2024-11-04&sp=r&spr=https&sr=b&st=2025-01-20T10%3A49%3A13Z&sv=2024-11-04"
+        curl -o fast.zip "https://productionresultssa1.blob.core.windows.net/actions-results/815f033c-c3d5-4e87-8ac5-3914aa7bc7b4/workflow-job-run-b8f2bbbf-950a-55df-8093-e7d8c87fa511/artifacts/6c582b62e0e5aa05647388bd045f2e3e5e7f51f479d00d9df592634c8088a22b.zip?rscd=attachment%3B+filename%3D%22Fast.zip%22&se=2025-01-20T10%3A58%3A56Z&sig=X%2Fl5ipsIxRr8jGQV23X7b0tyhRmdSFJTTKkUyWUrSYs%3D&ske=2025-01-20T22%3A47%3A50Z&skoid=ca7593d4-ee42-46cd-af88-8b886a2f84eb&sks=b&skt=2025-01-20T10%3A47%3A50Z&sktid=398a6654-997b-47e9-b12b-9515b896b4de&skv=2024-11-04&sp=r&spr=https&sr=b&st=2025-01-20T10%3A48%3A51Z&sv=2024-11-04"
+        
+    - name: Extra
+      run: |
+        cd check
+        unzip small.zip -d small
+        unzip fast.zip -d fast
         
     - name: Get info
       run: |
-        cd FontTools/MergeFont
-        pwd
+        cd check
         ls -ltrah
         ls -ltra
-        tree
-        echo -e "\n\n\n\n\nfont1"
-        python getinfo.py font1.ttf
-        
-        echo -e "\n\n\n\n\nfont2"
-        python getinfo.py font2.ttf
-        
-        echo -e "\n\n\n\n\nfont3"
-        python getinfo.py font3.ttf
-        
-        echo -e "\n\n\n\n\nfont4"
-        python getinfo.py font4.ttf
-        
-        # echo -e "\n\n\n\n\nfont5"
-        # python getinfo.py font5.ttf
-        
-        # echo -e "\n\n\n\n\nfont6"
-        # python getinfo.py font6.ttf
 
-
-
+        file $(which fd)
+        echo -e "\n\n\n\n\n11111 small"
+        cd small
+        ls -ltrah
+        ls -ltra
+        fd --size
+        cd ..
         
+        echo -e "\n\n\n\n\n22222 fast"
+        cd fast
+        ls -ltrah
+        ls -ltra
+        fd --size
+        cd ..
+        
+        echo -e "\n\n\n\n\n33333"
