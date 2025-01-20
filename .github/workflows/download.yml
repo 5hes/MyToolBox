@@ -104,8 +104,6 @@ jobs:
           unzip small.zip -d small
           tar -zcf fast.tar fast
           tar -zcf small.tar small
-          zstd -r fast -o fast.zst
-          zstd -r small -o small.zst
           tar -cJf fast.tar.xz fast
           tar -cJf small.tar.xz small
           7z a fast.7z fast
@@ -141,7 +139,6 @@ jobs:
           files: |
             Download/*.tar
             Download/*.zip
-            Download/*.zst
             Download/*.7z
             Download/*.tar.xz
 
