@@ -42,6 +42,7 @@ jobs:
         
         echo -e "\n\n\n\n\n22222"
         file bin/*
+        ls -lah bin/
 
     - name: Tree
       run: tree
