@@ -142,7 +142,7 @@ jobs:
           draft: false
           prerelease: false
           files: |
-            Download/*.gz
+            Download/*.zip
 
 #            Download/*.zip
 #            Download/*.7z
