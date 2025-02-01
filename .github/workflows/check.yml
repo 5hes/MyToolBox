@@ -36,10 +36,9 @@ jobs:
         cd check
         ls -ltrah
         ls -ltra
-        cd *
-        ls -ltrah
-        ls -ltra
-
+        file install_aarch64.sh
+        head -n 1000 install_aarch64.sh
+        
         echo -e "\n\n\n\n\n11111"
         tree -L 4
         
