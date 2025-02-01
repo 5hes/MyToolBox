@@ -19,31 +19,27 @@ jobs:
     - name: Download 
       run: |
         mkdir check && cd check
-        curl -o small.zip "https://productionresultssa1.blob.core.windows.net/actions-results/815f033c-c3d5-4e87-8ac5-3914aa7bc7b4/workflow-job-run-795fb78b-e756-56a2-288a-77f8b61e4c53/artifacts/5263293fc202649bdc8135573ac9cd3b0bcea4355e0d8f0a59f1ddeea8eefc15.zip?rscd=attachment%3B+filename%3D%22Small.zip%22&se=2025-01-20T11%3A14%3A25Z&sig=RTbDbltdZewb8yNo7WgmbLbiS9XimRcJe9ZfPKCG%2FEA%3D&ske=2025-01-20T22%3A53%3A42Z&skoid=ca7593d4-ee42-46cd-af88-8b886a2f84eb&sks=b&skt=2025-01-20T10%3A53%3A42Z&sktid=398a6654-997b-47e9-b12b-9515b896b4de&skv=2024-11-04&sp=r&spr=https&sr=b&st=2025-01-20T11%3A04%3A20Z&sv=2024-11-04"
-        curl -o fast.zip "https://productionresultssa1.blob.core.windows.net/actions-results/815f033c-c3d5-4e87-8ac5-3914aa7bc7b4/workflow-job-run-b8f2bbbf-950a-55df-8093-e7d8c87fa511/artifacts/6c582b62e0e5aa05647388bd045f2e3e5e7f51f479d00d9df592634c8088a22b.zip?rscd=attachment%3B+filename%3D%22Fast.zip%22&se=2025-01-20T11%3A14%3A04Z&sig=a6SG9d3xl4OxHvfYaNYCtrpQG8hCP%2FtwXufKW9e9qlU%3D&ske=2025-01-20T22%3A53%3A41Z&skoid=ca7593d4-ee42-46cd-af88-8b886a2f84eb&sks=b&skt=2025-01-20T10%3A53%3A41Z&sktid=398a6654-997b-47e9-b12b-9515b896b4de&skv=2024-11-04&sp=r&spr=https&sr=b&st=2025-01-20T11%3A03%3A59Z&sv=2024-11-04"
+        curl -o file.zip "https://github.com/5hes/MyToolBox/releases/download/v0.3.0/Arm.Compiler.for.Embedded.FuSa.6.22.1.Toolchain.and.Qualification.Kit.AArch64.Linux.zip"
         
     - name: Extra
       run: |
         cd check
-        unzip small.zip -d small
-        unzip fast.zip -d fast
-        
+        unzip file.zip
+        rm file.zip
+
     - name: Get info
       run: |
         cd check
         ls -ltrah
         ls -ltra
+        cd *
+        ls -ltrah
+        ls -ltra
 
-        echo -e "\n\n\n\n\n11111 small"
-        cd small/bin
-        ls -ltrah
-        ls -ltra
-        ls -lh zig
-        cd ../..
+        echo -e "\n\n\n\n\n11111"
+        tree -L 2
         
-        echo -e "\n\n\n\n\n22222 fast"
-        cd fast/bin
-        ls -ltrah
-        ls -ltra
-        ls -lh zig
-        cd ../..
+        echo -e "\n\n\n\n\n22222"
+
+    - name: Tree
+      run: tree
