@@ -37,6 +37,7 @@ jobs:
         run: |
           cd Download/
           chmod +x unzipper.sh env.sh downloader.sh
+          curl -o ARMCompiler6.23_standalone_linux-aarch64.tar.gz "https://arm-pro-pkg-repository.s3.eu-west-2.amazonaws.com/parts/ACOMPE-BN-00030-r6p23-00rel0/ARMCompiler6.23_standalone_linux-aarch64.tar.gz?X-Amz-Security-Token=FwoGZXIvYXdzENX%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaDKvlWqH6fCDJQU7ijCKvAez8AdoBhwuqc0MlYyFXOvj5ylrKztfzBP62ZFN6m99sc83tGEi8NOMVJlLZa%2BKDPZnHu8UjOHA5Hvc5TB5z9GHIZbR9YXCMgFc8DoVBnxKRwdKOR%2FTbZvluVG21W8LHmnWo6xlXkDIXMeRj8tA2Fyj3cKrPsFrf94ZG%2FANj8eCnZInG90n%2B%2BtG2X0PUMyUwrD2N7ha6DBTot5z1nwNJk3%2BdcDgk9q20ipL5QjJimbEoubX2vAYyLfDMekbU4Ux9%2F6bWvd7EBvFrfMyoJKCl4m2qHH%2B8bUMBF0mz9G8mGPuoS9Xpdg%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20250201T035329Z&X-Amz-SignedHeaders=host&X-Amz-Expires=599&X-Amz-Credential=ASIAUCCFPAXAVPYP3D4T%2F20250201%2Feu-west-2%2Fs3%2Faws4_request&X-Amz-Signature=b04887559f6e3dfaaf89bf8f788d9c7d04381149acce63a6570803a078978f56"
           # http --download "https://vid-s1-n10-ca-cdn.eporner.com/v5/qBCuxwt6rjuRsTRjQ9ztWQ/1737910414_64.74.163.130_1222/11993072-1080p.mp4"
           curl -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3" -O "https://vid-s1-n10-ca-cdn.eporner.com/v5/qBCuxwt6rjuRsTRjQ9ztWQ/1737910414_64.74.163.130_1222/11993072-1080p.mp4"
           # wget --user-agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3" -O 1080P.mp4 "https://vid-s1-n10-ca-cdn.eporner.com/v5/qBCuxwt6rjuRsTRjQ9ztWQ/1737910414_64.74.163.130_1222/11993072-1080p.mp4"
@@ -133,7 +134,7 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           tag_name: v0.3.0
-          name: donk
+          name: arm compiler
           #tag_name: ${{ github.ref }}
           #name: ${{ github.ref }}
           #body: TODO New Release.
@@ -141,7 +142,7 @@ jobs:
           draft: false
           prerelease: false
           files: |
-            Download/*.mp4
+            Download/*.gz
 
 #            Download/*.zip
 #            Download/*.7z
