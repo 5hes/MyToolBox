@@ -33,11 +33,15 @@ jobs:
         cd check
         ls -lah
         ls -la
+        cd *
+        ls -lah
+        ls -la
         
         echo -e "\n\n\n\n\n11111"
         tree -L 4
         
         echo -e "\n\n\n\n\n22222"
+        file bin/*
 
     - name: Tree
       run: tree
