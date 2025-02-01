@@ -19,7 +19,7 @@ jobs:
     - name: Download 
       run: |
         mkdir check && cd check
-        curl -o file.zip "https://github.com/5hes/MyToolBox/releases/download/v0.3.0/Arm.Compiler.for.Embedded.FuSa.6.22.1.Toolchain.and.Qualification.Kit.AArch64.Linux.zip"
+        curl -L -o file.zip "https://github.com/5hes/MyToolBox/releases/download/v0.3.0/Arm.Compiler.for.Embedded.FuSa.6.22.1.Toolchain.and.Qualification.Kit.AArch64.Linux.zip"
         
     - name: Extra
       run: |
