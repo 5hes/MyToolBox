@@ -26,7 +26,8 @@ jobs:
         cd check
         unzip file.zip
         rm file.zip
-        tar -xzf *tar.gz
+        tar -xzf ARMCompiler6.22.1_standalone_linux-aarch64.tar.gz
+        tar -xzf Arm_Compiler_for_Embedded_FuSa_Qualification_Kit_6.22.1_linux.tar.gz
         ls
         rm *tar*
 
