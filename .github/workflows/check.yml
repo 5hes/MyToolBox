@@ -26,6 +26,7 @@ jobs:
         cd check
         unzip file.zip
         rm file.zip
+        tar -xf *.tar.gz
 
     - name: Get info
       run: |
