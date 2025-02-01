@@ -19,25 +19,20 @@ jobs:
     - name: Download 
       run: |
         mkdir check && cd check
-        curl -L -o file.zip "https://github.com/5hes/MyToolBox/releases/download/v0.3.0/Arm.Compiler.for.Embedded.FuSa.6.22.1.Toolchain.and.Qualification.Kit.AArch64.Linux.zip"
+        curl -L -o file.tar.xz "https://github.com/5hes/MyToolBox/releases/download/v0.3.0/LLVM-ET-Arm-19.1.1-Linux-AArch64.tar.xz"
         
     - name: Extra
       run: |
         cd check
-        unzip file.zip
-        rm file.zip
-        tar -xzf ARMCompiler6.22.1_standalone_linux-aarch64.tar.gz
-        tar -xzf Arm_Compiler_for_Embedded_FuSa_Qualification_Kit_6.22.1_linux.tar.gz
+        tar -xf file.tar.xz
+        rm file*
         ls
-        rm *tar*
 
     - name: Get info
       run: |
         cd check
-        ls -ltrah
-        ls -ltra
-        file install_aarch64.sh
-        head -n 1000 install_aarch64.sh
+        ls -lah
+        ls -la
         
         echo -e "\n\n\n\n\n11111"
         tree -L 4
