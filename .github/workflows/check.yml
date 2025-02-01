@@ -19,12 +19,12 @@ jobs:
     - name: Download 
       run: |
         mkdir check && cd check
-        curl -L -o file.tar.xz "https://github.com/5hes/MyToolBox/releases/download/v0.3.0/LLVM-ET-Arm-19.1.1-Linux-AArch64.tar.xz"
+        curl -L -o file.tar.gz "https://github.com/5hes/MyToolBox/releases/download/v0.3.0/ArmStudio_DS000-BN-00001-r24p1-00rel0.tar.gz"
         
     - name: Extra
       run: |
         cd check
-        tar -xf file.tar.xz
+        tar -xzf file.tar.gz
         rm file*
         ls
 
