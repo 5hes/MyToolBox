@@ -1,6 +1,7 @@
 name: Download File
 
 on:
+  push:
   workflow_dispatch:
     inputs:
       task:
@@ -36,7 +37,7 @@ jobs:
         run: |
           cd Download/
           chmod +x unzipper.sh env.sh downloader.sh
-          curl -o "arm-gnu-toolchain-14.2.rel1-x86_64-aarch64-none-linux-gnu.tar.xz" "https://arm-pro-pkg-repository.s3.eu-west-2.amazonaws.com/parts/ATFEP-BN-00002-r19p1-01rel0/LLVM-ET-Arm-19.1.1-Linux-x86_64.tar.xz?X-Amz-Security-Token=FwoGZXIvYXdzENr%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaDIMEFFmYseYJr3hphCKvATdq47dR5%2BkiOv3GQJCFCm5qNNmUdUvGhdaS%2BtQjWQ6c%2FBic9wOsPiRXVrTD6Wvzgkmk3jCm56L0FWB4wWhYJ0ZeACDkJzhojkR3D4JpVt20RVrgqCeyRT7czOqmQBdYId2w794TRhXxq%2BPW%2Fv3wheBIPasIHtypZalVZE3wCBoIyWh1OPzNJm%2Fti4aupeZLc%2Fgn6AdB3jpXSLZvJ7%2F8QExIGR%2FC3xFwrixqI841%2BcgoxLL3vAYyLfIGTjPLzHsHwJC44nD%2Fp9Znq03t3R1xK1b4fRJ%2BGKXL54%2Bfp%2BH1os7gk70w2w%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20250201T082100Z&X-Amz-SignedHeaders=host&X-Amz-Expires=599&X-Amz-Credential=ASIAUCCFPAXA5PZRVOTE%2F20250201%2Feu-west-2%2Fs3%2Faws4_request&X-Amz-Signature=02b11be3bb3c643f80434b636900bea7e3c0e18d6f42059823e3517b62b91705"
+          curl -o "LLVM-ET-Arm-19.1.1-Linux-x86_64.tar.xz" "https://arm-pro-pkg-repository.s3.eu-west-2.amazonaws.com/parts/ATFEP-BN-00002-r19p1-01rel0/LLVM-ET-Arm-19.1.1-Linux-x86_64.tar.xz?X-Amz-Security-Token=FwoGZXIvYXdzENr%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaDIMEFFmYseYJr3hphCKvATdq47dR5%2BkiOv3GQJCFCm5qNNmUdUvGhdaS%2BtQjWQ6c%2FBic9wOsPiRXVrTD6Wvzgkmk3jCm56L0FWB4wWhYJ0ZeACDkJzhojkR3D4JpVt20RVrgqCeyRT7czOqmQBdYId2w794TRhXxq%2BPW%2Fv3wheBIPasIHtypZalVZE3wCBoIyWh1OPzNJm%2Fti4aupeZLc%2Fgn6AdB3jpXSLZvJ7%2F8QExIGR%2FC3xFwrixqI841%2BcgoxLL3vAYyLfIGTjPLzHsHwJC44nD%2Fp9Znq03t3R1xK1b4fRJ%2BGKXL54%2Bfp%2BH1os7gk70w2w%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20250201T082100Z&X-Amz-SignedHeaders=host&X-Amz-Expires=599&X-Amz-Credential=ASIAUCCFPAXA5PZRVOTE%2F20250201%2Feu-west-2%2Fs3%2Faws4_request&X-Amz-Signature=02b11be3bb3c643f80434b636900bea7e3c0e18d6f42059823e3517b62b91705"
           # http --download "https://vid-s1-n10-ca-cdn.eporner.com/v5/qBCuxwt6rjuRsTRjQ9ztWQ/1737910414_64.74.163.130_1222/11993072-1080p.mp4"
           # curl -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3" -O "https://vid-s1-n10-ca-cdn.eporner.com/v5/qBCuxwt6rjuRsTRjQ9ztWQ/1737910414_64.74.163.130_1222/11993072-1080p.mp4"
           # wget --user-agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3" -O 1080P.mp4 "https://vid-s1-n10-ca-cdn.eporner.com/v5/qBCuxwt6rjuRsTRjQ9ztWQ/1737910414_64.74.163.130_1222/11993072-1080p.mp4"
