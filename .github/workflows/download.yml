@@ -36,7 +36,7 @@ jobs:
         run: |
           cd Download/
           chmod +x unzipper.sh env.sh downloader.sh
-          curl -o "AtfEPDocsExamplesr19p1-01rel0.zip" "https://arm-pro-pkg-repository.s3.eu-west-2.amazonaws.com/parts/ATFEP-BN-00004-r19p1-01rel0/AtfEPDocsExamplesr19p1-01rel0.zip?X-Amz-Security-Token=FwoGZXIvYXdzENr%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaDJmx6sNs5CFsVLUKsiKvAWGZAsDVR7UudBRn77NKC1P7Aa%2BIvp%2B8rA6W5RJziEpyd9FjnSMcahOa5KVCbGew77HSMe%2BqFjZS%2BPMUBx%2FxZnch1aa9%2FNiFZcR%2Bb6YCR69iglPGKkYKvCB5NEjYbEHe5Ne0EwdEd98aTZNQfw7eJOTkw%2FP7QrkJxKiT5JfmxTUp2qOaJyUFKxzy0Lc3NSOaIza3prjvX9Ab2epvFvS3%2FB6Mbye2Wm2OrwobmvgbC3Eo%2FsD3vAYyLYukkW1Vhg2FaiGN7A0Uk6dvcNsKi%2BVWVecSL9zwncRZ9xxNWAwcP7QtwwEKOA%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20250201T085110Z&X-Amz-SignedHeaders=host&X-Amz-Expires=599&X-Amz-Credential=ASIAUCCFPAXA64DRHRZI%2F20250201%2Feu-west-2%2Fs3%2Faws4_request&X-Amz-Signature=fb3d8535ad88c125d5e58698f4ab3412811a2bd8920fe60694a587c87e42b826"
+          curl -o "ArmStudio_DS000-BN-00001-r24p1-00rel0.tar.gz" "https://arm-pro-pkg-repository.s3.eu-west-2.amazonaws.com/parts/DS000-BN-00001-r24p1-00rel0/DS000-BN-00001-r24p1-00rel0.tar.gz?X-Amz-Security-Token=FwoGZXIvYXdzENv%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaDFMpeXbs3geJk4ScyCKvAXGs3%2FPEtrmbF7yv5akPvraJmSSVGt5rJvUHg7F2HBuHFa%2FQzbPgiAAtq1Zb%2BSmxQo%2BamFdRj2qRJK2KIPFCc1YSa0zeZAkA1Jm3F4OVhSQUh8aLBq5Ps%2FyDxrwUtb79H5%2BPKmHwF50sS3ib75I152pgoreQQKOFOZqbdkmau5zDSB94ARm2F8ssPCEXPHA36gGBHTorRrDxaxyQSqUzfssN7XQhOgu33aH91k50XQEotM73vAYyLdwiPp9VvZGKtQVAKWalxBPhdI9QyHmyZ7DPErK3QB1f2tTXZfu75gaT5BScKw%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20250201T092755Z&X-Amz-SignedHeaders=host&X-Amz-Expires=599&X-Amz-Credential=ASIAUCCFPAXAWSKIM7KQ%2F20250201%2Feu-west-2%2Fs3%2Faws4_request&X-Amz-Signature=1f37f0e278e5603d7e80b67f2b2d6b2eb2055addd90369f5128b721d34923c8f"
           # http --download "https://vid-s1-n10-ca-cdn.eporner.com/v5/qBCuxwt6rjuRsTRjQ9ztWQ/1737910414_64.74.163.130_1222/11993072-1080p.mp4"
           # curl -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3" -O "https://vid-s1-n10-ca-cdn.eporner.com/v5/qBCuxwt6rjuRsTRjQ9ztWQ/1737910414_64.74.163.130_1222/11993072-1080p.mp4"
           # wget --user-agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3" -O 1080P.mp4 "https://vid-s1-n10-ca-cdn.eporner.com/v5/qBCuxwt6rjuRsTRjQ9ztWQ/1737910414_64.74.163.130_1222/11993072-1080p.mp4"
@@ -141,7 +141,7 @@ jobs:
           draft: false
           prerelease: false
           files: |
-            Download/*.zip
+            Download/*.gz
 
 #            Download/*.zip
 #            Download/*.7z
