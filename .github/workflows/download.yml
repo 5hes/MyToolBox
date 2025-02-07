@@ -133,7 +133,7 @@ jobs:
       - name: Create Release and Upload Release Asset
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: v0.3.0
+          tag_name: tmp
           name: arm compiler
           #tag_name: ${{ github.ref }}
           #name: ${{ github.ref }}
