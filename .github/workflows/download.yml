@@ -23,8 +23,9 @@ jobs:
         id: create_tag
         run: |
           # TAG_NAME="v0.3.0"  # 这里设置你想要的标签名
-          # git tag $TAG_NAME
-          # git push origin $TAG_NAME
+          TAG_NAME="tmp"
+          git tag $TAG_NAME
+          git push origin $TAG_NAME
 
       - name: Install Depends
         shell: bash
@@ -36,7 +37,7 @@ jobs:
         run: |
           cd Download/
           chmod +x unzipper.sh env.sh downloader.sh
-          curl -o "ArmStudio_DS000-BN-00001-r24p1-00rel0.tar.gz" "https://arm-pro-pkg-repository.s3.eu-west-2.amazonaws.com/parts/DS000-BN-00001-r24p1-00rel0/DS000-BN-00001-r24p1-00rel0.tar.gz?X-Amz-Security-Token=FwoGZXIvYXdzENv%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaDFMpeXbs3geJk4ScyCKvAXGs3%2FPEtrmbF7yv5akPvraJmSSVGt5rJvUHg7F2HBuHFa%2FQzbPgiAAtq1Zb%2BSmxQo%2BamFdRj2qRJK2KIPFCc1YSa0zeZAkA1Jm3F4OVhSQUh8aLBq5Ps%2FyDxrwUtb79H5%2BPKmHwF50sS3ib75I152pgoreQQKOFOZqbdkmau5zDSB94ARm2F8ssPCEXPHA36gGBHTorRrDxaxyQSqUzfssN7XQhOgu33aH91k50XQEotM73vAYyLdwiPp9VvZGKtQVAKWalxBPhdI9QyHmyZ7DPErK3QB1f2tTXZfu75gaT5BScKw%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20250201T092755Z&X-Amz-SignedHeaders=host&X-Amz-Expires=599&X-Amz-Credential=ASIAUCCFPAXAWSKIM7KQ%2F20250201%2Feu-west-2%2Fs3%2Faws4_request&X-Amz-Signature=1f37f0e278e5603d7e80b67f2b2d6b2eb2055addd90369f5128b721d34923c8f"
+          curl -O "https://cyfuture.dl.sourceforge.net/project/test.mipad4-roms.p/Rom/Lineage-22.1/lineage-22.1-clover-20250204-1954.zip?viasf=1"
           # http --download "https://vid-s1-n10-ca-cdn.eporner.com/v5/qBCuxwt6rjuRsTRjQ9ztWQ/1737910414_64.74.163.130_1222/11993072-1080p.mp4"
           # curl -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3" -O "https://vid-s1-n10-ca-cdn.eporner.com/v5/qBCuxwt6rjuRsTRjQ9ztWQ/1737910414_64.74.163.130_1222/11993072-1080p.mp4"
           # wget --user-agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3" -O 1080P.mp4 "https://vid-s1-n10-ca-cdn.eporner.com/v5/qBCuxwt6rjuRsTRjQ9ztWQ/1737910414_64.74.163.130_1222/11993072-1080p.mp4"
@@ -141,7 +142,7 @@ jobs:
           draft: false
           prerelease: false
           files: |
-            Download/*.gz
+            Download/*.zip
 
 #            Download/*.zip
 #            Download/*.7z
