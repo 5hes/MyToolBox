@@ -37,7 +37,7 @@ jobs:
         run: |
           cd Download/
           chmod +x unzipper.sh env.sh downloader.sh
-          curl -L --connect-timeout 30 -O "https://cdn-ota.azureedge.net/V10.3.2.0.ODJCNXM/clover_images_V10.3.2.0.ODJCNXM_20190515.0000.00_8.1_cn_4388d99e5e.tgz"
+          curl --connect-timeout 30 -O "https://cdn-ota.azureedge.net/V10.3.2.0.ODJCNXM/clover_images_V10.3.2.0.ODJCNXM_20190515.0000.00_8.1_cn_4388d99e5e.tgz"
           # http --download "https://vid-s1-n10-ca-cdn.eporner.com/v5/qBCuxwt6rjuRsTRjQ9ztWQ/1737910414_64.74.163.130_1222/11993072-1080p.mp4"
           # curl -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3" -O "https://vid-s1-n10-ca-cdn.eporner.com/v5/qBCuxwt6rjuRsTRjQ9ztWQ/1737910414_64.74.163.130_1222/11993072-1080p.mp4"
           # wget --user-agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3" -O 1080P.mp4 "https://vid-s1-n10-ca-cdn.eporner.com/v5/qBCuxwt6rjuRsTRjQ9ztWQ/1737910414_64.74.163.130_1222/11993072-1080p.mp4"
