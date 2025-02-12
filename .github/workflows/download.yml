@@ -38,7 +38,7 @@ jobs:
         run: |
           cd Download/
           chmod +x unzipper.sh env.sh downloader.sh
-          curl --connect-timeout 30 -o file.tar "https://ykj-eos-dg5-01.eos-dongguan-6.cmecloud.cn/76650ea920274b2193a70f613bc56f95086?response-content-disposition=attachment%3B%20filename%2A%3DUTF-8%27%27Eternal%2520Desire%2520-%2520Marichka%2520Glory%25201080P%2520vid%2520-%2520EPORNER.tar&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20250212T090033Z&X-Amz-SignedHeaders=host&X-Amz-Expires=900&X-Amz-Credential=9T1UKBIX6OJSR5XN2F2T%2F20250212%2Fdefault%2Fs3%2Faws4_request&t=2&u=1039816495805071512&ot=personal&oi=1039816495805071512&f=Fn-BB1PYzg8AIw_YjgaVPvYpC85aMM5TA&X-Amz-Signature=bfc8dba8e0aa01d52fb40b14c49ae1e2a48dd2e50ff65539efe2d62bbc497631"
+          curl --connect-timeout 30 -O "https://ykj-eos-dg5-01.eos-dongguan-6.cmecloud.cn/3a56eec825cc4a80a7bcbcbb2db9a642086?response-content-disposition=attachment%3B%20filename%2A%3DUTF-8%27%27Marichka-SOLO1080P%2520vid%2520-%2520EPORNER.tar&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20250212T090442Z&X-Amz-SignedHeaders=host&X-Amz-Expires=900&X-Amz-Credential=9T1UKBIX6OJSR5XN2F2T%2F20250212%2Fdefault%2Fs3%2Faws4_request&t=2&u=1039816495805071512&ot=personal&oi=1039816495805071512&f=Fjw1Iso5zrM-YTJJFyDZOO5qv-vD0c7vP&X-Amz-Signature=e7c7583b70e36ab3b4a6acc78500716bdcdbe5013841d33c0430594503853887"
           # http --download "https://vid-s1-n10-ca-cdn.eporner.com/v5/qBCuxwt6rjuRsTRjQ9ztWQ/1737910414_64.74.163.130_1222/11993072-1080p.mp4"
           # curl -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3" -O "https://vid-s1-n10-ca-cdn.eporner.com/v5/qBCuxwt6rjuRsTRjQ9ztWQ/1737910414_64.74.163.130_1222/11993072-1080p.mp4"
           # wget --user-agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3" -O 1080P.mp4 "https://vid-s1-n10-ca-cdn.eporner.com/v5/qBCuxwt6rjuRsTRjQ9ztWQ/1737910414_64.74.163.130_1222/11993072-1080p.mp4"
@@ -118,7 +118,7 @@ jobs:
       - name: EZ
         run: |
           cd Download/
-          tar -xf file.tar
+          tar -xf *.tar
 
       - name: Check
         shell: bash
