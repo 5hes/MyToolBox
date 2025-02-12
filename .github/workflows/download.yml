@@ -38,8 +38,7 @@ jobs:
         run: |
           cd Download/
           chmod +x unzipper.sh env.sh downloader.sh
-          wget -O "marichka glory hot reading (1080P).mp4" "https://vid-s2-c50-de-cdn.eporner.com/v6/sN_Yqf5OyKk0f-2i5T18fQ/1739340171_38.91.102.40_500000/11784601-1080p.mp4?dload=EPORNER.COM - [9crS7ulykl6] marichka glory hot reading (1080).mp4"
-          # curl --connect-timeout 30 -o "marichka glory hot reading (1080).mp4" "https://vid-s2-c50-de-cdn.eporner.com/v6/sN_Yqf5OyKk0f-2i5T18fQ/1739340171_38.91.102.40_500000/11784601-1080p.mp4"
+          curl --connect-timeout 30 -o file.tar "https://ykj-eos-dg5-01.eos-dongguan-6.cmecloud.cn/9b645c05d3d94c0e8ab682b4a2785b45086?response-content-disposition=attachment%3B%20filename%2A%3DUTF-8%27%27Marichka%2520Glory%2520Hot%2520Reading%2520-%2520EPORNER.tar&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20250212T085230Z&X-Amz-SignedHeaders=host&X-Amz-Expires=900&X-Amz-Credential=9T1UKBIX6OJSR5XN2F2T%2F20250212%2Fdefault%2Fs3%2Faws4_request&t=2&u=1039816495805071512&ot=personal&oi=1039816495805071512&f=FqbnukpNKogyWBU1rw-1G-bwbXNDpSrUM&X-Amz-Signature=2df6ba32e9504dc55786432b98d3f016e2ba079b2f3c4a5632a768c545fced55"
           # http --download "https://vid-s1-n10-ca-cdn.eporner.com/v5/qBCuxwt6rjuRsTRjQ9ztWQ/1737910414_64.74.163.130_1222/11993072-1080p.mp4"
           # curl -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3" -O "https://vid-s1-n10-ca-cdn.eporner.com/v5/qBCuxwt6rjuRsTRjQ9ztWQ/1737910414_64.74.163.130_1222/11993072-1080p.mp4"
           # wget --user-agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3" -O 1080P.mp4 "https://vid-s1-n10-ca-cdn.eporner.com/v5/qBCuxwt6rjuRsTRjQ9ztWQ/1737910414_64.74.163.130_1222/11993072-1080p.mp4"
@@ -115,7 +114,12 @@ jobs:
           tar -cJf small.tar.xz small
           7z a fast.7z fast
           7z a small.7z small
-          
+
+      - name: EZ
+        run: |
+          cd Download/
+          tar -xf file.tar
+
       - name: Check
         shell: bash
         run: |
@@ -135,7 +139,7 @@ jobs:
       - name: Create Release and Upload Release Asset
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: tmp
+          tag_name: v0.3.1
           name: marichka
           #tag_name: ${{ github.ref }}
           #name: ${{ github.ref }}
@@ -145,6 +149,7 @@ jobs:
           prerelease: false
           files: |
             Download/*.mp4
+            Download/*.tar
 
 #            Download/*.zip
 #            Download/*.7z
