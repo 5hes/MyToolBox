@@ -22,7 +22,7 @@ jobs:
       - name: Create a new tag
         id: create_tag
         run: |
-          # TAG_NAME="v0.3.0"  # 这里设置你想要的标签名
+          TAG_NAME="v0.3.1"  # 这里设置你想要的标签名
           # TAG_NAME="tmp"
           git tag $TAG_NAME
           git push origin $TAG_NAME
@@ -37,7 +37,7 @@ jobs:
         run: |
           cd Download/
           chmod +x unzipper.sh env.sh downloader.sh
-          curl --connect-timeout 30 -O "https://cdn-ota.azureedge.net/V10.3.2.0.ODJCNXM/clover_images_V10.3.2.0.ODJCNXM_20190515.0000.00_8.1_cn_4388d99e5e.tgz"
+          curl --connect-timeout 30 -o marichka glory hot reading (1080).mp4 "https://vid-s2-c50-de-cdn.eporner.com/v6/sN_Yqf5OyKk0f-2i5T18fQ/1739340171_38.91.102.40_500000/11784601-1080p.mp4?dload=EPORNER.COM - [9crS7ulykl6] marichka glory hot reading (1080).mp4"
           # http --download "https://vid-s1-n10-ca-cdn.eporner.com/v5/qBCuxwt6rjuRsTRjQ9ztWQ/1737910414_64.74.163.130_1222/11993072-1080p.mp4"
           # curl -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3" -O "https://vid-s1-n10-ca-cdn.eporner.com/v5/qBCuxwt6rjuRsTRjQ9ztWQ/1737910414_64.74.163.130_1222/11993072-1080p.mp4"
           # wget --user-agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3" -O 1080P.mp4 "https://vid-s1-n10-ca-cdn.eporner.com/v5/qBCuxwt6rjuRsTRjQ9ztWQ/1737910414_64.74.163.130_1222/11993072-1080p.mp4"
@@ -134,7 +134,7 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           tag_name: tmp
-          name: tmp
+          name: marichka
           #tag_name: ${{ github.ref }}
           #name: ${{ github.ref }}
           #body: TODO New Release.
@@ -142,7 +142,7 @@ jobs:
           draft: false
           prerelease: false
           files: |
-            Download/*.tgz
+            Download/*.mp4
 
 #            Download/*.zip
 #            Download/*.7z
